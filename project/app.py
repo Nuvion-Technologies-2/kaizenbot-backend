@@ -74,6 +74,13 @@ order_status_dict = {}
 order_status_lock = threading.Lock()
 order_locks = {}  
 
+DEFAULT_PHASES = [
+    {"phase": 1, "start_sr_no": 1, "end_sr_no": 21, "down_increment": 0.25},
+    {"phase": 2, "start_sr_no": 22, "end_sr_no": 41, "down_increment": 0.50},
+    {"phase": 3, "start_sr_no": 42, "end_sr_no": 55, "down_increment": 0.75},
+    {"phase": 4, "start_sr_no": 56, "end_sr_no": 70, "down_increment": 1.00},
+    {"phase": 5, "start_sr_no": 71, "end_sr_no": 81, "down_increment": 1.25},
+]
 
 def encrypt_response(data_dict):
     """Encrypt a JSON response using AES-256-CBC (CryptoJS-compatible)"""
@@ -293,7 +300,7 @@ def send_login_notification(user_email, user_name, user_role):
 
                 ❗ If you did **not** log in, please take immediate action:  
                 - Change your password to secure your account.  
-                - Contact support at **support@{WEBSITE_NAME.lower()}.in**.  
+                - Contact support at **support@{WEBSITE_NAME.lower()}**.  
 
                 Stay Safe,  
                 The {WEBSITE_NAME} Security Team  
@@ -1601,6 +1608,7 @@ def add_user_stock():
                 "status": "429"
             })}), 429
 
+        get_wallet_value(current_user.smartapi_key)
         
         existing_stock = Stock.query.filter_by(
             user_id=current_user.id,
@@ -3039,13 +3047,6 @@ def log_request_data():
         logging.info(f"🔒 Raw Request Body: {request.data.decode('utf-8')}")
 
 
-DEFAULT_PHASES = [
-    {"phase": 1, "start_sr_no": 1, "end_sr_no": 21, "down_increment": 0.25},
-    {"phase": 2, "start_sr_no": 22, "end_sr_no": 41, "down_increment": 0.50},
-    {"phase": 3, "start_sr_no": 42, "end_sr_no": 55, "down_increment": 0.75},
-    {"phase": 4, "start_sr_no": 56, "end_sr_no": 70, "down_increment": 1.00},
-    {"phase": 5, "start_sr_no": 71, "end_sr_no": 81, "down_increment": 1.25},
-]
 
 @app.route('/api/toggle-trading-status', methods=['POST'])
 @jwt_required()
@@ -3217,13 +3218,6 @@ def toggle_trading_status():
             return jsonify({'error': 'Failed to encrypt response'}), 500
         return jsonify({'data': encrypted_response}), 500
 
-DEFAULT_PHASES = [
-    {"phase": 1, "start_sr_no": 1, "end_sr_no": 21, "down_increment": 0.25},
-    {"phase": 2, "start_sr_no": 22, "end_sr_no": 41, "down_increment": 0.50},
-    {"phase": 3, "start_sr_no": 42, "end_sr_no": 55, "down_increment": 0.75},
-    {"phase": 4, "start_sr_no": 56, "end_sr_no": 70, "down_increment": 1.00},
-    {"phase": 5, "start_sr_no": 71, "end_sr_no": 81, "down_increment": 1.25},
-]
 
 @app.route('/api/update-down', methods=['POST'])
 @jwt_required()
