@@ -1,0 +1,14 @@
+/* static/style.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+form {
+    display: inline-block;
+}
+input, select, button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+}

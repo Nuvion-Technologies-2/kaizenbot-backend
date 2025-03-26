@@ -1,0 +1,1493 @@
+Sheet Analysis Report
+=====================
+Number of rows: 115
+Number of columns: 29
+Column headers: ['Sr.No', 'Entry', 'Rtrcmnt\nEntry %', 'DOWN', 'Qnty', 'Capital', 'Total \nQuantity', 'Total\nInvested', '\nFirst_TGT\n1.50%\n', 'EXIT_1st_HALF\nQuantity', 'Second_TGT', 'EXIT_2nd_HALF\nQuantity', 'AVG_on\nCapital', 'FINAL_TGT \n 1.50%', 'Final_TGT \nAWAY %', 'First_TGT\nProfit', 'Second_TGT\nProfit', 'NET_Profit', 'Capital\nGain', 'Loss \nRunning', 250000]
+
+Data Preview:
+   Sr.No  Entry  Rtrcmnt\nEntry %    DOWN  Qnty  ...  Second_TGT\nProfit  NET_Profit  Capital\nGain Loss \nRunning  250000
+0      1  100.0               NaN     NaN   NaN  ...                 NaN         NaN            NaN            NaN  100000
+1      2    NaN            0.0005 -0.0025   NaN  ...                 NaN         NaN            NaN            NaN  150000
+2      3    NaN            0.0005 -0.0050   NaN  ...                 NaN         NaN            NaN            NaN  200000
+3      4    NaN            0.0005 -0.0075   NaN  ...                 NaN         NaN            NaN            NaN  250000
+4      5    NaN            0.0005 -0.0100   NaN  ...                 NaN         NaN            NaN            NaN  300000
+
+[5 rows x 21 columns]
+
+Formula Detection:
+==================
+Cell V1: Formula found - =IF(U1=100000,-0.642,IF(U1=150000,-0.428,IF(U1=200000,-0.214,IF(U1=250000,0.002,IF(U1=300000,0.216,IF(U1=350000,0.436,IF(U1=400000,0.6511,IF(U1=450000,0.872,IF(U1=500000,1.09,IF(U1=550000,1.311,IF(U1=600000,1.532,IF(U1=650000,1.754,IF(U1=700000,1.977,IF(U1=750000,2.201,IF(U1=800000,2.425,IF(U1=850000,2.65,IF(U1=900000,2.877,IF(U1=950000,3.104,IF(U1=1000000,3.332,0.023)))))))))))))))))))
+Cell E2: Formula found - =F2/B2
+Cell G2: Formula found - =E2
+Cell H2: Formula found - =B2*E2
+Cell M2: Formula found - =B2
+Cell N2: Formula found - =(M2*1.5%+M2)
+Cell O2: Formula found - =(N2-B2)/B2
+Cell R2: Formula found - =S2-H2
+Cell S2: Formula found - =(H2*1.5%+H2)
+Cell T2: Formula found - =(H2*D2+H2)-H2
+Cell B3: Formula found - =ABS($B$2*D3+$B$2)
+Cell E3: Formula found - =ROUND(F3 / B3, 0)
+Cell G3: Formula found - =E2+E3
+Cell H3: Formula found - =H2+F3
+Cell M3: Formula found - =H3/G3
+Cell N3: Formula found - =(M3*1.5%+M3)
+Cell O3: Formula found - =(N3-B3)/B3
+Cell R3: Formula found - =S3-H3
+Cell S3: Formula found - =(H3*1.5%+H3)
+Cell T3: Formula found - =(H3*D3+H3)-H3
+Cell B4: Formula found - =ABS($B$2*D4+$B$2)
+Cell E4: Formula found - =ROUND(F4 / B4, 0)
+Cell F4: Formula found - =F3+ROUND(F3 * $V$1, 0)
+Cell G4: Formula found - =G3+E4
+Cell H4: Formula found - =H3+F4
+Cell M4: Formula found - =H4/G4
+Cell N4: Formula found - =(M4*1.5%+M4)
+Cell O4: Formula found - =(N4-B4)/B4
+Cell R4: Formula found - =S4-H4
+Cell S4: Formula found - =(H4*1.5%+H4)
+Cell T4: Formula found - =(H4*D4+H4)-H4
+Cell B5: Formula found - =ABS($B$2*D5+$B$2)
+Cell E5: Formula found - =ROUND(F5 / B5, 0)
+Cell F5: Formula found - =F4+ROUND(F4 * 0.022, 0)
+Cell G5: Formula found - =G4+E5
+Cell H5: Formula found - =H4+F5
+Cell M5: Formula found - =H5/G5
+Cell N5: Formula found - =(M5*1.5%+M5)
+Cell O5: Formula found - =(N5-B5)/B5
+Cell R5: Formula found - =S5-H5
+Cell S5: Formula found - =(H5*1.5%+H5)
+Cell T5: Formula found - =(H5*D5+H5)-H5
+Cell B6: Formula found - =ABS($B$2*D6+$B$2)
+Cell E6: Formula found - =ROUND(F6 / B6, 0)
+Cell F6: Formula found - =F5+ROUND(F5 * 0.022, 0)
+Cell G6: Formula found - =G5+E6
+Cell H6: Formula found - =H5+F6
+Cell M6: Formula found - =H6/G6
+Cell N6: Formula found - =(M6*1.5%+M6)
+Cell O6: Formula found - =(N6-B6)/B6
+Cell R6: Formula found - =S6-H6
+Cell S6: Formula found - =(H6*1.5%+H6)
+Cell T6: Formula found - =(H6*D6+H6)-H6
+Cell B7: Formula found - =ABS($B$2*D7+$B$2)
+Cell E7: Formula found - =ROUND(F7 / B7, 0)
+Cell F7: Formula found - =F6+ROUND(F6 * 0.022, 0)
+Cell G7: Formula found - =G6+E7
+Cell H7: Formula found - =H6+F7
+Cell M7: Formula found - =H7/G7
+Cell N7: Formula found - =(M7*1.5%+M7)
+Cell O7: Formula found - =(N7-B7)/B7
+Cell R7: Formula found - =S7-H7
+Cell S7: Formula found - =(H7*1.5%+H7)
+Cell T7: Formula found - =(H7*D7+H7)-H7
+Cell B8: Formula found - =ABS($B$2*D8+$B$2)
+Cell E8: Formula found - =ROUND(F8 / B8, 0)
+Cell F8: Formula found - =F7+ROUND(F7 * 0.022, 0)
+Cell G8: Formula found - =G7+E8
+Cell H8: Formula found - =H7+F8
+Cell M8: Formula found - =H8/G8
+Cell N8: Formula found - =(M8*1.5%+M8)
+Cell O8: Formula found - =(N8-B8)/B8
+Cell R8: Formula found - =S8-H8
+Cell S8: Formula found - =(H8*1.5%+H8)
+Cell T8: Formula found - =(H8*D8+H8)-H8
+Cell B9: Formula found - =ABS($B$2*D9+$B$2)
+Cell E9: Formula found - =ROUND(F9 / B9, 0)
+Cell F9: Formula found - =F8+ROUND(F8 * 0.022, 0)
+Cell G9: Formula found - =G8+E9
+Cell H9: Formula found - =H8+F9
+Cell M9: Formula found - =H9/G9
+Cell N9: Formula found - =(M9*1.5%+M9)
+Cell O9: Formula found - =(N9-B9)/B9
+Cell R9: Formula found - =S9-H9
+Cell S9: Formula found - =(H9*1.5%+H9)
+Cell T9: Formula found - =(H9*D9+H9)-H9
+Cell B10: Formula found - =ABS($B$2*D10+$B$2)
+Cell E10: Formula found - =ROUND(F10 / B10, 0)
+Cell F10: Formula found - =F9+ROUND(F9 * 0.022, 0)
+Cell G10: Formula found - =G9+E10
+Cell H10: Formula found - =H9+F10
+Cell I10: Formula found - =(B10*1.5%+B10)
+Cell J10: Formula found - =ROUND(G10/2,0)
+Cell M10: Formula found - =H10/G10
+Cell N10: Formula found - =(M10*1.5%+M10)
+Cell O10: Formula found - =(N10-B10)/B10
+Cell P10: Formula found - =(I10-B10)*J10
+Cell Q10: Formula found - =(K10-I10)*L10
+Cell R10: Formula found - =S10-H10
+Cell S10: Formula found - =(H10*1.5%+H10)
+Cell T10: Formula found - =(H10*D10+H10)-H10
+Cell B11: Formula found - =ABS($B$2*D11+$B$2)
+Cell E11: Formula found - =ROUND(F11 / B11, 0)
+Cell F11: Formula found - =F10+ROUND(F10 * 0.022, 0)
+Cell G11: Formula found - =G10+E11
+Cell H11: Formula found - =H10+F11
+Cell I11: Formula found - =(B11*1.5%+B11)
+Cell J11: Formula found - =ROUND(G11/2,0)
+Cell M11: Formula found - =H11/G11
+Cell N11: Formula found - =(M11*1.5%+M11)
+Cell O11: Formula found - =(N11-B11)/B11
+Cell P11: Formula found - =(I11-B11)*J11
+Cell Q11: Formula found - =(K11-I11)*L11
+Cell R11: Formula found - =S11-H11
+Cell S11: Formula found - =(H11*1.5%+H11)
+Cell T11: Formula found - =(H11*D11+H11)-H11
+Cell B12: Formula found - =ABS($B$2*D12+$B$2)
+Cell E12: Formula found - =ROUND(F12 / B12, 0)
+Cell F12: Formula found - =F11+ROUND(F11 * 0.022, 0)
+Cell G12: Formula found - =G11+E12
+Cell H12: Formula found - =H11+F12
+Cell I12: Formula found - =(B12*1.5%+B12)
+Cell J12: Formula found - =ROUND(G12/2,0)
+Cell M12: Formula found - =H12/G12
+Cell N12: Formula found - =(M12*1.5%+M12)
+Cell O12: Formula found - =(N12-B12)/B12
+Cell P12: Formula found - =(I12-B12)*J12
+Cell Q12: Formula found - =(K12-I12)*L12
+Cell R12: Formula found - =S12-H12
+Cell S12: Formula found - =(H12*1.5%+H12)
+Cell T12: Formula found - =(H12*D12+H12)-H12
+Cell B13: Formula found - =ABS($B$2*D13+$B$2)
+Cell E13: Formula found - =ROUND(F13 / B13, 0)
+Cell F13: Formula found - =F12+ROUND(F12 * 0.022, 0)
+Cell G13: Formula found - =G12+E13
+Cell H13: Formula found - =H12+F13
+Cell I13: Formula found - =(B13*1.5%+B13)
+Cell J13: Formula found - =ROUND(G13/2,0)
+Cell M13: Formula found - =H13/G13
+Cell N13: Formula found - =(M13*1.5%+M13)
+Cell O13: Formula found - =(N13-B13)/B13
+Cell P13: Formula found - =(I13-B13)*J13
+Cell Q13: Formula found - =(K13-I13)*L13
+Cell R13: Formula found - =S13-H13
+Cell S13: Formula found - =(H13*1.5%+H13)
+Cell T13: Formula found - =(H13*D13+H13)-H13
+Cell B14: Formula found - =ABS($B$2*D14+$B$2)
+Cell E14: Formula found - =ROUND(F14 / B14, 0)
+Cell F14: Formula found - =F13+ROUND(F13 * 0.022, 0)
+Cell G14: Formula found - =G13+E14
+Cell H14: Formula found - =H13+F14
+Cell I14: Formula found - =(B14*1.5%+B14)
+Cell J14: Formula found - =ROUND(G14/2,0)
+Cell M14: Formula found - =H14/G14
+Cell N14: Formula found - =(M14*1.5%+M14)
+Cell O14: Formula found - =(N14-B14)/B14
+Cell P14: Formula found - =(I14-B14)*J14
+Cell Q14: Formula found - =(K14-I14)*L14
+Cell R14: Formula found - =S14-H14
+Cell S14: Formula found - =(H14*1.5%+H14)
+Cell T14: Formula found - =(H14*D14+H14)-H14
+Cell B15: Formula found - =ABS($B$2*D15+$B$2)
+Cell E15: Formula found - =ROUND(F15 / B15, 0)
+Cell F15: Formula found - =F14+ROUND(F14 * 0.022, 0)
+Cell G15: Formula found - =G14+E15
+Cell H15: Formula found - =H14+F15
+Cell I15: Formula found - =(B15*1.5%+B15)
+Cell J15: Formula found - =ROUND(G15/2,0)
+Cell M15: Formula found - =H15/G15
+Cell N15: Formula found - =(M15*1.5%+M15)
+Cell O15: Formula found - =(N15-B15)/B15
+Cell P15: Formula found - =(I15-B15)*J15
+Cell Q15: Formula found - =(K15-I15)*L15
+Cell R15: Formula found - =S15-H15
+Cell S15: Formula found - =(H15*1.5%+H15)
+Cell T15: Formula found - =(H15*D15+H15)-H15
+Cell B16: Formula found - =ABS($B$2*D16+$B$2)
+Cell E16: Formula found - =ROUND(F16 / B16, 0)
+Cell F16: Formula found - =F15+ROUND(F15 * 0.022, 0)
+Cell G16: Formula found - =G15+E16
+Cell H16: Formula found - =H15+F16
+Cell I16: Formula found - =(B16*1.5%+B16)
+Cell J16: Formula found - =ROUND(G16/2,0)
+Cell M16: Formula found - =H16/G16
+Cell N16: Formula found - =(M16*1.5%+M16)
+Cell O16: Formula found - =(N16-B16)/B16
+Cell P16: Formula found - =(I16-B16)*J16
+Cell Q16: Formula found - =(K16-I16)*L16
+Cell R16: Formula found - =S16-H16
+Cell S16: Formula found - =(H16*1.5%+H16)
+Cell T16: Formula found - =(H16*D16+H16)-H16
+Cell B17: Formula found - =ABS($B$2*D17+$B$2)
+Cell E17: Formula found - =ROUND(F17 / B17, 0)
+Cell F17: Formula found - =F16+ROUND(F16 * 0.022, 0)
+Cell G17: Formula found - =G16+E17
+Cell H17: Formula found - =H16+F17
+Cell I17: Formula found - =(B17*1.5%+B17)
+Cell J17: Formula found - =ROUND(G17/2,0)
+Cell M17: Formula found - =H17/G17
+Cell N17: Formula found - =(M17*1.5%+M17)
+Cell O17: Formula found - =(N17-B17)/B17
+Cell P17: Formula found - =(I17-B17)*J17
+Cell Q17: Formula found - =(K17-I17)*L17
+Cell R17: Formula found - =S17-H17
+Cell S17: Formula found - =(H17*1.5%+H17)
+Cell T17: Formula found - =(H17*D17+H17)-H17
+Cell B18: Formula found - =ABS($B$2*D18+$B$2)
+Cell E18: Formula found - =ROUND(F18 / B18, 0)
+Cell F18: Formula found - =F17+ROUND(F17 * 0.022, 0)
+Cell G18: Formula found - =G17+E18
+Cell H18: Formula found - =H17+F18
+Cell I18: Formula found - =(B18*1.5%+B18)
+Cell J18: Formula found - =ROUND(G18/2,0)
+Cell M18: Formula found - =H18/G18
+Cell N18: Formula found - =(M18*1.5%+M18)
+Cell O18: Formula found - =(N18-B18)/B18
+Cell P18: Formula found - =(I18-B18)*J18
+Cell Q18: Formula found - =(K18-I18)*L18
+Cell R18: Formula found - =S18-H18
+Cell S18: Formula found - =(H18*1.5%+H18)
+Cell T18: Formula found - =(H18*D18+H18)-H18
+Cell B19: Formula found - =ABS($B$2*D19+$B$2)
+Cell E19: Formula found - =ROUND(F19 / B19, 0)
+Cell F19: Formula found - =F18+ROUND(F18 * 0.022, 0)
+Cell G19: Formula found - =G18+E19
+Cell H19: Formula found - =H18+F19
+Cell I19: Formula found - =(B19*1.5%+B19)
+Cell J19: Formula found - =ROUND(G19/2,0)
+Cell M19: Formula found - =H19/G19
+Cell N19: Formula found - =(M19*1.5%+M19)
+Cell O19: Formula found - =(N19-B19)/B19
+Cell P19: Formula found - =(I19-B19)*J19
+Cell Q19: Formula found - =(K19-I19)*L19
+Cell R19: Formula found - =S19-H19
+Cell S19: Formula found - =(H19*1.5%+H19)
+Cell T19: Formula found - =(H19*D19+H19)-H19
+Cell B20: Formula found - =ABS($B$2*D20+$B$2)
+Cell E20: Formula found - =ROUND(F20 / B20, 0)
+Cell F20: Formula found - =F19+ROUND(F19 * 0.022, 0)
+Cell G20: Formula found - =G19+E20
+Cell H20: Formula found - =H19+F20
+Cell I20: Formula found - =(B20*1.5%+B20)
+Cell J20: Formula found - =ROUND(G20/2,0)
+Cell M20: Formula found - =H20/G20
+Cell N20: Formula found - =(M20*1.5%+M20)
+Cell O20: Formula found - =(N20-B20)/B20
+Cell P20: Formula found - =(I20-B20)*J20
+Cell Q20: Formula found - =(K20-I20)*L20
+Cell R20: Formula found - =S20-H20
+Cell S20: Formula found - =(H20*1.5%+H20)
+Cell T20: Formula found - =(H20*D20+H20)-H20
+Cell B21: Formula found - =ABS($B$2*D21+$B$2)
+Cell E21: Formula found - =ROUND(F21 / B21, 0)
+Cell F21: Formula found - =F20+ROUND(F20 * 0.022, 0)
+Cell G21: Formula found - =G20+E21
+Cell H21: Formula found - =H20+F21
+Cell I21: Formula found - =(B21*1.5%+B21)
+Cell J21: Formula found - =ROUND(G21/2,0)
+Cell M21: Formula found - =H21/G21
+Cell N21: Formula found - =(M21*1.5%+M21)
+Cell O21: Formula found - =(N21-B21)/B21
+Cell P21: Formula found - =(I21-B21)*J21
+Cell Q21: Formula found - =(K21-I21)*L21
+Cell R21: Formula found - =S21-H21
+Cell S21: Formula found - =(H21*1.5%+H21)
+Cell T21: Formula found - =(H21*D21+H21)-H21
+Cell B22: Formula found - =ABS($B$2*D22+$B$2)
+Cell E22: Formula found - =ROUND(F22 / B22, 0)
+Cell F22: Formula found - =F21+ROUND(F21 * 0.022, 0)
+Cell G22: Formula found - =G21+E22
+Cell H22: Formula found - =H21+F22
+Cell I22: Formula found - =(B22*1.5%+B22)
+Cell J22: Formula found - =ROUND(G22/2,0)
+Cell M22: Formula found - =H22/G22
+Cell N22: Formula found - =(M22*1.5%+M22)
+Cell O22: Formula found - =(N22-B22)/B22
+Cell P22: Formula found - =(I22-B22)*J22
+Cell R22: Formula found - =S22-H22
+Cell S22: Formula found - =(H22*1.5%+H22)
+Cell T22: Formula found - =(H22*D22+H22)-H22
+Cell B23: Formula found - =ABS($B$2*D23+$B$2)
+Cell E23: Formula found - =ROUND(F23 / B23, 0)
+Cell F23: Formula found - =F22+ROUND(F22 * 0.022, 0)
+Cell G23: Formula found - =G22+E23
+Cell H23: Formula found - =H22+F23
+Cell I23: Formula found - =(B23*1.5%+B23)
+Cell J23: Formula found - =ROUND(G23/2,0)
+Cell K23: Formula found - =AVERAGE(I23,N23)
+Cell L23: Formula found - =ROUND(J23/2, 0)
+Cell M23: Formula found - =H23/G23
+Cell N23: Formula found - =(M23*1.5%+M23)
+Cell O23: Formula found - =(N23-B23)/B23
+Cell P23: Formula found - =(I23-B23)*J23
+Cell Q23: Formula found - =(K23-I23)*L23
+Cell R23: Formula found - =S23-H23
+Cell S23: Formula found - =(H23*1.5%+H23)
+Cell T23: Formula found - =(H23*D23+H23)-H23
+Cell B24: Formula found - =ABS($B$2*D24+$B$2)
+Cell E24: Formula found - =ROUND(F24 / B24, 0)
+Cell F24: Formula found - =F23+ROUND(F23 * 0.022, 0)
+Cell G24: Formula found - =G23+E24
+Cell H24: Formula found - =H23+F24
+Cell I24: Formula found - =(B24*1.5%+B24)
+Cell J24: Formula found - =ROUND(G24/2,0)
+Cell K24: Formula found - =AVERAGE(I24,N24)
+Cell L24: Formula found - =ROUND(J24/2, 0)
+Cell M24: Formula found - =H24/G24
+Cell N24: Formula found - =(M24*1.5%+M24)
+Cell O24: Formula found - =(N24-B24)/B24
+Cell P24: Formula found - =(I24-B24)*J24
+Cell Q24: Formula found - =(K24-I24)*L24
+Cell R24: Formula found - =S24-H24
+Cell S24: Formula found - =(H24*1.5%+H24)
+Cell T24: Formula found - =(H24*D24+H24)-H24
+Cell B25: Formula found - =ABS($B$2*D25+$B$2)
+Cell E25: Formula found - =ROUND(F25 / B25, 0)
+Cell F25: Formula found - =F24+ROUND(F24 * 0.022, 0)
+Cell G25: Formula found - =G24+E25
+Cell H25: Formula found - =H24+F25
+Cell I25: Formula found - =(B25*1.5%+B25)
+Cell J25: Formula found - =ROUND(G25/2,0)
+Cell K25: Formula found - =AVERAGE(I25,N25)
+Cell L25: Formula found - =ROUND(J25/2, 0)
+Cell M25: Formula found - =H25/G25
+Cell N25: Formula found - =(M25*1.5%+M25)
+Cell O25: Formula found - =(N25-B25)/B25
+Cell P25: Formula found - =(I25-B25)*J25
+Cell Q25: Formula found - =(K25-I25)*L25
+Cell R25: Formula found - =S25-H25
+Cell S25: Formula found - =(H25*1.5%+H25)
+Cell T25: Formula found - =(H25*D25+H25)-H25
+Cell B26: Formula found - =ABS($B$2*D26+$B$2)
+Cell E26: Formula found - =ROUND(F26 / B26, 0)
+Cell F26: Formula found - =F25+ROUND(F25 * 0.022, 0)
+Cell G26: Formula found - =G25+E26
+Cell H26: Formula found - =H25+F26
+Cell I26: Formula found - =(B26*1.5%+B26)
+Cell J26: Formula found - =ROUND(G26/2,0)
+Cell K26: Formula found - =AVERAGE(I26,N26)
+Cell L26: Formula found - =ROUND(J26/2, 0)
+Cell M26: Formula found - =H26/G26
+Cell N26: Formula found - =(M26*1.5%+M26)
+Cell O26: Formula found - =(N26-B26)/B26
+Cell P26: Formula found - =(I26-B26)*J26
+Cell Q26: Formula found - =(K26-I26)*L26
+Cell R26: Formula found - =S26-H26
+Cell S26: Formula found - =(H26*1.5%+H26)
+Cell T26: Formula found - =(H26*D26+H26)-H26
+Cell B27: Formula found - =ABS($B$2*D27+$B$2)
+Cell E27: Formula found - =ROUND(F27 / B27, 0)
+Cell F27: Formula found - =F26+ROUND(F26 * 0.022, 0)
+Cell G27: Formula found - =G26+E27
+Cell H27: Formula found - =H26+F27
+Cell I27: Formula found - =(B27*1.5%+B27)
+Cell J27: Formula found - =ROUND(G27/2,0)
+Cell K27: Formula found - =AVERAGE(I27,N27)
+Cell L27: Formula found - =ROUND(J27/2, 0)
+Cell M27: Formula found - =H27/G27
+Cell N27: Formula found - =(M27*1.5%+M27)
+Cell O27: Formula found - =(N27-B27)/B27
+Cell P27: Formula found - =(I27-B27)*J27
+Cell Q27: Formula found - =(K27-I27)*L27
+Cell R27: Formula found - =S27-H27
+Cell S27: Formula found - =(H27*1.5%+H27)
+Cell T27: Formula found - =(H27*D27+H27)-H27
+Cell B28: Formula found - =ABS($B$2*D28+$B$2)
+Cell E28: Formula found - =ROUND(F28 / B28, 0)
+Cell F28: Formula found - =F27+ROUND(F27 * 0.022, 0)
+Cell G28: Formula found - =G27+E28
+Cell H28: Formula found - =H27+F28
+Cell I28: Formula found - =(B28*1.5%+B28)
+Cell J28: Formula found - =ROUND(G28/2,0)
+Cell K28: Formula found - =AVERAGE(I28,N28)
+Cell L28: Formula found - =ROUND(J28/2, 0)
+Cell M28: Formula found - =H28/G28
+Cell N28: Formula found - =(M28*1.5%+M28)
+Cell O28: Formula found - =(N28-B28)/B28
+Cell P28: Formula found - =(I28-B28)*J28
+Cell Q28: Formula found - =(K28-I28)*L28
+Cell R28: Formula found - =S28-H28
+Cell S28: Formula found - =(H28*1.5%+H28)
+Cell T28: Formula found - =(H28*D28+H28)-H28
+Cell B29: Formula found - =ABS($B$2*D29+$B$2)
+Cell E29: Formula found - =ROUND(F29 / B29, 0)
+Cell F29: Formula found - =F28+ROUND(F28 * 0.022, 0)
+Cell G29: Formula found - =G28+E29
+Cell H29: Formula found - =H28+F29
+Cell I29: Formula found - =(B29*1.5%+B29)
+Cell J29: Formula found - =ROUND(G29/2,0)
+Cell K29: Formula found - =AVERAGE(I29,N29)
+Cell L29: Formula found - =ROUND(J29/2, 0)
+Cell M29: Formula found - =H29/G29
+Cell N29: Formula found - =(M29*1.5%+M29)
+Cell O29: Formula found - =(N29-B29)/B29
+Cell P29: Formula found - =(I29-B29)*J29
+Cell Q29: Formula found - =(K29-I29)*L29
+Cell R29: Formula found - =S29-H29
+Cell S29: Formula found - =(H29*1.5%+H29)
+Cell T29: Formula found - =(H29*D29+H29)-H29
+Cell B30: Formula found - =ABS($B$2*D30+$B$2)
+Cell E30: Formula found - =ROUND(F30 / B30, 0)
+Cell F30: Formula found - =F29+ROUND(F29 * 0.022, 0)
+Cell G30: Formula found - =G29+E30
+Cell H30: Formula found - =H29+F30
+Cell I30: Formula found - =(B30*1.5%+B30)
+Cell J30: Formula found - =ROUND(G30/2,0)
+Cell K30: Formula found - =AVERAGE(I30,N30)
+Cell L30: Formula found - =ROUND(J30/2, 0)
+Cell M30: Formula found - =H30/G30
+Cell N30: Formula found - =(M30*1.5%+M30)
+Cell O30: Formula found - =(N30-B30)/B30
+Cell P30: Formula found - =(I30-B30)*J30
+Cell Q30: Formula found - =(K30-I30)*L30
+Cell R30: Formula found - =S30-H30
+Cell S30: Formula found - =(H30*1.5%+H30)
+Cell T30: Formula found - =(H30*D30+H30)-H30
+Cell B31: Formula found - =ABS($B$2*D31+$B$2)
+Cell E31: Formula found - =ROUND(F31 / B31, 0)
+Cell F31: Formula found - =F30+ROUND(F30 * 0.022, 0)
+Cell G31: Formula found - =G30+E31
+Cell H31: Formula found - =H30+F31
+Cell I31: Formula found - =(B31*1.5%+B31)
+Cell J31: Formula found - =ROUND(G31/2,0)
+Cell K31: Formula found - =AVERAGE(I31,N31)
+Cell L31: Formula found - =ROUND(J31/2, 0)
+Cell M31: Formula found - =H31/G31
+Cell N31: Formula found - =(M31*1.5%+M31)
+Cell O31: Formula found - =(N31-B31)/B31
+Cell P31: Formula found - =(I31-B31)*J31
+Cell Q31: Formula found - =(K31-I31)*L31
+Cell R31: Formula found - =S31-H31
+Cell S31: Formula found - =(H31*1.5%+H31)
+Cell T31: Formula found - =(H31*D31+H31)-H31
+Cell B32: Formula found - =ABS($B$2*D32+$B$2)
+Cell E32: Formula found - =ROUND(F32 / B32, 0)
+Cell F32: Formula found - =F31+ROUND(F31 * 0.022, 0)
+Cell G32: Formula found - =G31+E32
+Cell H32: Formula found - =H31+F32
+Cell I32: Formula found - =(B32*1.5%+B32)
+Cell J32: Formula found - =ROUND(G32/2,0)
+Cell K32: Formula found - =AVERAGE(I32,N32)
+Cell L32: Formula found - =ROUND(J32/2, 0)
+Cell M32: Formula found - =H32/G32
+Cell N32: Formula found - =(M32*1.5%+M32)
+Cell O32: Formula found - =(N32-B32)/B32
+Cell P32: Formula found - =(I32-B32)*J32
+Cell Q32: Formula found - =(K32-I32)*L32
+Cell R32: Formula found - =S32-H32
+Cell S32: Formula found - =(H32*1.5%+H32)
+Cell T32: Formula found - =(H32*D32+H32)-H32
+Cell B33: Formula found - =ABS($B$2*D33+$B$2)
+Cell E33: Formula found - =ROUND(F33 / B33, 0)
+Cell F33: Formula found - =F32+ROUND(F32 * 0.022, 0)
+Cell G33: Formula found - =G32+E33
+Cell H33: Formula found - =H32+F33
+Cell I33: Formula found - =(B33*1.5%+B33)
+Cell J33: Formula found - =ROUND(G33/2,0)
+Cell K33: Formula found - =AVERAGE(I33,N33)
+Cell L33: Formula found - =ROUND(J33/2, 0)
+Cell M33: Formula found - =H33/G33
+Cell N33: Formula found - =(M33*1.5%+M33)
+Cell O33: Formula found - =(N33-B33)/B33
+Cell P33: Formula found - =(I33-B33)*J33
+Cell Q33: Formula found - =(K33-I33)*L33
+Cell R33: Formula found - =S33-H33
+Cell S33: Formula found - =(H33*1.5%+H33)
+Cell T33: Formula found - =(H33*D33+H33)-H33
+Cell B34: Formula found - =ABS($B$2*D34+$B$2)
+Cell E34: Formula found - =ROUND(F34 / B34, 0)
+Cell F34: Formula found - =F33+ROUND(F33 * 0.022, 0)
+Cell G34: Formula found - =G33+E34
+Cell H34: Formula found - =H33+F34
+Cell I34: Formula found - =(B34*1.5%+B34)
+Cell J34: Formula found - =ROUND(G34/2,0)
+Cell K34: Formula found - =AVERAGE(I34,N34)
+Cell L34: Formula found - =ROUND(J34/2, 0)
+Cell M34: Formula found - =H34/G34
+Cell N34: Formula found - =(M34*1.5%+M34)
+Cell O34: Formula found - =(N34-B34)/B34
+Cell P34: Formula found - =(I34-B34)*J34
+Cell Q34: Formula found - =(K34-I34)*L34
+Cell R34: Formula found - =S34-H34
+Cell S34: Formula found - =(H34*1.5%+H34)
+Cell T34: Formula found - =(H34*D34+H34)-H34
+Cell B35: Formula found - =ABS($B$2*D35+$B$2)
+Cell E35: Formula found - =ROUND(F35 / B35, 0)
+Cell F35: Formula found - =F34+ROUND(F34 * 0.022, 0)
+Cell G35: Formula found - =G34+E35
+Cell H35: Formula found - =H34+F35
+Cell I35: Formula found - =(B35*1.5%+B35)
+Cell J35: Formula found - =ROUND(G35/2,0)
+Cell K35: Formula found - =AVERAGE(I35,N35)
+Cell L35: Formula found - =ROUND(J35/2, 0)
+Cell M35: Formula found - =H35/G35
+Cell N35: Formula found - =(M35*1.5%+M35)
+Cell O35: Formula found - =(N35-B35)/B35
+Cell P35: Formula found - =(I35-B35)*J35
+Cell Q35: Formula found - =(K35-I35)*L35
+Cell R35: Formula found - =S35-H35
+Cell S35: Formula found - =(H35*1.5%+H35)
+Cell T35: Formula found - =(H35*D35+H35)-H35
+Cell B36: Formula found - =ABS($B$2*D36+$B$2)
+Cell E36: Formula found - =ROUND(F36 / B36, 0)
+Cell F36: Formula found - =F35+ROUND(F35 * 0.022, 0)
+Cell G36: Formula found - =G35+E36
+Cell H36: Formula found - =H35+F36
+Cell I36: Formula found - =(B36*1.5%+B36)
+Cell J36: Formula found - =ROUND(G36/2,0)
+Cell K36: Formula found - =AVERAGE(I36,N36)
+Cell L36: Formula found - =ROUND(J36/2, 0)
+Cell M36: Formula found - =H36/G36
+Cell N36: Formula found - =(M36*1.5%+M36)
+Cell O36: Formula found - =(N36-B36)/B36
+Cell P36: Formula found - =(I36-B36)*J36
+Cell Q36: Formula found - =(K36-I36)*L36
+Cell R36: Formula found - =S36-H36
+Cell S36: Formula found - =(H36*1.5%+H36)
+Cell T36: Formula found - =(H36*D36+H36)-H36
+Cell B37: Formula found - =ABS($B$2*D37+$B$2)
+Cell E37: Formula found - =ROUND(F37 / B37, 0)
+Cell F37: Formula found - =F36+ROUND(F36 * 0.022, 0)
+Cell G37: Formula found - =G36+E37
+Cell H37: Formula found - =H36+F37
+Cell I37: Formula found - =(B37*1.5%+B37)
+Cell J37: Formula found - =ROUND(G37/2,0)
+Cell K37: Formula found - =AVERAGE(I37,N37)
+Cell L37: Formula found - =ROUND(J37/2, 0)
+Cell M37: Formula found - =H37/G37
+Cell N37: Formula found - =(M37*1.5%+M37)
+Cell O37: Formula found - =(N37-B37)/B37
+Cell P37: Formula found - =(I37-B37)*J37
+Cell Q37: Formula found - =(K37-I37)*L37
+Cell R37: Formula found - =S37-H37
+Cell S37: Formula found - =(H37*1.5%+H37)
+Cell T37: Formula found - =(H37*D37+H37)-H37
+Cell B38: Formula found - =ABS($B$2*D38+$B$2)
+Cell E38: Formula found - =ROUND(F38 / B38, 0)
+Cell F38: Formula found - =F37+ROUND(F37 * 0.022, 0)
+Cell G38: Formula found - =G37+E38
+Cell H38: Formula found - =H37+F38
+Cell I38: Formula found - =(B38*1.5%+B38)
+Cell J38: Formula found - =ROUND(G38/2,0)
+Cell K38: Formula found - =AVERAGE(I38,N38)
+Cell L38: Formula found - =ROUND(J38/2, 0)
+Cell M38: Formula found - =H38/G38
+Cell N38: Formula found - =(M38*1.5%+M38)
+Cell O38: Formula found - =(N38-B38)/B38
+Cell P38: Formula found - =(I38-B38)*J38
+Cell Q38: Formula found - =(K38-I38)*L38
+Cell R38: Formula found - =S38-H38
+Cell S38: Formula found - =(H38*1.5%+H38)
+Cell T38: Formula found - =(H38*D38+H38)-H38
+Cell B39: Formula found - =ABS($B$2*D39+$B$2)
+Cell E39: Formula found - =ROUND(F39 / B39, 0)
+Cell F39: Formula found - =F38+ROUND(F38 * 0.022, 0)
+Cell G39: Formula found - =G38+E39
+Cell H39: Formula found - =H38+F39
+Cell I39: Formula found - =(B39*1.5%+B39)
+Cell J39: Formula found - =ROUND(G39/2,0)
+Cell K39: Formula found - =AVERAGE(I39,N39)
+Cell L39: Formula found - =ROUND(J39/2, 0)
+Cell M39: Formula found - =H39/G39
+Cell N39: Formula found - =(M39*1.5%+M39)
+Cell O39: Formula found - =(N39-B39)/B39
+Cell P39: Formula found - =(I39-B39)*J39
+Cell Q39: Formula found - =(K39-I39)*L39
+Cell R39: Formula found - =S39-H39
+Cell S39: Formula found - =(H39*1.5%+H39)
+Cell T39: Formula found - =(H39*D39+H39)-H39
+Cell B40: Formula found - =ABS($B$2*D40+$B$2)
+Cell E40: Formula found - =ROUND(F40 / B40, 0)
+Cell F40: Formula found - =F39+ROUND(F39 * 0.022, 0)
+Cell G40: Formula found - =G39+E40
+Cell H40: Formula found - =H39+F40
+Cell I40: Formula found - =(B40*1.5%+B40)
+Cell J40: Formula found - =ROUND(G40/2,0)
+Cell K40: Formula found - =AVERAGE(I40,N40)
+Cell L40: Formula found - =ROUND(J40/2, 0)
+Cell M40: Formula found - =H40/G40
+Cell N40: Formula found - =(M40*1.5%+M40)
+Cell O40: Formula found - =(N40-B40)/B40
+Cell P40: Formula found - =(I40-B40)*J40
+Cell Q40: Formula found - =(K40-I40)*L40
+Cell R40: Formula found - =S40-H40
+Cell S40: Formula found - =(H40*1.5%+H40)
+Cell T40: Formula found - =(H40*D40+H40)-H40
+Cell B41: Formula found - =ABS($B$2*D41+$B$2)
+Cell E41: Formula found - =ROUND(F41 / B41, 0)
+Cell F41: Formula found - =F40+ROUND(F40 * 0.022, 0)
+Cell G41: Formula found - =G40+E41
+Cell H41: Formula found - =H40+F41
+Cell I41: Formula found - =(B41*1.5%+B41)
+Cell J41: Formula found - =ROUND(G41/2,0)
+Cell K41: Formula found - =AVERAGE(I41,N41)
+Cell L41: Formula found - =ROUND(J41/2, 0)
+Cell M41: Formula found - =H41/G41
+Cell N41: Formula found - =(M41*1.5%+M41)
+Cell O41: Formula found - =(N41-B41)/B41
+Cell P41: Formula found - =(I41-B41)*J41
+Cell Q41: Formula found - =(K41-I41)*L41
+Cell R41: Formula found - =S41-H41
+Cell S41: Formula found - =(H41*1.5%+H41)
+Cell T41: Formula found - =(H41*D41+H41)-H41
+Cell B42: Formula found - =ABS($B$2*D42+$B$2)
+Cell E42: Formula found - =ROUND(F42 / B42, 0)
+Cell F42: Formula found - =F41+ROUND(F41 * 0.022, 0)
+Cell G42: Formula found - =G41+E42
+Cell H42: Formula found - =H41+F42
+Cell I42: Formula found - =(B42*1.5%+B42)
+Cell J42: Formula found - =ROUND(G42/2,0)
+Cell K42: Formula found - =AVERAGE(I42,N42)
+Cell L42: Formula found - =ROUND(J42/2, 0)
+Cell M42: Formula found - =H42/G42
+Cell N42: Formula found - =(M42*1.5%+M42)
+Cell O42: Formula found - =(N42-B42)/B42
+Cell P42: Formula found - =(I42-B42)*J42
+Cell Q42: Formula found - =(K42-I42)*L42
+Cell R42: Formula found - =S42-H42
+Cell S42: Formula found - =(H42*1.5%+H42)
+Cell T42: Formula found - =(H42*D42+H42)-H42
+Cell B43: Formula found - =ABS($B$2*D43+$B$2)
+Cell E43: Formula found - =ROUND(F43 / B43, 0)
+Cell F43: Formula found - =F42+ROUND(F42 * 0.022, 0)
+Cell G43: Formula found - =G42+E43
+Cell H43: Formula found - =H42+F43
+Cell I43: Formula found - =(B43*1.5%+B43)
+Cell J43: Formula found - =ROUND(G43/2,0)
+Cell K43: Formula found - =AVERAGE(I43,N43)
+Cell L43: Formula found - =ROUND(J43/2, 0)
+Cell M43: Formula found - =H43/G43
+Cell N43: Formula found - =(M43*1.5%+M43)
+Cell O43: Formula found - =(N43-B43)/B43
+Cell P43: Formula found - =(I43-B43)*J43
+Cell Q43: Formula found - =(K43-I43)*L43
+Cell R43: Formula found - =S43-H43
+Cell S43: Formula found - =(H43*1.5%+H43)
+Cell T43: Formula found - =(H43*D43+H43)-H43
+Cell B44: Formula found - =ABS($B$2*D44+$B$2)
+Cell E44: Formula found - =ROUND(F44 / B44, 0)
+Cell F44: Formula found - =F43+ROUND(F43 * 0.022, 0)
+Cell G44: Formula found - =G43+E44
+Cell H44: Formula found - =H43+F44
+Cell I44: Formula found - =(B44*1.5%+B44)
+Cell J44: Formula found - =ROUND(G44/2,0)
+Cell K44: Formula found - =AVERAGE(I44,N44)
+Cell L44: Formula found - =ROUND(J44/2, 0)
+Cell M44: Formula found - =H44/G44
+Cell N44: Formula found - =(M44*1.5%+M44)
+Cell O44: Formula found - =(N44-B44)/B44
+Cell P44: Formula found - =(I44-B44)*J44
+Cell Q44: Formula found - =(K44-I44)*L44
+Cell R44: Formula found - =S44-H44
+Cell S44: Formula found - =(H44*1.5%+H44)
+Cell T44: Formula found - =(H44*D44+H44)-H44
+Cell B45: Formula found - =ABS($B$2*D45+$B$2)
+Cell E45: Formula found - =ROUND(F45 / B45, 0)
+Cell F45: Formula found - =F44+ROUND(F44 * 0.022, 0)
+Cell G45: Formula found - =G44+E45
+Cell H45: Formula found - =H44+F45
+Cell I45: Formula found - =(B45*1.5%+B45)
+Cell J45: Formula found - =ROUND(G45/2,0)
+Cell K45: Formula found - =AVERAGE(I45,N45)
+Cell L45: Formula found - =ROUND(J45/2, 0)
+Cell M45: Formula found - =H45/G45
+Cell N45: Formula found - =(M45*1.5%+M45)
+Cell O45: Formula found - =(N45-B45)/B45
+Cell P45: Formula found - =(I45-B45)*J45
+Cell Q45: Formula found - =(K45-I45)*L45
+Cell R45: Formula found - =S45-H45
+Cell S45: Formula found - =(H45*1.5%+H45)
+Cell T45: Formula found - =(H45*D45+H45)-H45
+Cell B46: Formula found - =ABS($B$2*D46+$B$2)
+Cell E46: Formula found - =ROUND(F46 / B46, 0)
+Cell F46: Formula found - =F45+ROUND(F45 * 0.022, 0)
+Cell G46: Formula found - =G45+E46
+Cell H46: Formula found - =H45+F46
+Cell I46: Formula found - =(B46*1.5%+B46)
+Cell J46: Formula found - =ROUND(G46/2,0)
+Cell K46: Formula found - =AVERAGE(I46,N46)
+Cell L46: Formula found - =ROUND(J46/2, 0)
+Cell M46: Formula found - =H46/G46
+Cell N46: Formula found - =(M46*1.5%+M46)
+Cell O46: Formula found - =(N46-B46)/B46
+Cell P46: Formula found - =(I46-B46)*J46
+Cell Q46: Formula found - =(K46-I46)*L46
+Cell R46: Formula found - =S46-H46
+Cell S46: Formula found - =(H46*1.5%+H46)
+Cell T46: Formula found - =(H46*D46+H46)-H46
+Cell B47: Formula found - =ABS($B$2*D47+$B$2)
+Cell E47: Formula found - =ROUND(F47 / B47, 0)
+Cell F47: Formula found - =F46+ROUND(F46 * 0.022, 0)
+Cell G47: Formula found - =G46+E47
+Cell H47: Formula found - =H46+F47
+Cell I47: Formula found - =(B47*1.5%+B47)
+Cell J47: Formula found - =ROUND(G47/2,0)
+Cell K47: Formula found - =AVERAGE(I47,N47)
+Cell L47: Formula found - =ROUND(J47/2, 0)
+Cell M47: Formula found - =H47/G47
+Cell N47: Formula found - =(M47*1.5%+M47)
+Cell O47: Formula found - =(N47-B47)/B47
+Cell P47: Formula found - =(I47-B47)*J47
+Cell Q47: Formula found - =(K47-I47)*L47
+Cell R47: Formula found - =S47-H47
+Cell S47: Formula found - =(H47*1.5%+H47)
+Cell T47: Formula found - =(H47*D47+H47)-H47
+Cell B48: Formula found - =ABS($B$2*D48+$B$2)
+Cell E48: Formula found - =ROUND(F48 / B48, 0)
+Cell F48: Formula found - =F47+ROUND(F47 * 0.022, 0)
+Cell G48: Formula found - =G47+E48
+Cell H48: Formula found - =H47+F48
+Cell I48: Formula found - =(B48*1.5%+B48)
+Cell J48: Formula found - =ROUND(G48/2,0)
+Cell K48: Formula found - =AVERAGE(I48,N48)
+Cell L48: Formula found - =ROUND(J48/2, 0)
+Cell M48: Formula found - =H48/G48
+Cell N48: Formula found - =(M48*1.5%+M48)
+Cell O48: Formula found - =(N48-B48)/B48
+Cell P48: Formula found - =(I48-B48)*J48
+Cell Q48: Formula found - =(K48-I48)*L48
+Cell R48: Formula found - =S48-H48
+Cell S48: Formula found - =(H48*1.5%+H48)
+Cell T48: Formula found - =(H48*D48+H48)-H48
+Cell B49: Formula found - =ABS($B$2*D49+$B$2)
+Cell E49: Formula found - =ROUND(F49 / B49, 0)
+Cell F49: Formula found - =F48+ROUND(F48 * 0.022, 0)
+Cell G49: Formula found - =G48+E49
+Cell H49: Formula found - =H48+F49
+Cell I49: Formula found - =(B49*1.5%+B49)
+Cell J49: Formula found - =ROUND(G49/2,0)
+Cell K49: Formula found - =AVERAGE(I49,N49)
+Cell L49: Formula found - =ROUND(J49/2, 0)
+Cell M49: Formula found - =H49/G49
+Cell N49: Formula found - =(M49*1.5%+M49)
+Cell O49: Formula found - =(N49-B49)/B49
+Cell P49: Formula found - =(I49-B49)*J49
+Cell Q49: Formula found - =(K49-I49)*L49
+Cell R49: Formula found - =S49-H49
+Cell S49: Formula found - =(H49*1.5%+H49)
+Cell T49: Formula found - =(H49*D49+H49)-H49
+Cell B50: Formula found - =ABS($B$2*D50+$B$2)
+Cell E50: Formula found - =ROUND(F50 / B50, 0)
+Cell F50: Formula found - =F49+ROUND(F49 * 0.022, 0)
+Cell G50: Formula found - =G49+E50
+Cell H50: Formula found - =H49+F50
+Cell I50: Formula found - =(B50*1.5%+B50)
+Cell J50: Formula found - =ROUND(G50/2,0)
+Cell K50: Formula found - =AVERAGE(I50,N50)
+Cell L50: Formula found - =ROUND(J50/2, 0)
+Cell M50: Formula found - =H50/G50
+Cell N50: Formula found - =(M50*1.5%+M50)
+Cell O50: Formula found - =(N50-B50)/B50
+Cell P50: Formula found - =(I50-B50)*J50
+Cell Q50: Formula found - =(K50-I50)*L50
+Cell R50: Formula found - =S50-H50
+Cell S50: Formula found - =(H50*1.5%+H50)
+Cell T50: Formula found - =(H50*D50+H50)-H50
+Cell B51: Formula found - =ABS($B$2*D51+$B$2)
+Cell E51: Formula found - =ROUND(F51 / B51, 0)
+Cell F51: Formula found - =F50+ROUND(F50 * 0.022, 0)
+Cell G51: Formula found - =G50+E51
+Cell H51: Formula found - =H50+F51
+Cell I51: Formula found - =(B51*1.5%+B51)
+Cell J51: Formula found - =ROUND(G51/2,0)
+Cell K51: Formula found - =AVERAGE(I51,N51)
+Cell L51: Formula found - =ROUND(J51/2, 0)
+Cell M51: Formula found - =H51/G51
+Cell N51: Formula found - =(M51*1.5%+M51)
+Cell O51: Formula found - =(N51-B51)/B51
+Cell P51: Formula found - =(I51-B51)*J51
+Cell Q51: Formula found - =(K51-I51)*L51
+Cell R51: Formula found - =S51-H51
+Cell S51: Formula found - =(H51*1.5%+H51)
+Cell T51: Formula found - =(H51*D51+H51)-H51
+Cell B52: Formula found - =ABS($B$2*D52+$B$2)
+Cell E52: Formula found - =ROUND(F52 / B52, 0)
+Cell F52: Formula found - =F51+ROUND(F51 * 0.022, 0)
+Cell G52: Formula found - =G51+E52
+Cell H52: Formula found - =H51+F52
+Cell I52: Formula found - =(B52*1.5%+B52)
+Cell J52: Formula found - =ROUND(G52/2,0)
+Cell K52: Formula found - =AVERAGE(I52,N52)
+Cell L52: Formula found - =ROUND(J52/2, 0)
+Cell M52: Formula found - =H52/G52
+Cell N52: Formula found - =(M52*1.5%+M52)
+Cell O52: Formula found - =(N52-B52)/B52
+Cell P52: Formula found - =(I52-B52)*J52
+Cell Q52: Formula found - =(K52-I52)*L52
+Cell R52: Formula found - =S52-H52
+Cell S52: Formula found - =(H52*1.5%+H52)
+Cell T52: Formula found - =(H52*D52+H52)-H52
+Cell B53: Formula found - =ABS($B$2*D53+$B$2)
+Cell E53: Formula found - =ROUND(F53 / B53, 0)
+Cell F53: Formula found - =F52+ROUND(F52 * 0.022, 0)
+Cell G53: Formula found - =G52+E53
+Cell H53: Formula found - =H52+F53
+Cell I53: Formula found - =(B53*1.5%+B53)
+Cell J53: Formula found - =ROUND(G53/2,0)
+Cell K53: Formula found - =AVERAGE(I53,N53)
+Cell L53: Formula found - =ROUND(J53/2, 0)
+Cell M53: Formula found - =H53/G53
+Cell N53: Formula found - =(M53*1.5%+M53)
+Cell O53: Formula found - =(N53-B53)/B53
+Cell P53: Formula found - =(I53-B53)*J53
+Cell Q53: Formula found - =(K53-I53)*L53
+Cell R53: Formula found - =S53-H53
+Cell S53: Formula found - =(H53*1.5%+H53)
+Cell T53: Formula found - =(H53*D53+H53)-H53
+Cell B54: Formula found - =ABS($B$2*D54+$B$2)
+Cell E54: Formula found - =ROUND(F54 / B54, 0)
+Cell F54: Formula found - =F53+ROUND(F53 * 0.022, 0)
+Cell G54: Formula found - =G53+E54
+Cell H54: Formula found - =H53+F54
+Cell I54: Formula found - =(B54*1.5%+B54)
+Cell J54: Formula found - =ROUND(G54/2,0)
+Cell K54: Formula found - =AVERAGE(I54,N54)
+Cell L54: Formula found - =ROUND(J54/2, 0)
+Cell M54: Formula found - =H54/G54
+Cell N54: Formula found - =(M54*1.5%+M54)
+Cell O54: Formula found - =(N54-B54)/B54
+Cell P54: Formula found - =(I54-B54)*J54
+Cell Q54: Formula found - =(K54-I54)*L54
+Cell R54: Formula found - =S54-H54
+Cell S54: Formula found - =(H54*1.5%+H54)
+Cell T54: Formula found - =(H54*D54+H54)-H54
+Cell B55: Formula found - =ABS($B$2*D55+$B$2)
+Cell E55: Formula found - =ROUND(F55 / B55, 0)
+Cell F55: Formula found - =F54+ROUND(F54 * 0.022, 0)
+Cell G55: Formula found - =G54+E55
+Cell H55: Formula found - =H54+F55
+Cell I55: Formula found - =(B55*1.5%+B55)
+Cell J55: Formula found - =ROUND(G55/2,0)
+Cell K55: Formula found - =AVERAGE(I55,N55)
+Cell L55: Formula found - =ROUND(J55/2, 0)
+Cell M55: Formula found - =H55/G55
+Cell N55: Formula found - =(M55*1.5%+M55)
+Cell O55: Formula found - =(N55-B55)/B55
+Cell P55: Formula found - =(I55-B55)*J55
+Cell Q55: Formula found - =(K55-I55)*L55
+Cell R55: Formula found - =S55-H55
+Cell S55: Formula found - =(H55*1.5%+H55)
+Cell T55: Formula found - =(H55*D55+H55)-H55
+Cell B56: Formula found - =ABS($B$2*D56+$B$2)
+Cell E56: Formula found - =ROUND(F56 / B56, 0)
+Cell F56: Formula found - =F55+ROUND(F55 * 0.022, 0)
+Cell G56: Formula found - =G55+E56
+Cell H56: Formula found - =H55+F56
+Cell I56: Formula found - =(B56*1.5%+B56)
+Cell J56: Formula found - =ROUND(G56/2,0)
+Cell K56: Formula found - =AVERAGE(I56,N56)
+Cell L56: Formula found - =ROUND(J56/2, 0)
+Cell M56: Formula found - =H56/G56
+Cell N56: Formula found - =(M56*1.5%+M56)
+Cell O56: Formula found - =(N56-B56)/B56
+Cell P56: Formula found - =(I56-B56)*J56
+Cell Q56: Formula found - =(K56-I56)*L56
+Cell R56: Formula found - =S56-H56
+Cell S56: Formula found - =(H56*1.5%+H56)
+Cell T56: Formula found - =(H56*D56+H56)-H56
+Cell B57: Formula found - =ABS($B$2*D57+$B$2)
+Cell E57: Formula found - =ROUND(F57 / B57, 0)
+Cell F57: Formula found - =F56+ROUND(F56 * 0.022, 0)
+Cell G57: Formula found - =G56+E57
+Cell H57: Formula found - =H56+F57
+Cell I57: Formula found - =(B57*1.5%+B57)
+Cell J57: Formula found - =ROUND(G57/2,0)
+Cell K57: Formula found - =AVERAGE(I57,N57)
+Cell L57: Formula found - =ROUND(J57/2, 0)
+Cell M57: Formula found - =H57/G57
+Cell N57: Formula found - =(M57*1.5%+M57)
+Cell O57: Formula found - =(N57-B57)/B57
+Cell P57: Formula found - =(I57-B57)*J57
+Cell Q57: Formula found - =(K57-I57)*L57
+Cell R57: Formula found - =S57-H57
+Cell S57: Formula found - =(H57*1.5%+H57)
+Cell T57: Formula found - =(H57*D57+H57)-H57
+Cell B58: Formula found - =ABS($B$2*D58+$B$2)
+Cell E58: Formula found - =ROUND(F58 / B58, 0)
+Cell F58: Formula found - =F57+ROUND(F57 * 0.022, 0)
+Cell G58: Formula found - =G57+E58
+Cell H58: Formula found - =H57+F58
+Cell I58: Formula found - =(B58*1.5%+B58)
+Cell J58: Formula found - =ROUND(G58/2,0)
+Cell K58: Formula found - =AVERAGE(I58,N58)
+Cell L58: Formula found - =ROUND(J58/2, 0)
+Cell M58: Formula found - =H58/G58
+Cell N58: Formula found - =(M58*1.5%+M58)
+Cell O58: Formula found - =(N58-B58)/B58
+Cell P58: Formula found - =(I58-B58)*J58
+Cell Q58: Formula found - =(K58-I58)*L58
+Cell R58: Formula found - =S58-H58
+Cell S58: Formula found - =(H58*1.5%+H58)
+Cell T58: Formula found - =(H58*D58+H58)-H58
+Cell B59: Formula found - =ABS($B$2*D59+$B$2)
+Cell E59: Formula found - =ROUND(F59 / B59, 0)
+Cell F59: Formula found - =F58+ROUND(F58 * 0.022, 0)
+Cell G59: Formula found - =G58+E59
+Cell H59: Formula found - =H58+F59
+Cell I59: Formula found - =(B59*1.5%+B59)
+Cell J59: Formula found - =ROUND(G59/2,0)
+Cell K59: Formula found - =AVERAGE(I59,N59)
+Cell L59: Formula found - =ROUND(J59/2, 0)
+Cell M59: Formula found - =H59/G59
+Cell N59: Formula found - =(M59*1.5%+M59)
+Cell O59: Formula found - =(N59-B59)/B59
+Cell P59: Formula found - =(I59-B59)*J59
+Cell Q59: Formula found - =(K59-I59)*L59
+Cell R59: Formula found - =S59-H59
+Cell S59: Formula found - =(H59*1.5%+H59)
+Cell T59: Formula found - =(H59*D59+H59)-H59
+Cell B60: Formula found - =ABS($B$2*D60+$B$2)
+Cell E60: Formula found - =ROUND(F60 / B60, 0)
+Cell F60: Formula found - =F59+ROUND(F59 * 0.022, 0)
+Cell G60: Formula found - =G59+E60
+Cell H60: Formula found - =H59+F60
+Cell I60: Formula found - =(B60*1.5%+B60)
+Cell J60: Formula found - =ROUND(G60/2,0)
+Cell K60: Formula found - =AVERAGE(I60,N60)
+Cell L60: Formula found - =ROUND(J60/2, 0)
+Cell M60: Formula found - =H60/G60
+Cell N60: Formula found - =(M60*1.5%+M60)
+Cell O60: Formula found - =(N60-B60)/B60
+Cell P60: Formula found - =(I60-B60)*J60
+Cell Q60: Formula found - =(K60-I60)*L60
+Cell R60: Formula found - =S60-H60
+Cell S60: Formula found - =(H60*1.5%+H60)
+Cell T60: Formula found - =(H60*D60+H60)-H60
+Cell B61: Formula found - =ABS($B$2*D61+$B$2)
+Cell E61: Formula found - =ROUND(F61 / B61, 0)
+Cell F61: Formula found - =F60+ROUND(F60 * 0.022, 0)
+Cell G61: Formula found - =G60+E61
+Cell H61: Formula found - =H60+F61
+Cell I61: Formula found - =(B61*1.5%+B61)
+Cell J61: Formula found - =ROUND(G61/2,0)
+Cell K61: Formula found - =AVERAGE(I61,N61)
+Cell L61: Formula found - =ROUND(J61/2, 0)
+Cell M61: Formula found - =H61/G61
+Cell N61: Formula found - =(M61*1.5%+M61)
+Cell O61: Formula found - =(N61-B61)/B61
+Cell P61: Formula found - =(I61-B61)*J61
+Cell Q61: Formula found - =(K61-I61)*L61
+Cell R61: Formula found - =S61-H61
+Cell S61: Formula found - =(H61*1.5%+H61)
+Cell T61: Formula found - =(H61*D61+H61)-H61
+Cell B62: Formula found - =ABS($B$2*D62+$B$2)
+Cell E62: Formula found - =ROUND(F62 / B62, 0)
+Cell F62: Formula found - =F61+ROUND(F61 * 0.022, 0)
+Cell G62: Formula found - =G61+E62
+Cell H62: Formula found - =H61+F62
+Cell I62: Formula found - =(B62*1.5%+B62)
+Cell J62: Formula found - =ROUND(G62/2,0)
+Cell K62: Formula found - =AVERAGE(I62,N62)
+Cell L62: Formula found - =ROUND(J62/2, 0)
+Cell M62: Formula found - =H62/G62
+Cell N62: Formula found - =(M62*1.5%+M62)
+Cell O62: Formula found - =(N62-B62)/B62
+Cell P62: Formula found - =(I62-B62)*J62
+Cell Q62: Formula found - =(K62-I62)*L62
+Cell R62: Formula found - =S62-H62
+Cell S62: Formula found - =(H62*1.5%+H62)
+Cell T62: Formula found - =(H62*D62+H62)-H62
+Cell B63: Formula found - =ABS($B$2*D63+$B$2)
+Cell E63: Formula found - =ROUND(F63 / B63, 0)
+Cell F63: Formula found - =F62+ROUND(F62 * 0.022, 0)
+Cell G63: Formula found - =G62+E63
+Cell H63: Formula found - =H62+F63
+Cell I63: Formula found - =(B63*1.5%+B63)
+Cell J63: Formula found - =ROUND(G63/2,0)
+Cell K63: Formula found - =AVERAGE(I63,N63)
+Cell L63: Formula found - =ROUND(J63/2, 0)
+Cell M63: Formula found - =H63/G63
+Cell N63: Formula found - =(M63*1.5%+M63)
+Cell O63: Formula found - =(N63-B63)/B63
+Cell P63: Formula found - =(I63-B63)*J63
+Cell Q63: Formula found - =(K63-I63)*L63
+Cell R63: Formula found - =S63-H63
+Cell S63: Formula found - =(H63*1.5%+H63)
+Cell T63: Formula found - =(H63*D63+H63)-H63
+Cell B64: Formula found - =ABS($B$2*D64+$B$2)
+Cell E64: Formula found - =ROUND(F64 / B64, 0)
+Cell F64: Formula found - =F63+ROUND(F63 * 0.022, 0)
+Cell G64: Formula found - =G63+E64
+Cell H64: Formula found - =H63+F64
+Cell I64: Formula found - =(B64*1.5%+B64)
+Cell J64: Formula found - =ROUND(G64/2,0)
+Cell K64: Formula found - =AVERAGE(I64,N64)
+Cell L64: Formula found - =ROUND(J64/2, 0)
+Cell M64: Formula found - =H64/G64
+Cell N64: Formula found - =(M64*1.5%+M64)
+Cell O64: Formula found - =(N64-B64)/B64
+Cell P64: Formula found - =(I64-B64)*J64
+Cell Q64: Formula found - =(K64-I64)*L64
+Cell R64: Formula found - =S64-H64
+Cell S64: Formula found - =(H64*1.5%+H64)
+Cell T64: Formula found - =(H64*D64+H64)-H64
+Cell B65: Formula found - =ABS($B$2*D65+$B$2)
+Cell E65: Formula found - =ROUND(F65 / B65, 0)
+Cell F65: Formula found - =F64+ROUND(F64 * 0.022, 0)
+Cell G65: Formula found - =G64+E65
+Cell H65: Formula found - =H64+F65
+Cell I65: Formula found - =(B65*1.5%+B65)
+Cell J65: Formula found - =ROUND(G65/2,0)
+Cell K65: Formula found - =AVERAGE(I65,N65)
+Cell L65: Formula found - =ROUND(J65/2, 0)
+Cell M65: Formula found - =H65/G65
+Cell N65: Formula found - =(M65*1.5%+M65)
+Cell O65: Formula found - =(N65-B65)/B65
+Cell P65: Formula found - =(I65-B65)*J65
+Cell Q65: Formula found - =(K65-I65)*L65
+Cell R65: Formula found - =S65-H65
+Cell S65: Formula found - =(H65*1.5%+H65)
+Cell T65: Formula found - =(H65*D65+H65)-H65
+Cell B66: Formula found - =ABS($B$2*D66+$B$2)
+Cell E66: Formula found - =ROUND(F66 / B66, 0)
+Cell F66: Formula found - =F65+ROUND(F65 * 0.022, 0)
+Cell G66: Formula found - =G65+E66
+Cell H66: Formula found - =H65+F66
+Cell I66: Formula found - =(B66*1.5%+B66)
+Cell J66: Formula found - =ROUND(G66/2,0)
+Cell K66: Formula found - =AVERAGE(I66,N66)
+Cell L66: Formula found - =ROUND(J66/2, 0)
+Cell M66: Formula found - =H66/G66
+Cell N66: Formula found - =(M66*1.5%+M66)
+Cell O66: Formula found - =(N66-B66)/B66
+Cell P66: Formula found - =(I66-B66)*J66
+Cell Q66: Formula found - =(K66-I66)*L66
+Cell R66: Formula found - =S66-H66
+Cell S66: Formula found - =(H66*1.5%+H66)
+Cell T66: Formula found - =(H66*D66+H66)-H66
+Cell B67: Formula found - =ABS($B$2*D67+$B$2)
+Cell E67: Formula found - =ROUND(F67 / B67, 0)
+Cell F67: Formula found - =F66+ROUND(F66 * 0.022, 0)
+Cell G67: Formula found - =G66+E67
+Cell H67: Formula found - =H66+F67
+Cell I67: Formula found - =(B67*1.5%+B67)
+Cell J67: Formula found - =ROUND(G67/2,0)
+Cell K67: Formula found - =AVERAGE(I67,N67)
+Cell L67: Formula found - =ROUND(J67/2, 0)
+Cell M67: Formula found - =H67/G67
+Cell N67: Formula found - =(M67*1.5%+M67)
+Cell O67: Formula found - =(N67-B67)/B67
+Cell P67: Formula found - =(I67-B67)*J67
+Cell Q67: Formula found - =(K67-I67)*L67
+Cell R67: Formula found - =S67-H67
+Cell S67: Formula found - =(H67*1.5%+H67)
+Cell T67: Formula found - =(H67*D67+H67)-H67
+Cell B68: Formula found - =ABS($B$2*D68+$B$2)
+Cell E68: Formula found - =ROUND(F68 / B68, 0)
+Cell F68: Formula found - =F67+ROUND(F67 * 0.022, 0)
+Cell G68: Formula found - =G67+E68
+Cell H68: Formula found - =H67+F68
+Cell I68: Formula found - =(B68*1.5%+B68)
+Cell J68: Formula found - =ROUND(G68/2,0)
+Cell K68: Formula found - =AVERAGE(I68,N68)
+Cell L68: Formula found - =ROUND(J68/2, 0)
+Cell M68: Formula found - =H68/G68
+Cell N68: Formula found - =(M68*1.5%+M68)
+Cell O68: Formula found - =(N68-B68)/B68
+Cell P68: Formula found - =(I68-B68)*J68
+Cell Q68: Formula found - =(K68-I68)*L68
+Cell R68: Formula found - =S68-H68
+Cell S68: Formula found - =(H68*1.5%+H68)
+Cell T68: Formula found - =(H68*D68+H68)-H68
+Cell B69: Formula found - =ABS($B$2*D69+$B$2)
+Cell E69: Formula found - =ROUND(F69 / B69, 0)
+Cell F69: Formula found - =F68+ROUND(F68 * 0.022, 0)
+Cell G69: Formula found - =G68+E69
+Cell H69: Formula found - =H68+F69
+Cell I69: Formula found - =(B69*1.5%+B69)
+Cell J69: Formula found - =ROUND(G69/2,0)
+Cell K69: Formula found - =AVERAGE(I69,N69)
+Cell L69: Formula found - =ROUND(J69/2, 0)
+Cell M69: Formula found - =H69/G69
+Cell N69: Formula found - =(M69*1.5%+M69)
+Cell O69: Formula found - =(N69-B69)/B69
+Cell P69: Formula found - =(I69-B69)*J69
+Cell Q69: Formula found - =(K69-I69)*L69
+Cell R69: Formula found - =S69-H69
+Cell S69: Formula found - =(H69*1.5%+H69)
+Cell T69: Formula found - =(H69*D69+H69)-H69
+Cell B70: Formula found - =ABS($B$2*D70+$B$2)
+Cell E70: Formula found - =ROUND(F70 / B70, 0)
+Cell F70: Formula found - =F69+ROUND(F69 * 0.022, 0)
+Cell G70: Formula found - =G69+E70
+Cell H70: Formula found - =H69+F70
+Cell I70: Formula found - =(B70*1.5%+B70)
+Cell J70: Formula found - =ROUND(G70/2,0)
+Cell K70: Formula found - =AVERAGE(I70,N70)
+Cell L70: Formula found - =ROUND(J70/2, 0)
+Cell M70: Formula found - =H70/G70
+Cell N70: Formula found - =(M70*1.5%+M70)
+Cell O70: Formula found - =(N70-B70)/B70
+Cell P70: Formula found - =(I70-B70)*J70
+Cell Q70: Formula found - =(K70-I70)*L70
+Cell R70: Formula found - =S70-H70
+Cell S70: Formula found - =(H70*1.5%+H70)
+Cell T70: Formula found - =(H70*D70+H70)-H70
+Cell B71: Formula found - =ABS($B$2*D71+$B$2)
+Cell E71: Formula found - =ROUND(F71 / B71, 0)
+Cell F71: Formula found - =F70+ROUND(F70 * 0.022, 0)
+Cell G71: Formula found - =G70+E71
+Cell H71: Formula found - =H70+F71
+Cell I71: Formula found - =(B71*1.5%+B71)
+Cell J71: Formula found - =ROUND(G71/2,0)
+Cell K71: Formula found - =AVERAGE(I71,N71)
+Cell L71: Formula found - =ROUND(J71/2, 0)
+Cell M71: Formula found - =H71/G71
+Cell N71: Formula found - =(M71*1.5%+M71)
+Cell O71: Formula found - =(N71-B71)/B71
+Cell P71: Formula found - =(I71-B71)*J71
+Cell Q71: Formula found - =(K71-I71)*L71
+Cell R71: Formula found - =S71-H71
+Cell S71: Formula found - =(H71*1.5%+H71)
+Cell T71: Formula found - =(H71*D71+H71)-H71
+Cell B72: Formula found - =ABS($B$2*D72+$B$2)
+Cell E72: Formula found - =ROUND(F72 / B72, 0)
+Cell F72: Formula found - =F71+ROUND(F71 * 0.022, 0)
+Cell G72: Formula found - =G71+E72
+Cell H72: Formula found - =H71+F72
+Cell I72: Formula found - =(B72*1.5%+B72)
+Cell J72: Formula found - =ROUND(G72/2,0)
+Cell K72: Formula found - =AVERAGE(I72,N72)
+Cell L72: Formula found - =ROUND(J72/2, 0)
+Cell M72: Formula found - =H72/G72
+Cell N72: Formula found - =(M72*1.5%+M72)
+Cell O72: Formula found - =(N72-B72)/B72
+Cell P72: Formula found - =(I72-B72)*J72
+Cell Q72: Formula found - =(K72-I72)*L72
+Cell R72: Formula found - =S72-H72
+Cell S72: Formula found - =(H72*1.5%+H72)
+Cell T72: Formula found - =(H72*D72+H72)-H72
+Cell B73: Formula found - =ABS($B$2*D73+$B$2)
+Cell E73: Formula found - =ROUND(F73 / B73, 0)
+Cell F73: Formula found - =F72+ROUND(F72 * 0.022, 0)
+Cell G73: Formula found - =G72+E73
+Cell H73: Formula found - =H72+F73
+Cell I73: Formula found - =(B73*1.5%+B73)
+Cell J73: Formula found - =ROUND(G73/2,0)
+Cell K73: Formula found - =AVERAGE(I73,N73)
+Cell L73: Formula found - =ROUND(J73/2, 0)
+Cell M73: Formula found - =H73/G73
+Cell N73: Formula found - =(M73*1.5%+M73)
+Cell O73: Formula found - =(N73-B73)/B73
+Cell P73: Formula found - =(I73-B73)*J73
+Cell Q73: Formula found - =(K73-I73)*L73
+Cell R73: Formula found - =S73-H73
+Cell S73: Formula found - =(H73*1.5%+H73)
+Cell T73: Formula found - =(H73*D73+H73)-H73
+Cell B74: Formula found - =ABS($B$2*D74+$B$2)
+Cell E74: Formula found - =ROUND(F74 / B74, 0)
+Cell F74: Formula found - =F73+ROUND(F73 * 0.022, 0)
+Cell G74: Formula found - =G73+E74
+Cell H74: Formula found - =H73+F74
+Cell I74: Formula found - =(B74*1.5%+B74)
+Cell J74: Formula found - =ROUND(G74/2,0)
+Cell K74: Formula found - =AVERAGE(I74,N74)
+Cell L74: Formula found - =ROUND(J74/2, 0)
+Cell M74: Formula found - =H74/G74
+Cell N74: Formula found - =(M74*1.5%+M74)
+Cell O74: Formula found - =(N74-B74)/B74
+Cell P74: Formula found - =(I74-B74)*J74
+Cell Q74: Formula found - =(K74-I74)*L74
+Cell R74: Formula found - =S74-H74
+Cell S74: Formula found - =(H74*1.5%+H74)
+Cell T74: Formula found - =(H74*D74+H74)-H74
+Cell B75: Formula found - =ABS($B$2*D75+$B$2)
+Cell E75: Formula found - =ROUND(F75 / B75, 0)
+Cell F75: Formula found - =F74+ROUND(F74 * 0.022, 0)
+Cell G75: Formula found - =G74+E75
+Cell H75: Formula found - =H74+F75
+Cell I75: Formula found - =(B75*1.5%+B75)
+Cell J75: Formula found - =ROUND(G75/2,0)
+Cell K75: Formula found - =AVERAGE(I75,N75)
+Cell L75: Formula found - =ROUND(J75/2, 0)
+Cell M75: Formula found - =H75/G75
+Cell N75: Formula found - =(M75*1.5%+M75)
+Cell O75: Formula found - =(N75-B75)/B75
+Cell P75: Formula found - =(I75-B75)*J75
+Cell Q75: Formula found - =(K75-I75)*L75
+Cell R75: Formula found - =S75-H75
+Cell S75: Formula found - =(H75*1.5%+H75)
+Cell T75: Formula found - =(H75*D75+H75)-H75
+Cell B76: Formula found - =ABS($B$2*D76+$B$2)
+Cell E76: Formula found - =ROUND(F76 / B76, 0)
+Cell F76: Formula found - =F75+ROUND(F75 * 0.022, 0)
+Cell G76: Formula found - =G75+E76
+Cell H76: Formula found - =H75+F76
+Cell I76: Formula found - =(B76*1.5%+B76)
+Cell J76: Formula found - =ROUND(G76/2,0)
+Cell K76: Formula found - =AVERAGE(I76,N76)
+Cell L76: Formula found - =ROUND(J76/2, 0)
+Cell M76: Formula found - =H76/G76
+Cell N76: Formula found - =(M76*1.5%+M76)
+Cell O76: Formula found - =(N76-B76)/B76
+Cell P76: Formula found - =(I76-B76)*J76
+Cell Q76: Formula found - =(K76-I76)*L76
+Cell R76: Formula found - =S76-H76
+Cell S76: Formula found - =(H76*1.5%+H76)
+Cell T76: Formula found - =(H76*D76+H76)-H76
+Cell B77: Formula found - =ABS($B$2*D77+$B$2)
+Cell E77: Formula found - =ROUND(F77 / B77, 0)
+Cell F77: Formula found - =F76+ROUND(F76 * 0.022, 0)
+Cell G77: Formula found - =G76+E77
+Cell H77: Formula found - =H76+F77
+Cell I77: Formula found - =(B77*1.5%+B77)
+Cell J77: Formula found - =ROUND(G77/2,0)
+Cell K77: Formula found - =AVERAGE(I77,N77)
+Cell L77: Formula found - =ROUND(J77/2, 0)
+Cell M77: Formula found - =H77/G77
+Cell N77: Formula found - =(M77*1.5%+M77)
+Cell O77: Formula found - =(N77-B77)/B77
+Cell P77: Formula found - =(I77-B77)*J77
+Cell Q77: Formula found - =(K77-I77)*L77
+Cell R77: Formula found - =S77-H77
+Cell S77: Formula found - =(H77*1.5%+H77)
+Cell T77: Formula found - =(H77*D77+H77)-H77
+Cell B78: Formula found - =ABS($B$2*D78+$B$2)
+Cell E78: Formula found - =ROUND(F78 / B78, 0)
+Cell F78: Formula found - =F77+ROUND(F77 * 0.022, 0)
+Cell G78: Formula found - =G77+E78
+Cell H78: Formula found - =H77+F78
+Cell I78: Formula found - =(B78*1.5%+B78)
+Cell J78: Formula found - =ROUND(G78/2,0)
+Cell K78: Formula found - =AVERAGE(I78,N78)
+Cell L78: Formula found - =ROUND(J78/2, 0)
+Cell M78: Formula found - =H78/G78
+Cell N78: Formula found - =(M78*1.5%+M78)
+Cell O78: Formula found - =(N78-B78)/B78
+Cell P78: Formula found - =(I78-B78)*J78
+Cell Q78: Formula found - =(K78-I78)*L78
+Cell R78: Formula found - =S78-H78
+Cell S78: Formula found - =(H78*1.5%+H78)
+Cell T78: Formula found - =(H78*D78+H78)-H78
+Cell B79: Formula found - =ABS($B$2*D79+$B$2)
+Cell E79: Formula found - =ROUND(F79 / B79, 0)
+Cell F79: Formula found - =F78+ROUND(F78 * 0.022, 0)
+Cell G79: Formula found - =G78+E79
+Cell H79: Formula found - =H78+F79
+Cell I79: Formula found - =(B79*1.5%+B79)
+Cell J79: Formula found - =ROUND(G79/2,0)
+Cell K79: Formula found - =AVERAGE(I79,N79)
+Cell L79: Formula found - =ROUND(J79/2, 0)
+Cell M79: Formula found - =H79/G79
+Cell N79: Formula found - =(M79*1.5%+M79)
+Cell O79: Formula found - =(N79-B79)/B79
+Cell P79: Formula found - =(I79-B79)*J79
+Cell Q79: Formula found - =(K79-I79)*L79
+Cell R79: Formula found - =S79-H79
+Cell S79: Formula found - =(H79*1.5%+H79)
+Cell T79: Formula found - =(H79*D79+H79)-H79
+Cell B80: Formula found - =ABS($B$2*D80+$B$2)
+Cell E80: Formula found - =ROUND(F80 / B80, 0)
+Cell F80: Formula found - =F79+ROUND(F79 * 0.022, 0)
+Cell G80: Formula found - =G79+E80
+Cell H80: Formula found - =H79+F80
+Cell I80: Formula found - =(B80*1.5%+B80)
+Cell J80: Formula found - =ROUND(G80/2,0)
+Cell K80: Formula found - =AVERAGE(I80,N80)
+Cell L80: Formula found - =ROUND(J80/2, 0)
+Cell M80: Formula found - =H80/G80
+Cell N80: Formula found - =(M80*1.5%+M80)
+Cell O80: Formula found - =(N80-B80)/B80
+Cell P80: Formula found - =(I80-B80)*J80
+Cell Q80: Formula found - =(K80-I80)*L80
+Cell R80: Formula found - =S80-H80
+Cell S80: Formula found - =(H80*1.5%+H80)
+Cell T80: Formula found - =(H80*D80+H80)-H80
+Cell B81: Formula found - =ABS($B$2*D81+$B$2)
+Cell E81: Formula found - =ROUND(F81 / B81, 0)
+Cell F81: Formula found - =F80+ROUND(F80 * 0.022, 0)
+Cell G81: Formula found - =G80+E81
+Cell H81: Formula found - =H80+F81
+Cell I81: Formula found - =(B81*1.5%+B81)
+Cell J81: Formula found - =ROUND(G81/2,0)
+Cell K81: Formula found - =AVERAGE(I81,N81)
+Cell L81: Formula found - =ROUND(J81/2, 0)
+Cell M81: Formula found - =H81/G81
+Cell N81: Formula found - =(M81*1.5%+M81)
+Cell O81: Formula found - =(N81-B81)/B81
+Cell P81: Formula found - =(I81-B81)*J81
+Cell Q81: Formula found - =(K81-I81)*L81
+Cell R81: Formula found - =S81-H81
+Cell S81: Formula found - =(H81*1.5%+H81)
+Cell T81: Formula found - =(H81*D81+H81)-H81
+Cell B82: Formula found - =ABS($B$2*D82+$B$2)
+Cell E82: Formula found - =ROUND(F82 / B82, 0)
+Cell F82: Formula found - =F81+ROUND(F81 * 0.022, 0)
+Cell G82: Formula found - =G81+E82
+Cell H82: Formula found - =H81+F82
+Cell I82: Formula found - =(B82*1.5%+B82)
+Cell J82: Formula found - =ROUND(G82/2,0)
+Cell K82: Formula found - =AVERAGE(I82,N82)
+Cell L82: Formula found - =ROUND(J82/2, 0)
+Cell M82: Formula found - =H82/G82
+Cell N82: Formula found - =(M82*1.5%+M82)
+Cell O82: Formula found - =(N82-B82)/B82
+Cell P82: Formula found - =(I82-B82)*J82
+Cell Q82: Formula found - =(K82-I82)*L82
+Cell R82: Formula found - =S82-H82
+Cell S82: Formula found - =(H82*1.5%+H82)
+Cell T82: Formula found - =(H82*D82+H82)-H82
+
+Column Data Types:
+==================
+Sr.No: int64
+Entry: float64
+Rtrcmnt
+Entry %: float64
+DOWN: float64
+Qnty: float64
+Capital: float64
+Total 
+Quantity: float64
+Total
+Invested: float64
+
+First_TGT
+1.50%
+: object
+EXIT_1st_HALF
+Quantity: object
+Second_TGT: object
+EXIT_2nd_HALF
+Quantity: object
+AVG_on
+Capital: float64
+FINAL_TGT 
+ 1.50%: float64
+Final_TGT 
+AWAY %: float64
+First_TGT
+Profit: float64
+Second_TGT
+Profit: object
+NET_Profit: float64
+Capital
+Gain: float64
+Loss 
+Running: float64
+250000: object
+
+Basic Statistics:
+=================
+           Sr.No  Entry  Rtrcmnt\nEntry %       DOWN  ...  First_TGT\nProfit  NET_Profit  Capital\nGain  Loss \nRunning
+count  81.000000    1.0         80.000000  80.000000  ...                0.0         0.0            0.0             0.0
+mean   41.000000  100.0          0.001356  -0.197094  ...                NaN         NaN            NaN             NaN
+std    23.526581    NaN          0.000694   0.159442  ...                NaN         NaN            NaN             NaN
+min     1.000000  100.0          0.000500  -0.542500  ...                NaN         NaN            NaN             NaN
+25%    21.000000  100.0          0.000875  -0.317500  ...                NaN         NaN            NaN             NaN
+50%    41.000000  100.0          0.001250  -0.153750  ...                NaN         NaN            NaN             NaN
+75%    61.000000  100.0          0.002000  -0.053750  ...                NaN         NaN            NaN             NaN
+max    81.000000  100.0          0.002500  -0.002500  ...                NaN         NaN            NaN             NaN
+
+[8 rows x 15 columns]
+
+All Cell Values:
+================
+Row 1: ['Sr.No', 'Entry', 'Rtrcmnt\nEntry %', 'DOWN', 'Qnty', 'Capital', 'Total \nQuantity', 'Total\nInvested', '\nFirst_TGT\n1.50%\n', 'EXIT_1st_HALF\nQuantity', 'Second_TGT', 'EXIT_2nd_HALF\nQuantity', 'AVG_on\nCapital', 'FINAL_TGT \n 1.50%', 'Final_TGT \nAWAY %', 'First_TGT\nProfit', 'Second_TGT\nProfit', 'NET_Profit', 'Capital\nGain', 'Loss \nRunning', 250000, '=IF(U1=100000,-0.642,IF(U1=150000,-0.428,IF(U1=200000,-0.214,IF(U1=250000,0.002,IF(U1=300000,0.216,IF(U1=350000,0.436,IF(U1=400000,0.6511,IF(U1=450000,0.872,IF(U1=500000,1.09,IF(U1=550000,1.311,IF(U1=600000,1.532,IF(U1=650000,1.754,IF(U1=700000,1.977,IF(U1=750000,2.201,IF(U1=800000,2.425,IF(U1=850000,2.65,IF(U1=900000,2.877,IF(U1=950000,3.104,IF(U1=1000000,3.332,0.023)))))))))))))))))))', None, None, None, None, None, None, None]
+Row 2: [1, 100, None, None, '=F2/B2', 20000, '=E2', '=B2*E2', 'From serial numbers 1 to 8, each entry will refer to the target mentioned in column M.  \nOnce the target is hit, exit all positions at once.', None, None, None, '=B2', '=(M2*1.5%+M2)', '=(N2-B2)/B2', None, None, '=S2-H2', '=(H2*1.5%+H2)', '=(H2*D2+H2)-H2', 100000, None, None, None, None, None, None, None, None]
+Row 3: [2, '=ABS($B$2*D3+$B$2)', 0.0005, -0.0025, '=ROUND(F3 / B3, 0)', 1100, '=E2+E3', '=H2+F3', None, None, None, None, '=H3/G3', '=(M3*1.5%+M3)', '=(N3-B3)/B3', None, None, '=S3-H3', '=(H3*1.5%+H3)', '=(H3*D3+H3)-H3', 150000, None, None, None, None, None, None, None, None]
+Row 4: [3, '=ABS($B$2*D4+$B$2)', 0.0005, -0.005, '=ROUND(F4 / B4, 0)', '=F3+ROUND(F3 * $V$1, 0)', '=G3+E4', '=H3+F4', None, None, None, None, '=H4/G4', '=(M4*1.5%+M4)', '=(N4-B4)/B4', None, None, '=S4-H4', '=(H4*1.5%+H4)', '=(H4*D4+H4)-H4', 200000, None, None, None, None, None, None, None, None]
+Row 5: [4, '=ABS($B$2*D5+$B$2)', 0.0005, -0.0075, '=ROUND(F5 / B5, 0)', '=F4+ROUND(F4 * 0.022, 0)', '=G4+E5', '=H4+F5', None, None, None, None, '=H5/G5', '=(M5*1.5%+M5)', '=(N5-B5)/B5', None, None, '=S5-H5', '=(H5*1.5%+H5)', '=(H5*D5+H5)-H5', 250000, None, None, None, None, None, None, None, None]
+Row 6: [5, '=ABS($B$2*D6+$B$2)', 0.0005, -0.01, '=ROUND(F6 / B6, 0)', '=F5+ROUND(F5 * 0.022, 0)', '=G5+E6', '=H5+F6', None, None, None, None, '=H6/G6', '=(M6*1.5%+M6)', '=(N6-B6)/B6', None, None, '=S6-H6', '=(H6*1.5%+H6)', '=(H6*D6+H6)-H6', 300000, None, None, None, None, None, None, None, None]
+Row 7: [6, '=ABS($B$2*D7+$B$2)', 0.0005, -0.0125, '=ROUND(F7 / B7, 0)', '=F6+ROUND(F6 * 0.022, 0)', '=G6+E7', '=H6+F7', None, None, None, None, '=H7/G7', '=(M7*1.5%+M7)', '=(N7-B7)/B7', None, None, '=S7-H7', '=(H7*1.5%+H7)', '=(H7*D7+H7)-H7', 350000, None, None, None, None, None, None, None, None]
+Row 8: [7, '=ABS($B$2*D8+$B$2)', 0.0005, -0.015, '=ROUND(F8 / B8, 0)', '=F7+ROUND(F7 * 0.022, 0)', '=G7+E8', '=H7+F8', None, None, None, None, '=H8/G8', '=(M8*1.5%+M8)', '=(N8-B8)/B8', None, None, '=S8-H8', '=(H8*1.5%+H8)', '=(H8*D8+H8)-H8', 400000, None, None, None, None, None, None, None, None]
+Row 9: [8, '=ABS($B$2*D9+$B$2)', 0.0005, -0.0175, '=ROUND(F9 / B9, 0)', '=F8+ROUND(F8 * 0.022, 0)', '=G8+E9', '=H8+F9', 'First_TGT', 'EXIT_1st_HALF', 'Second_TGT', 'EXIT_2nd_HALF', '=H9/G9', '=(M9*1.5%+M9)', '=(N9-B9)/B9', None, None, '=S9-H9', '=(H9*1.5%+H9)', '=(H9*D9+H9)-H9', 450000, None, None, None, None, None, None, None, None]
+Row 10: [9, '=ABS($B$2*D10+$B$2)', 0.0005, -0.02, '=ROUND(F10 / B10, 0)', '=F9+ROUND(F9 * 0.022, 0)', '=G9+E10', '=H9+F10', '=(B10*1.5%+B10)', '=ROUND(G10/2,0)', None, None, '=H10/G10', '=(M10*1.5%+M10)', '=(N10-B10)/B10', '=(I10-B10)*J10', '=(K10-I10)*L10', '=S10-H10', '=(H10*1.5%+H10)', '=(H10*D10+H10)-H10', 500000, None, None, None, None, None, None, None, None]
+Row 11: [10, '=ABS($B$2*D11+$B$2)', 0.0005, -0.0225, '=ROUND(F11 / B11, 0)', '=F10+ROUND(F10 * 0.022, 0)', '=G10+E11', '=H10+F11', '=(B11*1.5%+B11)', '=ROUND(G11/2,0)', None, None, '=H11/G11', '=(M11*1.5%+M11)', '=(N11-B11)/B11', '=(I11-B11)*J11', '=(K11-I11)*L11', '=S11-H11', '=(H11*1.5%+H11)', '=(H11*D11+H11)-H11', 550000, None, None, None, None, None, None, None, None]
+Row 12: [11, '=ABS($B$2*D12+$B$2)', 0.0005, -0.025, '=ROUND(F12 / B12, 0)', '=F11+ROUND(F11 * 0.022, 0)', '=G11+E12', '=H11+F12', '=(B12*1.5%+B12)', '=ROUND(G12/2,0)', None, None, '=H12/G12', '=(M12*1.5%+M12)', '=(N12-B12)/B12', '=(I12-B12)*J12', '=(K12-I12)*L12', '=S12-H12', '=(H12*1.5%+H12)', '=(H12*D12+H12)-H12', 600000, None, None, None, None, None, None, None, None]
+Row 13: [12, '=ABS($B$2*D13+$B$2)', 0.0005, -0.0275, '=ROUND(F13 / B13, 0)', '=F12+ROUND(F12 * 0.022, 0)', '=G12+E13', '=H12+F13', '=(B13*1.5%+B13)', '=ROUND(G13/2,0)', None, None, '=H13/G13', '=(M13*1.5%+M13)', '=(N13-B13)/B13', '=(I13-B13)*J13', '=(K13-I13)*L13', '=S13-H13', '=(H13*1.5%+H13)', '=(H13*D13+H13)-H13', 650000, None, None, None, None, None, None, None, None]
+Row 14: [13, '=ABS($B$2*D14+$B$2)', 0.0005, -0.03, '=ROUND(F14 / B14, 0)', '=F13+ROUND(F13 * 0.022, 0)', '=G13+E14', '=H13+F14', '=(B14*1.5%+B14)', '=ROUND(G14/2,0)', None, None, '=H14/G14', '=(M14*1.5%+M14)', '=(N14-B14)/B14', '=(I14-B14)*J14', '=(K14-I14)*L14', '=S14-H14', '=(H14*1.5%+H14)', '=(H14*D14+H14)-H14', 700000, None, None, None, None, None, None, None, None]
+Row 15: [14, '=ABS($B$2*D15+$B$2)', 0.0005, -0.0325, '=ROUND(F15 / B15, 0)', '=F14+ROUND(F14 * 0.022, 0)', '=G14+E15', '=H14+F15', '=(B15*1.5%+B15)', '=ROUND(G15/2,0)', None, None, '=H15/G15', '=(M15*1.5%+M15)', '=(N15-B15)/B15', '=(I15-B15)*J15', '=(K15-I15)*L15', '=S15-H15', '=(H15*1.5%+H15)', '=(H15*D15+H15)-H15', 750000, None, None, None, None, None, None, None, None]
+Row 16: [15, '=ABS($B$2*D16+$B$2)', 0.0005, -0.035, '=ROUND(F16 / B16, 0)', '=F15+ROUND(F15 * 0.022, 0)', '=G15+E16', '=H15+F16', '=(B16*1.5%+B16)', '=ROUND(G16/2,0)', None, None, '=H16/G16', '=(M16*1.5%+M16)', '=(N16-B16)/B16', '=(I16-B16)*J16', '=(K16-I16)*L16', '=S16-H16', '=(H16*1.5%+H16)', '=(H16*D16+H16)-H16', 800000, None, None, None, None, None, None, None, None]
+Row 17: [16, '=ABS($B$2*D17+$B$2)', 0.0005, -0.0375, '=ROUND(F17 / B17, 0)', '=F16+ROUND(F16 * 0.022, 0)', '=G16+E17', '=H16+F17', '=(B17*1.5%+B17)', '=ROUND(G17/2,0)', None, None, '=H17/G17', '=(M17*1.5%+M17)', '=(N17-B17)/B17', '=(I17-B17)*J17', '=(K17-I17)*L17', '=S17-H17', '=(H17*1.5%+H17)', '=(H17*D17+H17)-H17', 850000, None, None, None, None, None, None, None, None]
+Row 18: [17, '=ABS($B$2*D18+$B$2)', 0.0005, -0.04, '=ROUND(F18 / B18, 0)', '=F17+ROUND(F17 * 0.022, 0)', '=G17+E18', '=H17+F18', '=(B18*1.5%+B18)', '=ROUND(G18/2,0)', None, None, '=H18/G18', '=(M18*1.5%+M18)', '=(N18-B18)/B18', '=(I18-B18)*J18', '=(K18-I18)*L18', '=S18-H18', '=(H18*1.5%+H18)', '=(H18*D18+H18)-H18', 900000, None, None, None, None, None, None, None, None]
+Row 19: [18, '=ABS($B$2*D19+$B$2)', 0.0005, -0.0425, '=ROUND(F19 / B19, 0)', '=F18+ROUND(F18 * 0.022, 0)', '=G18+E19', '=H18+F19', '=(B19*1.5%+B19)', '=ROUND(G19/2,0)', None, None, '=H19/G19', '=(M19*1.5%+M19)', '=(N19-B19)/B19', '=(I19-B19)*J19', '=(K19-I19)*L19', '=S19-H19', '=(H19*1.5%+H19)', '=(H19*D19+H19)-H19', 950000, None, None, None, None, None, None, None, None]
+Row 20: [19, '=ABS($B$2*D20+$B$2)', 0.0005, -0.045, '=ROUND(F20 / B20, 0)', '=F19+ROUND(F19 * 0.022, 0)', '=G19+E20', '=H19+F20', '=(B20*1.5%+B20)', '=ROUND(G20/2,0)', None, None, '=H20/G20', '=(M20*1.5%+M20)', '=(N20-B20)/B20', '=(I20-B20)*J20', '=(K20-I20)*L20', '=S20-H20', '=(H20*1.5%+H20)', '=(H20*D20+H20)-H20', 1000000, None, None, None, None, None, None, None, None]
+Row 21: [20, '=ABS($B$2*D21+$B$2)', 0.0005, -0.0475, '=ROUND(F21 / B21, 0)', '=F20+ROUND(F20 * 0.022, 0)', '=G20+E21', '=H20+F21', '=(B21*1.5%+B21)', '=ROUND(G21/2,0)', None, None, '=H21/G21', '=(M21*1.5%+M21)', '=(N21-B21)/B21', '=(I21-B21)*J21', '=(K21-I21)*L21', '=S21-H21', '=(H21*1.5%+H21)', '=(H21*D21+H21)-H21', None, None, None, None, None, None, None, None, None]
+Row 22: [21, '=ABS($B$2*D22+$B$2)', 0.0005, -0.05, '=ROUND(F22 / B22, 0)', '=F21+ROUND(F21 * 0.022, 0)', '=G21+E22', '=H21+F22', '=(B22*1.5%+B22)', '=ROUND(G22/2,0)', 'Second_TGT', 'EXIT_2nd_HALF', '=H22/G22', '=(M22*1.5%+M22)', '=(N22-B22)/B22', '=(I22-B22)*J22', 'Porfit', '=S22-H22', '=(H22*1.5%+H22)', '=(H22*D22+H22)-H22', 'Comment inserted you can find at "RED" small arrow', None, None, None, None, None, None, None, None]
+Row 23: [22, '=ABS($B$2*D23+$B$2)', 0.001, -0.055, '=ROUND(F23 / B23, 0)', '=F22+ROUND(F22 * 0.022, 0)', '=G22+E23', '=H22+F23', '=(B23*1.5%+B23)', '=ROUND(G23/2,0)', '=AVERAGE(I23,N23)', '=ROUND(J23/2, 0)', '=H23/G23', '=(M23*1.5%+M23)', '=(N23-B23)/B23', '=(I23-B23)*J23', '=(K23-I23)*L23', '=S23-H23', '=(H23*1.5%+H23)', '=(H23*D23+H23)-H23', 'Move curser near to "RED" small arrow', None, None, None, None, None, None, None, None]
+Row 24: [23, '=ABS($B$2*D24+$B$2)', 0.001, -0.06, '=ROUND(F24 / B24, 0)', '=F23+ROUND(F23 * 0.022, 0)', '=G23+E24', '=H23+F24', '=(B24*1.5%+B24)', '=ROUND(G24/2,0)', '=AVERAGE(I24,N24)', '=ROUND(J24/2, 0)', '=H24/G24', '=(M24*1.5%+M24)', '=(N24-B24)/B24', '=(I24-B24)*J24', '=(K24-I24)*L24', '=S24-H24', '=(H24*1.5%+H24)', '=(H24*D24+H24)-H24', None, None, None, None, None, None, None, None, None]
+Row 25: [24, '=ABS($B$2*D25+$B$2)', 0.001, -0.065, '=ROUND(F25 / B25, 0)', '=F24+ROUND(F24 * 0.022, 0)', '=G24+E25', '=H24+F25', '=(B25*1.5%+B25)', '=ROUND(G25/2,0)', '=AVERAGE(I25,N25)', '=ROUND(J25/2, 0)', '=H25/G25', '=(M25*1.5%+M25)', '=(N25-B25)/B25', '=(I25-B25)*J25', '=(K25-I25)*L25', '=S25-H25', '=(H25*1.5%+H25)', '=(H25*D25+H25)-H25', 'Contact  - Abhijit Vyas', None, None, None, None, None, None, None, None]
+Row 26: [25, '=ABS($B$2*D26+$B$2)', 0.001, -0.07, '=ROUND(F26 / B26, 0)', '=F25+ROUND(F25 * 0.022, 0)', '=G25+E26', '=H25+F26', '=(B26*1.5%+B26)', '=ROUND(G26/2,0)', '=AVERAGE(I26,N26)', '=ROUND(J26/2, 0)', '=H26/G26', '=(M26*1.5%+M26)', '=(N26-B26)/B26', '=(I26-B26)*J26', '=(K26-I26)*L26', '=S26-H26', '=(H26*1.5%+H26)', '=(H26*D26+H26)-H26', 'Mob - 9913131181', None, None, None, None, None, None, None, None]
+Row 27: [26, '=ABS($B$2*D27+$B$2)', 0.001, -0.075, '=ROUND(F27 / B27, 0)', '=F26+ROUND(F26 * 0.022, 0)', '=G26+E27', '=H26+F27', '=(B27*1.5%+B27)', '=ROUND(G27/2,0)', '=AVERAGE(I27,N27)', '=ROUND(J27/2, 0)', '=H27/G27', '=(M27*1.5%+M27)', '=(N27-B27)/B27', '=(I27-B27)*J27', '=(K27-I27)*L27', '=S27-H27', '=(H27*1.5%+H27)', '=(H27*D27+H27)-H27', None, None, None, None, None, None, None, None, None]
+Row 28: [27, '=ABS($B$2*D28+$B$2)', 0.001, -0.08, '=ROUND(F28 / B28, 0)', '=F27+ROUND(F27 * 0.022, 0)', '=G27+E28', '=H27+F28', '=(B28*1.5%+B28)', '=ROUND(G28/2,0)', '=AVERAGE(I28,N28)', '=ROUND(J28/2, 0)', '=H28/G28', '=(M28*1.5%+M28)', '=(N28-B28)/B28', '=(I28-B28)*J28', '=(K28-I28)*L28', '=S28-H28', '=(H28*1.5%+H28)', '=(H28*D28+H28)-H28', None, None, None, None, None, None, None, None, None]
+Row 29: [28, '=ABS($B$2*D29+$B$2)', 0.001, -0.085, '=ROUND(F29 / B29, 0)', '=F28+ROUND(F28 * 0.022, 0)', '=G28+E29', '=H28+F29', '=(B29*1.5%+B29)', '=ROUND(G29/2,0)', '=AVERAGE(I29,N29)', '=ROUND(J29/2, 0)', '=H29/G29', '=(M29*1.5%+M29)', '=(N29-B29)/B29', '=(I29-B29)*J29', '=(K29-I29)*L29', '=S29-H29', '=(H29*1.5%+H29)', '=(H29*D29+H29)-H29', None, None, None, None, None, None, None, None, None]
+Row 30: [29, '=ABS($B$2*D30+$B$2)', 0.001, -0.09, '=ROUND(F30 / B30, 0)', '=F29+ROUND(F29 * 0.022, 0)', '=G29+E30', '=H29+F30', '=(B30*1.5%+B30)', '=ROUND(G30/2,0)', '=AVERAGE(I30,N30)', '=ROUND(J30/2, 0)', '=H30/G30', '=(M30*1.5%+M30)', '=(N30-B30)/B30', '=(I30-B30)*J30', '=(K30-I30)*L30', '=S30-H30', '=(H30*1.5%+H30)', '=(H30*D30+H30)-H30', None, None, None, None, None, None, None, None, None]
+Row 31: [30, '=ABS($B$2*D31+$B$2)', 0.001, -0.095, '=ROUND(F31 / B31, 0)', '=F30+ROUND(F30 * 0.022, 0)', '=G30+E31', '=H30+F31', '=(B31*1.5%+B31)', '=ROUND(G31/2,0)', '=AVERAGE(I31,N31)', '=ROUND(J31/2, 0)', '=H31/G31', '=(M31*1.5%+M31)', '=(N31-B31)/B31', '=(I31-B31)*J31', '=(K31-I31)*L31', '=S31-H31', '=(H31*1.5%+H31)', '=(H31*D31+H31)-H31', None, None, None, None, None, None, None, None, None]
+Row 32: [31, '=ABS($B$2*D32+$B$2)', 0.001, -0.1, '=ROUND(F32 / B32, 0)', '=F31+ROUND(F31 * 0.022, 0)', '=G31+E32', '=H31+F32', '=(B32*1.5%+B32)', '=ROUND(G32/2,0)', '=AVERAGE(I32,N32)', '=ROUND(J32/2, 0)', '=H32/G32', '=(M32*1.5%+M32)', '=(N32-B32)/B32', '=(I32-B32)*J32', '=(K32-I32)*L32', '=S32-H32', '=(H32*1.5%+H32)', '=(H32*D32+H32)-H32', None, None, None, None, None, None, None, None, None]
+Row 33: [32, '=ABS($B$2*D33+$B$2)', 0.001, -0.105, '=ROUND(F33 / B33, 0)', '=F32+ROUND(F32 * 0.022, 0)', '=G32+E33', '=H32+F33', '=(B33*1.5%+B33)', '=ROUND(G33/2,0)', '=AVERAGE(I33,N33)', '=ROUND(J33/2, 0)', '=H33/G33', '=(M33*1.5%+M33)', '=(N33-B33)/B33', '=(I33-B33)*J33', '=(K33-I33)*L33', '=S33-H33', '=(H33*1.5%+H33)', '=(H33*D33+H33)-H33', None, None, None, None, None, None, None, None, None]
+Row 34: [33, '=ABS($B$2*D34+$B$2)', 0.001, -0.11, '=ROUND(F34 / B34, 0)', '=F33+ROUND(F33 * 0.022, 0)', '=G33+E34', '=H33+F34', '=(B34*1.5%+B34)', '=ROUND(G34/2,0)', '=AVERAGE(I34,N34)', '=ROUND(J34/2, 0)', '=H34/G34', '=(M34*1.5%+M34)', '=(N34-B34)/B34', '=(I34-B34)*J34', '=(K34-I34)*L34', '=S34-H34', '=(H34*1.5%+H34)', '=(H34*D34+H34)-H34', None, None, None, None, None, None, None, None, None]
+Row 35: [34, '=ABS($B$2*D35+$B$2)', 0.001, -0.115, '=ROUND(F35 / B35, 0)', '=F34+ROUND(F34 * 0.022, 0)', '=G34+E35', '=H34+F35', '=(B35*1.5%+B35)', '=ROUND(G35/2,0)', '=AVERAGE(I35,N35)', '=ROUND(J35/2, 0)', '=H35/G35', '=(M35*1.5%+M35)', '=(N35-B35)/B35', '=(I35-B35)*J35', '=(K35-I35)*L35', '=S35-H35', '=(H35*1.5%+H35)', '=(H35*D35+H35)-H35', None, None, None, None, None, None, None, None, None]
+Row 36: [35, '=ABS($B$2*D36+$B$2)', 0.001, -0.12, '=ROUND(F36 / B36, 0)', '=F35+ROUND(F35 * 0.022, 0)', '=G35+E36', '=H35+F36', '=(B36*1.5%+B36)', '=ROUND(G36/2,0)', '=AVERAGE(I36,N36)', '=ROUND(J36/2, 0)', '=H36/G36', '=(M36*1.5%+M36)', '=(N36-B36)/B36', '=(I36-B36)*J36', '=(K36-I36)*L36', '=S36-H36', '=(H36*1.5%+H36)', '=(H36*D36+H36)-H36', None, None, None, None, None, None, None, None, None]
+Row 37: [36, '=ABS($B$2*D37+$B$2)', 0.001, -0.125, '=ROUND(F37 / B37, 0)', '=F36+ROUND(F36 * 0.022, 0)', '=G36+E37', '=H36+F37', '=(B37*1.5%+B37)', '=ROUND(G37/2,0)', '=AVERAGE(I37,N37)', '=ROUND(J37/2, 0)', '=H37/G37', '=(M37*1.5%+M37)', '=(N37-B37)/B37', '=(I37-B37)*J37', '=(K37-I37)*L37', '=S37-H37', '=(H37*1.5%+H37)', '=(H37*D37+H37)-H37', None, None, None, None, None, None, None, None, None]
+Row 38: [37, '=ABS($B$2*D38+$B$2)', 0.001, -0.13, '=ROUND(F38 / B38, 0)', '=F37+ROUND(F37 * 0.022, 0)', '=G37+E38', '=H37+F38', '=(B38*1.5%+B38)', '=ROUND(G38/2,0)', '=AVERAGE(I38,N38)', '=ROUND(J38/2, 0)', '=H38/G38', '=(M38*1.5%+M38)', '=(N38-B38)/B38', '=(I38-B38)*J38', '=(K38-I38)*L38', '=S38-H38', '=(H38*1.5%+H38)', '=(H38*D38+H38)-H38', None, None, None, None, None, None, None, None, None]
+Row 39: [38, '=ABS($B$2*D39+$B$2)', 0.001, -0.135, '=ROUND(F39 / B39, 0)', '=F38+ROUND(F38 * 0.022, 0)', '=G38+E39', '=H38+F39', '=(B39*1.5%+B39)', '=ROUND(G39/2,0)', '=AVERAGE(I39,N39)', '=ROUND(J39/2, 0)', '=H39/G39', '=(M39*1.5%+M39)', '=(N39-B39)/B39', '=(I39-B39)*J39', '=(K39-I39)*L39', '=S39-H39', '=(H39*1.5%+H39)', '=(H39*D39+H39)-H39', None, None, None, None, None, None, None, None, None]
+Row 40: [39, '=ABS($B$2*D40+$B$2)', 0.001, -0.14, '=ROUND(F40 / B40, 0)', '=F39+ROUND(F39 * 0.022, 0)', '=G39+E40', '=H39+F40', '=(B40*1.5%+B40)', '=ROUND(G40/2,0)', '=AVERAGE(I40,N40)', '=ROUND(J40/2, 0)', '=H40/G40', '=(M40*1.5%+M40)', '=(N40-B40)/B40', '=(I40-B40)*J40', '=(K40-I40)*L40', '=S40-H40', '=(H40*1.5%+H40)', '=(H40*D40+H40)-H40', None, None, None, None, None, None, None, None, None]
+Row 41: [40, '=ABS($B$2*D41+$B$2)', 0.001, -0.145, '=ROUND(F41 / B41, 0)', '=F40+ROUND(F40 * 0.022, 0)', '=G40+E41', '=H40+F41', '=(B41*1.5%+B41)', '=ROUND(G41/2,0)', '=AVERAGE(I41,N41)', '=ROUND(J41/2, 0)', '=H41/G41', '=(M41*1.5%+M41)', '=(N41-B41)/B41', '=(I41-B41)*J41', '=(K41-I41)*L41', '=S41-H41', '=(H41*1.5%+H41)', '=(H41*D41+H41)-H41', None, None, None, None, None, None, None, None, None]
+Row 42: [41, '=ABS($B$2*D42+$B$2)', 0.001, -0.15, '=ROUND(F42 / B42, 0)', '=F41+ROUND(F41 * 0.022, 0)', '=G41+E42', '=H41+F42', '=(B42*1.5%+B42)', '=ROUND(G42/2,0)', '=AVERAGE(I42,N42)', '=ROUND(J42/2, 0)', '=H42/G42', '=(M42*1.5%+M42)', '=(N42-B42)/B42', '=(I42-B42)*J42', '=(K42-I42)*L42', '=S42-H42', '=(H42*1.5%+H42)', '=(H42*D42+H42)-H42', None, None, None, None, None, None, None, None, None]
+Row 43: [42, '=ABS($B$2*D43+$B$2)', 0.0015, -0.1575, '=ROUND(F43 / B43, 0)', '=F42+ROUND(F42 * 0.022, 0)', '=G42+E43', '=H42+F43', '=(B43*1.5%+B43)', '=ROUND(G43/2,0)', '=AVERAGE(I43,N43)', '=ROUND(J43/2, 0)', '=H43/G43', '=(M43*1.5%+M43)', '=(N43-B43)/B43', '=(I43-B43)*J43', '=(K43-I43)*L43', '=S43-H43', '=(H43*1.5%+H43)', '=(H43*D43+H43)-H43', None, None, None, None, None, None, None, None, None]
+Row 44: [43, '=ABS($B$2*D44+$B$2)', 0.0015, -0.165, '=ROUND(F44 / B44, 0)', '=F43+ROUND(F43 * 0.022, 0)', '=G43+E44', '=H43+F44', '=(B44*1.5%+B44)', '=ROUND(G44/2,0)', '=AVERAGE(I44,N44)', '=ROUND(J44/2, 0)', '=H44/G44', '=(M44*1.5%+M44)', '=(N44-B44)/B44', '=(I44-B44)*J44', '=(K44-I44)*L44', '=S44-H44', '=(H44*1.5%+H44)', '=(H44*D44+H44)-H44', None, None, None, None, None, None, None, None, None]
+Row 45: [44, '=ABS($B$2*D45+$B$2)', 0.0015, -0.1725, '=ROUND(F45 / B45, 0)', '=F44+ROUND(F44 * 0.022, 0)', '=G44+E45', '=H44+F45', '=(B45*1.5%+B45)', '=ROUND(G45/2,0)', '=AVERAGE(I45,N45)', '=ROUND(J45/2, 0)', '=H45/G45', '=(M45*1.5%+M45)', '=(N45-B45)/B45', '=(I45-B45)*J45', '=(K45-I45)*L45', '=S45-H45', '=(H45*1.5%+H45)', '=(H45*D45+H45)-H45', None, None, None, None, None, None, None, None, None]
+Row 46: [45, '=ABS($B$2*D46+$B$2)', 0.0015, -0.18, '=ROUND(F46 / B46, 0)', '=F45+ROUND(F45 * 0.022, 0)', '=G45+E46', '=H45+F46', '=(B46*1.5%+B46)', '=ROUND(G46/2,0)', '=AVERAGE(I46,N46)', '=ROUND(J46/2, 0)', '=H46/G46', '=(M46*1.5%+M46)', '=(N46-B46)/B46', '=(I46-B46)*J46', '=(K46-I46)*L46', '=S46-H46', '=(H46*1.5%+H46)', '=(H46*D46+H46)-H46', None, None, None, None, None, None, None, None, None]
+Row 47: [46, '=ABS($B$2*D47+$B$2)', 0.0015, -0.1875, '=ROUND(F47 / B47, 0)', '=F46+ROUND(F46 * 0.022, 0)', '=G46+E47', '=H46+F47', '=(B47*1.5%+B47)', '=ROUND(G47/2,0)', '=AVERAGE(I47,N47)', '=ROUND(J47/2, 0)', '=H47/G47', '=(M47*1.5%+M47)', '=(N47-B47)/B47', '=(I47-B47)*J47', '=(K47-I47)*L47', '=S47-H47', '=(H47*1.5%+H47)', '=(H47*D47+H47)-H47', None, None, None, None, None, None, None, None, None]
+Row 48: [47, '=ABS($B$2*D48+$B$2)', 0.0015, -0.195, '=ROUND(F48 / B48, 0)', '=F47+ROUND(F47 * 0.022, 0)', '=G47+E48', '=H47+F48', '=(B48*1.5%+B48)', '=ROUND(G48/2,0)', '=AVERAGE(I48,N48)', '=ROUND(J48/2, 0)', '=H48/G48', '=(M48*1.5%+M48)', '=(N48-B48)/B48', '=(I48-B48)*J48', '=(K48-I48)*L48', '=S48-H48', '=(H48*1.5%+H48)', '=(H48*D48+H48)-H48', None, None, None, None, None, None, None, None, None]
+Row 49: [48, '=ABS($B$2*D49+$B$2)', 0.0015, -0.2025, '=ROUND(F49 / B49, 0)', '=F48+ROUND(F48 * 0.022, 0)', '=G48+E49', '=H48+F49', '=(B49*1.5%+B49)', '=ROUND(G49/2,0)', '=AVERAGE(I49,N49)', '=ROUND(J49/2, 0)', '=H49/G49', '=(M49*1.5%+M49)', '=(N49-B49)/B49', '=(I49-B49)*J49', '=(K49-I49)*L49', '=S49-H49', '=(H49*1.5%+H49)', '=(H49*D49+H49)-H49', None, None, None, None, None, None, None, None, None]
+Row 50: [49, '=ABS($B$2*D50+$B$2)', 0.0015, -0.21, '=ROUND(F50 / B50, 0)', '=F49+ROUND(F49 * 0.022, 0)', '=G49+E50', '=H49+F50', '=(B50*1.5%+B50)', '=ROUND(G50/2,0)', '=AVERAGE(I50,N50)', '=ROUND(J50/2, 0)', '=H50/G50', '=(M50*1.5%+M50)', '=(N50-B50)/B50', '=(I50-B50)*J50', '=(K50-I50)*L50', '=S50-H50', '=(H50*1.5%+H50)', '=(H50*D50+H50)-H50', None, None, None, None, None, None, None, None, None]
+Row 51: [50, '=ABS($B$2*D51+$B$2)', 0.0015, -0.2175, '=ROUND(F51 / B51, 0)', '=F50+ROUND(F50 * 0.022, 0)', '=G50+E51', '=H50+F51', '=(B51*1.5%+B51)', '=ROUND(G51/2,0)', '=AVERAGE(I51,N51)', '=ROUND(J51/2, 0)', '=H51/G51', '=(M51*1.5%+M51)', '=(N51-B51)/B51', '=(I51-B51)*J51', '=(K51-I51)*L51', '=S51-H51', '=(H51*1.5%+H51)', '=(H51*D51+H51)-H51', None, None, None, None, None, None, None, None, None]
+Row 52: [51, '=ABS($B$2*D52+$B$2)', 0.0015, -0.225, '=ROUND(F52 / B52, 0)', '=F51+ROUND(F51 * 0.022, 0)', '=G51+E52', '=H51+F52', '=(B52*1.5%+B52)', '=ROUND(G52/2,0)', '=AVERAGE(I52,N52)', '=ROUND(J52/2, 0)', '=H52/G52', '=(M52*1.5%+M52)', '=(N52-B52)/B52', '=(I52-B52)*J52', '=(K52-I52)*L52', '=S52-H52', '=(H52*1.5%+H52)', '=(H52*D52+H52)-H52', None, None, None, None, None, None, None, None, None]
+Row 53: [52, '=ABS($B$2*D53+$B$2)', 0.0015, -0.2325, '=ROUND(F53 / B53, 0)', '=F52+ROUND(F52 * 0.022, 0)', '=G52+E53', '=H52+F53', '=(B53*1.5%+B53)', '=ROUND(G53/2,0)', '=AVERAGE(I53,N53)', '=ROUND(J53/2, 0)', '=H53/G53', '=(M53*1.5%+M53)', '=(N53-B53)/B53', '=(I53-B53)*J53', '=(K53-I53)*L53', '=S53-H53', '=(H53*1.5%+H53)', '=(H53*D53+H53)-H53', None, None, None, None, None, None, None, None, None]
+Row 54: [53, '=ABS($B$2*D54+$B$2)', 0.0015, -0.24, '=ROUND(F54 / B54, 0)', '=F53+ROUND(F53 * 0.022, 0)', '=G53+E54', '=H53+F54', '=(B54*1.5%+B54)', '=ROUND(G54/2,0)', '=AVERAGE(I54,N54)', '=ROUND(J54/2, 0)', '=H54/G54', '=(M54*1.5%+M54)', '=(N54-B54)/B54', '=(I54-B54)*J54', '=(K54-I54)*L54', '=S54-H54', '=(H54*1.5%+H54)', '=(H54*D54+H54)-H54', None, None, None, None, None, None, None, None, None]
+Row 55: [54, '=ABS($B$2*D55+$B$2)', 0.0015, -0.2475, '=ROUND(F55 / B55, 0)', '=F54+ROUND(F54 * 0.022, 0)', '=G54+E55', '=H54+F55', '=(B55*1.5%+B55)', '=ROUND(G55/2,0)', '=AVERAGE(I55,N55)', '=ROUND(J55/2, 0)', '=H55/G55', '=(M55*1.5%+M55)', '=(N55-B55)/B55', '=(I55-B55)*J55', '=(K55-I55)*L55', '=S55-H55', '=(H55*1.5%+H55)', '=(H55*D55+H55)-H55', None, None, None, None, None, None, None, None, None]
+Row 56: [55, '=ABS($B$2*D56+$B$2)', 0.0015, -0.255, '=ROUND(F56 / B56, 0)', '=F55+ROUND(F55 * 0.022, 0)', '=G55+E56', '=H55+F56', '=(B56*1.5%+B56)', '=ROUND(G56/2,0)', '=AVERAGE(I56,N56)', '=ROUND(J56/2, 0)', '=H56/G56', '=(M56*1.5%+M56)', '=(N56-B56)/B56', '=(I56-B56)*J56', '=(K56-I56)*L56', '=S56-H56', '=(H56*1.5%+H56)', '=(H56*D56+H56)-H56', None, None, None, None, None, None, None, None, None]
+Row 57: [56, '=ABS($B$2*D57+$B$2)', 0.002, -0.265, '=ROUND(F57 / B57, 0)', '=F56+ROUND(F56 * 0.022, 0)', '=G56+E57', '=H56+F57', '=(B57*1.5%+B57)', '=ROUND(G57/2,0)', '=AVERAGE(I57,N57)', '=ROUND(J57/2, 0)', '=H57/G57', '=(M57*1.5%+M57)', '=(N57-B57)/B57', '=(I57-B57)*J57', '=(K57-I57)*L57', '=S57-H57', '=(H57*1.5%+H57)', '=(H57*D57+H57)-H57', None, None, None, None, None, None, None, None, None]
+Row 58: [57, '=ABS($B$2*D58+$B$2)', 0.002, -0.275, '=ROUND(F58 / B58, 0)', '=F57+ROUND(F57 * 0.022, 0)', '=G57+E58', '=H57+F58', '=(B58*1.5%+B58)', '=ROUND(G58/2,0)', '=AVERAGE(I58,N58)', '=ROUND(J58/2, 0)', '=H58/G58', '=(M58*1.5%+M58)', '=(N58-B58)/B58', '=(I58-B58)*J58', '=(K58-I58)*L58', '=S58-H58', '=(H58*1.5%+H58)', '=(H58*D58+H58)-H58', None, None, None, None, None, None, None, None, None]
+Row 59: [58, '=ABS($B$2*D59+$B$2)', 0.002, -0.285, '=ROUND(F59 / B59, 0)', '=F58+ROUND(F58 * 0.022, 0)', '=G58+E59', '=H58+F59', '=(B59*1.5%+B59)', '=ROUND(G59/2,0)', '=AVERAGE(I59,N59)', '=ROUND(J59/2, 0)', '=H59/G59', '=(M59*1.5%+M59)', '=(N59-B59)/B59', '=(I59-B59)*J59', '=(K59-I59)*L59', '=S59-H59', '=(H59*1.5%+H59)', '=(H59*D59+H59)-H59', None, None, None, None, None, None, None, None, None]
+Row 60: [59, '=ABS($B$2*D60+$B$2)', 0.002, -0.295, '=ROUND(F60 / B60, 0)', '=F59+ROUND(F59 * 0.022, 0)', '=G59+E60', '=H59+F60', '=(B60*1.5%+B60)', '=ROUND(G60/2,0)', '=AVERAGE(I60,N60)', '=ROUND(J60/2, 0)', '=H60/G60', '=(M60*1.5%+M60)', '=(N60-B60)/B60', '=(I60-B60)*J60', '=(K60-I60)*L60', '=S60-H60', '=(H60*1.5%+H60)', '=(H60*D60+H60)-H60', None, None, None, None, None, None, None, None, None]
+Row 61: [60, '=ABS($B$2*D61+$B$2)', 0.002, -0.305, '=ROUND(F61 / B61, 0)', '=F60+ROUND(F60 * 0.022, 0)', '=G60+E61', '=H60+F61', '=(B61*1.5%+B61)', '=ROUND(G61/2,0)', '=AVERAGE(I61,N61)', '=ROUND(J61/2, 0)', '=H61/G61', '=(M61*1.5%+M61)', '=(N61-B61)/B61', '=(I61-B61)*J61', '=(K61-I61)*L61', '=S61-H61', '=(H61*1.5%+H61)', '=(H61*D61+H61)-H61', None, None, None, None, None, None, None, None, None]
+Row 62: [61, '=ABS($B$2*D62+$B$2)', 0.002, -0.315, '=ROUND(F62 / B62, 0)', '=F61+ROUND(F61 * 0.022, 0)', '=G61+E62', '=H61+F62', '=(B62*1.5%+B62)', '=ROUND(G62/2,0)', '=AVERAGE(I62,N62)', '=ROUND(J62/2, 0)', '=H62/G62', '=(M62*1.5%+M62)', '=(N62-B62)/B62', '=(I62-B62)*J62', '=(K62-I62)*L62', '=S62-H62', '=(H62*1.5%+H62)', '=(H62*D62+H62)-H62', None, None, None, None, None, None, None, None, None]
+Row 63: [62, '=ABS($B$2*D63+$B$2)', 0.002, -0.325, '=ROUND(F63 / B63, 0)', '=F62+ROUND(F62 * 0.022, 0)', '=G62+E63', '=H62+F63', '=(B63*1.5%+B63)', '=ROUND(G63/2,0)', '=AVERAGE(I63,N63)', '=ROUND(J63/2, 0)', '=H63/G63', '=(M63*1.5%+M63)', '=(N63-B63)/B63', '=(I63-B63)*J63', '=(K63-I63)*L63', '=S63-H63', '=(H63*1.5%+H63)', '=(H63*D63+H63)-H63', None, None, None, None, None, None, None, None, None]
+Row 64: [63, '=ABS($B$2*D64+$B$2)', 0.002, -0.335, '=ROUND(F64 / B64, 0)', '=F63+ROUND(F63 * 0.022, 0)', '=G63+E64', '=H63+F64', '=(B64*1.5%+B64)', '=ROUND(G64/2,0)', '=AVERAGE(I64,N64)', '=ROUND(J64/2, 0)', '=H64/G64', '=(M64*1.5%+M64)', '=(N64-B64)/B64', '=(I64-B64)*J64', '=(K64-I64)*L64', '=S64-H64', '=(H64*1.5%+H64)', '=(H64*D64+H64)-H64', None, None, None, None, None, None, None, None, None]
+Row 65: [64, '=ABS($B$2*D65+$B$2)', 0.002, -0.345, '=ROUND(F65 / B65, 0)', '=F64+ROUND(F64 * 0.022, 0)', '=G64+E65', '=H64+F65', '=(B65*1.5%+B65)', '=ROUND(G65/2,0)', '=AVERAGE(I65,N65)', '=ROUND(J65/2, 0)', '=H65/G65', '=(M65*1.5%+M65)', '=(N65-B65)/B65', '=(I65-B65)*J65', '=(K65-I65)*L65', '=S65-H65', '=(H65*1.5%+H65)', '=(H65*D65+H65)-H65', None, None, None, None, None, None, None, None, None]
+Row 66: [65, '=ABS($B$2*D66+$B$2)', 0.002, -0.355, '=ROUND(F66 / B66, 0)', '=F65+ROUND(F65 * 0.022, 0)', '=G65+E66', '=H65+F66', '=(B66*1.5%+B66)', '=ROUND(G66/2,0)', '=AVERAGE(I66,N66)', '=ROUND(J66/2, 0)', '=H66/G66', '=(M66*1.5%+M66)', '=(N66-B66)/B66', '=(I66-B66)*J66', '=(K66-I66)*L66', '=S66-H66', '=(H66*1.5%+H66)', '=(H66*D66+H66)-H66', None, None, None, None, None, None, None, None, None]
+Row 67: [66, '=ABS($B$2*D67+$B$2)', 0.002, -0.365, '=ROUND(F67 / B67, 0)', '=F66+ROUND(F66 * 0.022, 0)', '=G66+E67', '=H66+F67', '=(B67*1.5%+B67)', '=ROUND(G67/2,0)', '=AVERAGE(I67,N67)', '=ROUND(J67/2, 0)', '=H67/G67', '=(M67*1.5%+M67)', '=(N67-B67)/B67', '=(I67-B67)*J67', '=(K67-I67)*L67', '=S67-H67', '=(H67*1.5%+H67)', '=(H67*D67+H67)-H67', None, None, None, None, None, None, None, None, None]
+Row 68: [67, '=ABS($B$2*D68+$B$2)', 0.002, -0.375, '=ROUND(F68 / B68, 0)', '=F67+ROUND(F67 * 0.022, 0)', '=G67+E68', '=H67+F68', '=(B68*1.5%+B68)', '=ROUND(G68/2,0)', '=AVERAGE(I68,N68)', '=ROUND(J68/2, 0)', '=H68/G68', '=(M68*1.5%+M68)', '=(N68-B68)/B68', '=(I68-B68)*J68', '=(K68-I68)*L68', '=S68-H68', '=(H68*1.5%+H68)', '=(H68*D68+H68)-H68', None, None, None, None, None, None, None, None, None]
+Row 69: [68, '=ABS($B$2*D69+$B$2)', 0.002, -0.385, '=ROUND(F69 / B69, 0)', '=F68+ROUND(F68 * 0.022, 0)', '=G68+E69', '=H68+F69', '=(B69*1.5%+B69)', '=ROUND(G69/2,0)', '=AVERAGE(I69,N69)', '=ROUND(J69/2, 0)', '=H69/G69', '=(M69*1.5%+M69)', '=(N69-B69)/B69', '=(I69-B69)*J69', '=(K69-I69)*L69', '=S69-H69', '=(H69*1.5%+H69)', '=(H69*D69+H69)-H69', None, None, None, None, None, None, None, None, None]
+Row 70: [69, '=ABS($B$2*D70+$B$2)', 0.002, -0.395, '=ROUND(F70 / B70, 0)', '=F69+ROUND(F69 * 0.022, 0)', '=G69+E70', '=H69+F70', '=(B70*1.5%+B70)', '=ROUND(G70/2,0)', '=AVERAGE(I70,N70)', '=ROUND(J70/2, 0)', '=H70/G70', '=(M70*1.5%+M70)', '=(N70-B70)/B70', '=(I70-B70)*J70', '=(K70-I70)*L70', '=S70-H70', '=(H70*1.5%+H70)', '=(H70*D70+H70)-H70', None, None, None, None, None, None, None, None, None]
+Row 71: [70, '=ABS($B$2*D71+$B$2)', 0.002, -0.405, '=ROUND(F71 / B71, 0)', '=F70+ROUND(F70 * 0.022, 0)', '=G70+E71', '=H70+F71', '=(B71*1.5%+B71)', '=ROUND(G71/2,0)', '=AVERAGE(I71,N71)', '=ROUND(J71/2, 0)', '=H71/G71', '=(M71*1.5%+M71)', '=(N71-B71)/B71', '=(I71-B71)*J71', '=(K71-I71)*L71', '=S71-H71', '=(H71*1.5%+H71)', '=(H71*D71+H71)-H71', None, None, None, None, None, None, None, None, None]
+Row 72: [71, '=ABS($B$2*D72+$B$2)', 0.0025, -0.4175, '=ROUND(F72 / B72, 0)', '=F71+ROUND(F71 * 0.022, 0)', '=G71+E72', '=H71+F72', '=(B72*1.5%+B72)', '=ROUND(G72/2,0)', '=AVERAGE(I72,N72)', '=ROUND(J72/2, 0)', '=H72/G72', '=(M72*1.5%+M72)', '=(N72-B72)/B72', '=(I72-B72)*J72', '=(K72-I72)*L72', '=S72-H72', '=(H72*1.5%+H72)', '=(H72*D72+H72)-H72', None, None, None, None, None, None, None, None, None]
+Row 73: [72, '=ABS($B$2*D73+$B$2)', 0.0025, -0.43, '=ROUND(F73 / B73, 0)', '=F72+ROUND(F72 * 0.022, 0)', '=G72+E73', '=H72+F73', '=(B73*1.5%+B73)', '=ROUND(G73/2,0)', '=AVERAGE(I73,N73)', '=ROUND(J73/2, 0)', '=H73/G73', '=(M73*1.5%+M73)', '=(N73-B73)/B73', '=(I73-B73)*J73', '=(K73-I73)*L73', '=S73-H73', '=(H73*1.5%+H73)', '=(H73*D73+H73)-H73', None, None, None, None, None, None, None, None, None]
+Row 74: [73, '=ABS($B$2*D74+$B$2)', 0.0025, -0.4425, '=ROUND(F74 / B74, 0)', '=F73+ROUND(F73 * 0.022, 0)', '=G73+E74', '=H73+F74', '=(B74*1.5%+B74)', '=ROUND(G74/2,0)', '=AVERAGE(I74,N74)', '=ROUND(J74/2, 0)', '=H74/G74', '=(M74*1.5%+M74)', '=(N74-B74)/B74', '=(I74-B74)*J74', '=(K74-I74)*L74', '=S74-H74', '=(H74*1.5%+H74)', '=(H74*D74+H74)-H74', None, None, None, None, None, None, None, None, None]
+Row 75: [74, '=ABS($B$2*D75+$B$2)', 0.0025, -0.455, '=ROUND(F75 / B75, 0)', '=F74+ROUND(F74 * 0.022, 0)', '=G74+E75', '=H74+F75', '=(B75*1.5%+B75)', '=ROUND(G75/2,0)', '=AVERAGE(I75,N75)', '=ROUND(J75/2, 0)', '=H75/G75', '=(M75*1.5%+M75)', '=(N75-B75)/B75', '=(I75-B75)*J75', '=(K75-I75)*L75', '=S75-H75', '=(H75*1.5%+H75)', '=(H75*D75+H75)-H75', None, None, None, None, None, None, None, None, None]
+Row 76: [75, '=ABS($B$2*D76+$B$2)', 0.0025, -0.4675, '=ROUND(F76 / B76, 0)', '=F75+ROUND(F75 * 0.022, 0)', '=G75+E76', '=H75+F76', '=(B76*1.5%+B76)', '=ROUND(G76/2,0)', '=AVERAGE(I76,N76)', '=ROUND(J76/2, 0)', '=H76/G76', '=(M76*1.5%+M76)', '=(N76-B76)/B76', '=(I76-B76)*J76', '=(K76-I76)*L76', '=S76-H76', '=(H76*1.5%+H76)', '=(H76*D76+H76)-H76', None, None, None, None, None, None, None, None, None]
+Row 77: [76, '=ABS($B$2*D77+$B$2)', 0.0025, -0.48, '=ROUND(F77 / B77, 0)', '=F76+ROUND(F76 * 0.022, 0)', '=G76+E77', '=H76+F77', '=(B77*1.5%+B77)', '=ROUND(G77/2,0)', '=AVERAGE(I77,N77)', '=ROUND(J77/2, 0)', '=H77/G77', '=(M77*1.5%+M77)', '=(N77-B77)/B77', '=(I77-B77)*J77', '=(K77-I77)*L77', '=S77-H77', '=(H77*1.5%+H77)', '=(H77*D77+H77)-H77', None, None, None, None, None, None, None, None, None]
+Row 78: [77, '=ABS($B$2*D78+$B$2)', 0.0025, -0.4925, '=ROUND(F78 / B78, 0)', '=F77+ROUND(F77 * 0.022, 0)', '=G77+E78', '=H77+F78', '=(B78*1.5%+B78)', '=ROUND(G78/2,0)', '=AVERAGE(I78,N78)', '=ROUND(J78/2, 0)', '=H78/G78', '=(M78*1.5%+M78)', '=(N78-B78)/B78', '=(I78-B78)*J78', '=(K78-I78)*L78', '=S78-H78', '=(H78*1.5%+H78)', '=(H78*D78+H78)-H78', None, None, None, None, None, None, None, None, None]
+Row 79: [78, '=ABS($B$2*D79+$B$2)', 0.0025, -0.505, '=ROUND(F79 / B79, 0)', '=F78+ROUND(F78 * 0.022, 0)', '=G78+E79', '=H78+F79', '=(B79*1.5%+B79)', '=ROUND(G79/2,0)', '=AVERAGE(I79,N79)', '=ROUND(J79/2, 0)', '=H79/G79', '=(M79*1.5%+M79)', '=(N79-B79)/B79', '=(I79-B79)*J79', '=(K79-I79)*L79', '=S79-H79', '=(H79*1.5%+H79)', '=(H79*D79+H79)-H79', None, None, None, None, None, None, None, None, None]
+Row 80: [79, '=ABS($B$2*D80+$B$2)', 0.0025, -0.5175, '=ROUND(F80 / B80, 0)', '=F79+ROUND(F79 * 0.022, 0)', '=G79+E80', '=H79+F80', '=(B80*1.5%+B80)', '=ROUND(G80/2,0)', '=AVERAGE(I80,N80)', '=ROUND(J80/2, 0)', '=H80/G80', '=(M80*1.5%+M80)', '=(N80-B80)/B80', '=(I80-B80)*J80', '=(K80-I80)*L80', '=S80-H80', '=(H80*1.5%+H80)', '=(H80*D80+H80)-H80', None, None, None, None, None, None, None, None, None]
+Row 81: [80, '=ABS($B$2*D81+$B$2)', 0.0025, -0.53, '=ROUND(F81 / B81, 0)', '=F80+ROUND(F80 * 0.022, 0)', '=G80+E81', '=H80+F81', '=(B81*1.5%+B81)', '=ROUND(G81/2,0)', '=AVERAGE(I81,N81)', '=ROUND(J81/2, 0)', '=H81/G81', '=(M81*1.5%+M81)', '=(N81-B81)/B81', '=(I81-B81)*J81', '=(K81-I81)*L81', '=S81-H81', '=(H81*1.5%+H81)', '=(H81*D81+H81)-H81', None, None, None, None, None, None, None, None, None]
+Row 82: [81, '=ABS($B$2*D82+$B$2)', 0.0025, -0.5425, '=ROUND(F82 / B82, 0)', '=F81+ROUND(F81 * 0.022, 0)', '=G81+E82', '=H81+F82', '=(B82*1.5%+B82)', '=ROUND(G82/2,0)', '=AVERAGE(I82,N82)', '=ROUND(J82/2, 0)', '=H82/G82', '=(M82*1.5%+M82)', '=(N82-B82)/B82', '=(I82-B82)*J82', '=(K82-I82)*L82', '=S82-H82', '=(H82*1.5%+H82)', '=(H82*D82+H82)-H82', None, None, None, None, None, None, None, None, None]
+Row 83: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 84: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 85: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 86: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 87: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 88: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 89: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 90: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 91: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 92: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 93: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 94: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 95: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 96: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 97: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 98: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 99: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 100: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 101: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 102: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 103: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 104: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 105: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 106: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 107: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 108: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 109: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 110: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 111: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 112: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 113: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 114: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Row 115: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+
+Summary of Results:
+Total formulas found: 1300
+Formula locations: ['V1', 'E2', 'G2', 'H2', 'M2', 'N2', 'O2', 'R2', 'S2', 'T2', 'B3', 'E3', 'G3', 'H3', 'M3', 'N3', 'O3', 'R3', 'S3', 'T3', 'B4', 'E4', 'F4', 'G4', 'H4', 'M4', 'N4', 'O4', 'R4', 'S4', 'T4', 'B5', 'E5', 'F5', 'G5', 'H5', 'M5', 'N5', 'O5', 'R5', 'S5', 'T5', 'B6', 'E6', 'F6', 'G6', 'H6', 'M6', 'N6', 'O6', 'R6', 'S6', 'T6', 'B7', 'E7', 'F7', 'G7', 'H7', 'M7', 'N7', 'O7', 'R7', 'S7', 'T7', 'B8', 'E8', 'F8', 'G8', 'H8', 'M8', 'N8', 'O8', 'R8', 'S8', 'T8', 'B9', 'E9', 'F9', 'G9', 'H9', 'M9', 'N9', 'O9', 'R9', 'S9', 'T9', 'B10', 'E10', 'F10', 'G10', 'H10', 'I10', 'J10', 'M10', 'N10', 'O10', 'P10', 'Q10', 'R10', 'S10', 'T10', 'B11', 'E11', 'F11', 'G11', 'H11', 'I11', 'J11', 'M11', 'N11', 'O11', 'P11', 'Q11', 'R11', 'S11', 'T11', 'B12', 'E12', 'F12', 'G12', 'H12', 'I12', 'J12', 'M12', 'N12', 'O12', 'P12', 'Q12', 'R12', 'S12', 'T12', 'B13', 'E13', 'F13', 'G13', 'H13', 'I13', 'J13', 'M13', 'N13', 'O13', 'P13', 'Q13', 'R13', 'S13', 'T13', 'B14', 'E14', 'F14', 'G14', 'H14', 'I14', 'J14', 'M14', 'N14', 'O14', 'P14', 'Q14', 'R14', 'S14', 'T14', 'B15', 'E15', 'F15', 'G15', 'H15', 'I15', 'J15', 'M15', 'N15', 'O15', 'P15', 'Q15', 'R15', 'S15', 'T15', 'B16', 'E16', 'F16', 'G16', 'H16', 'I16', 'J16', 'M16', 'N16', 'O16', 'P16', 'Q16', 'R16', 'S16', 'T16', 'B17', 'E17', 'F17', 'G17', 'H17', 'I17', 'J17', 'M17', 'N17', 'O17', 'P17', 'Q17', 'R17', 'S17', 'T17', 'B18', 'E18', 'F18', 'G18', 'H18', 'I18', 'J18', 'M18', 'N18', 'O18', 'P18', 'Q18', 'R18', 'S18', 'T18', 'B19', 'E19', 'F19', 'G19', 'H19', 'I19', 'J19', 'M19', 'N19', 'O19', 'P19', 'Q19', 'R19', 'S19', 'T19', 'B20', 'E20', 'F20', 'G20', 'H20', 'I20', 'J20', 'M20', 'N20', 'O20', 'P20', 'Q20', 'R20', 'S20', 'T20', 'B21', 'E21', 'F21', 'G21', 'H21', 'I21', 'J21', 'M21', 'N21', 'O21', 'P21', 'Q21', 'R21', 'S21', 'T21', 'B22', 'E22', 'F22', 'G22', 'H22', 'I22', 'J22', 'M22', 'N22', 'O22', 'P22', 'R22', 'S22', 'T22', 'B23', 'E23', 'F23', 'G23', 'H23', 'I23', 'J23', 'K23', 'L23', 'M23', 'N23', 'O23', 'P23', 'Q23', 'R23', 'S23', 'T23', 'B24', 'E24', 'F24', 'G24', 'H24', 'I24', 'J24', 'K24', 'L24', 'M24', 'N24', 'O24', 'P24', 'Q24', 'R24', 'S24', 'T24', 'B25', 'E25', 'F25', 'G25', 'H25', 'I25', 'J25', 'K25', 'L25', 'M25', 'N25', 'O25', 'P25', 'Q25', 'R25', 'S25', 'T25', 'B26', 'E26', 'F26', 'G26', 'H26', 'I26', 'J26', 'K26', 'L26', 'M26', 'N26', 'O26', 'P26', 'Q26', 'R26', 'S26', 'T26', 'B27', 'E27', 'F27', 'G27', 'H27', 'I27', 'J27', 'K27', 'L27', 'M27', 'N27', 'O27', 'P27', 'Q27', 'R27', 'S27', 'T27', 'B28', 'E28', 'F28', 'G28', 'H28', 'I28', 'J28', 'K28', 'L28', 'M28', 'N28', 'O28', 'P28', 'Q28', 'R28', 'S28', 'T28', 'B29', 'E29', 'F29', 'G29', 'H29', 'I29', 'J29', 'K29', 'L29', 'M29', 'N29', 'O29', 'P29', 'Q29', 'R29', 'S29', 'T29', 'B30', 'E30', 'F30', 'G30', 'H30', 'I30', 'J30', 'K30', 'L30', 'M30', 'N30', 'O30', 'P30', 'Q30', 'R30', 'S30', 'T30', 'B31', 'E31', 'F31', 'G31', 'H31', 'I31', 'J31', 'K31', 'L31', 'M31', 'N31', 'O31', 'P31', 'Q31', 'R31', 'S31', 'T31', 'B32', 'E32', 'F32', 'G32', 'H32', 'I32', 'J32', 'K32', 'L32', 'M32', 'N32', 'O32', 'P32', 'Q32', 'R32', 'S32', 'T32', 'B33', 'E33', 'F33', 'G33', 'H33', 'I33', 'J33', 'K33', 'L33', 'M33', 'N33', 'O33', 'P33', 'Q33', 'R33', 'S33', 'T33', 'B34', 'E34', 'F34', 'G34', 'H34', 'I34', 'J34', 'K34', 'L34', 'M34', 'N34', 'O34', 'P34', 'Q34', 'R34', 'S34', 'T34', 'B35', 'E35', 'F35', 'G35', 'H35', 'I35', 'J35', 'K35', 'L35', 'M35', 'N35', 'O35', 'P35', 'Q35', 'R35', 'S35', 'T35', 'B36', 'E36', 'F36', 'G36', 'H36', 'I36', 'J36', 'K36', 'L36', 'M36', 'N36', 'O36', 'P36', 'Q36', 'R36', 'S36', 'T36', 'B37', 'E37', 'F37', 'G37', 'H37', 'I37', 'J37', 'K37', 'L37', 'M37', 'N37', 'O37', 'P37', 'Q37', 'R37', 'S37', 'T37', 'B38', 'E38', 'F38', 'G38', 'H38', 'I38', 'J38', 'K38', 'L38', 'M38', 'N38', 'O38', 'P38', 'Q38', 'R38', 'S38', 'T38', 'B39', 'E39', 'F39', 'G39', 'H39', 'I39', 'J39', 'K39', 'L39', 'M39', 'N39', 'O39', 'P39', 'Q39', 'R39', 'S39', 'T39', 'B40', 'E40', 'F40', 'G40', 'H40', 'I40', 'J40', 'K40', 'L40', 'M40', 'N40', 'O40', 'P40', 'Q40', 'R40', 'S40', 'T40', 'B41', 'E41', 'F41', 'G41', 'H41', 'I41', 'J41', 'K41', 'L41', 'M41', 'N41', 'O41', 'P41', 'Q41', 'R41', 'S41', 'T41', 'B42', 'E42', 'F42', 'G42', 'H42', 'I42', 'J42', 'K42', 'L42', 'M42', 'N42', 'O42', 'P42', 'Q42', 'R42', 'S42', 'T42', 'B43', 'E43', 'F43', 'G43', 'H43', 'I43', 'J43', 'K43', 'L43', 'M43', 'N43', 'O43', 'P43', 'Q43', 'R43', 'S43', 'T43', 'B44', 'E44', 'F44', 'G44', 'H44', 'I44', 'J44', 'K44', 'L44', 'M44', 'N44', 'O44', 'P44', 'Q44', 'R44', 'S44', 'T44', 'B45', 'E45', 'F45', 'G45', 'H45', 'I45', 'J45', 'K45', 'L45', 'M45', 'N45', 'O45', 'P45', 'Q45', 'R45', 'S45', 'T45', 'B46', 'E46', 'F46', 'G46', 'H46', 'I46', 'J46', 'K46', 'L46', 'M46', 'N46', 'O46', 'P46', 'Q46', 'R46', 'S46', 'T46', 'B47', 'E47', 'F47', 'G47', 'H47', 'I47', 'J47', 'K47', 'L47', 'M47', 'N47', 'O47', 'P47', 'Q47', 'R47', 'S47', 'T47', 'B48', 'E48', 'F48', 'G48', 'H48', 'I48', 'J48', 'K48', 'L48', 'M48', 'N48', 'O48', 'P48', 'Q48', 'R48', 'S48', 'T48', 'B49', 'E49', 'F49', 'G49', 'H49', 'I49', 'J49', 'K49', 'L49', 'M49', 'N49', 'O49', 'P49', 'Q49', 'R49', 'S49', 'T49', 'B50', 'E50', 'F50', 'G50', 'H50', 'I50', 'J50', 'K50', 'L50', 'M50', 'N50', 'O50', 'P50', 'Q50', 'R50', 'S50', 'T50', 'B51', 'E51', 'F51', 'G51', 'H51', 'I51', 'J51', 'K51', 'L51', 'M51', 'N51', 'O51', 'P51', 'Q51', 'R51', 'S51', 'T51', 'B52', 'E52', 'F52', 'G52', 'H52', 'I52', 'J52', 'K52', 'L52', 'M52', 'N52', 'O52', 'P52', 'Q52', 'R52', 'S52', 'T52', 'B53', 'E53', 'F53', 'G53', 'H53', 'I53', 'J53', 'K53', 'L53', 'M53', 'N53', 'O53', 'P53', 'Q53', 'R53', 'S53', 'T53', 'B54', 'E54', 'F54', 'G54', 'H54', 'I54', 'J54', 'K54', 'L54', 'M54', 'N54', 'O54', 'P54', 'Q54', 'R54', 'S54', 'T54', 'B55', 'E55', 'F55', 'G55', 'H55', 'I55', 'J55', 'K55', 'L55', 'M55', 'N55', 'O55', 'P55', 'Q55', 'R55', 'S55', 'T55', 'B56', 'E56', 'F56', 'G56', 'H56', 'I56', 'J56', 'K56', 'L56', 'M56', 'N56', 'O56', 'P56', 'Q56', 'R56', 'S56', 'T56', 'B57', 'E57', 'F57', 'G57', 'H57', 'I57', 'J57', 'K57', 'L57', 'M57', 'N57', 'O57', 'P57', 'Q57', 'R57', 'S57', 'T57', 'B58', 'E58', 'F58', 'G58', 'H58', 'I58', 'J58', 'K58', 'L58', 'M58', 'N58', 'O58', 'P58', 'Q58', 'R58', 'S58', 'T58', 'B59', 'E59', 'F59', 'G59', 'H59', 'I59', 'J59', 'K59', 'L59', 'M59', 'N59', 'O59', 'P59', 'Q59', 'R59', 'S59', 'T59', 'B60', 'E60', 'F60', 'G60', 'H60', 'I60', 'J60', 'K60', 'L60', 'M60', 'N60', 'O60', 'P60', 'Q60', 'R60', 'S60', 'T60', 'B61', 'E61', 'F61', 'G61', 'H61', 'I61', 'J61', 'K61', 'L61', 'M61', 'N61', 'O61', 'P61', 'Q61', 'R61', 'S61', 'T61', 'B62', 'E62', 'F62', 'G62', 'H62', 'I62', 'J62', 'K62', 'L62', 'M62', 'N62', 'O62', 'P62', 'Q62', 'R62', 'S62', 'T62', 'B63', 'E63', 'F63', 'G63', 'H63', 'I63', 'J63', 'K63', 'L63', 'M63', 'N63', 'O63', 'P63', 'Q63', 'R63', 'S63', 'T63', 'B64', 'E64', 'F64', 'G64', 'H64', 'I64', 'J64', 'K64', 'L64', 'M64', 'N64', 'O64', 'P64', 'Q64', 'R64', 'S64', 'T64', 'B65', 'E65', 'F65', 'G65', 'H65', 'I65', 'J65', 'K65', 'L65', 'M65', 'N65', 'O65', 'P65', 'Q65', 'R65', 'S65', 'T65', 'B66', 'E66', 'F66', 'G66', 'H66', 'I66', 'J66', 'K66', 'L66', 'M66', 'N66', 'O66', 'P66', 'Q66', 'R66', 'S66', 'T66', 'B67', 'E67', 'F67', 'G67', 'H67', 'I67', 'J67', 'K67', 'L67', 'M67', 'N67', 'O67', 'P67', 'Q67', 'R67', 'S67', 'T67', 'B68', 'E68', 'F68', 'G68', 'H68', 'I68', 'J68', 'K68', 'L68', 'M68', 'N68', 'O68', 'P68', 'Q68', 'R68', 'S68', 'T68', 'B69', 'E69', 'F69', 'G69', 'H69', 'I69', 'J69', 'K69', 'L69', 'M69', 'N69', 'O69', 'P69', 'Q69', 'R69', 'S69', 'T69', 'B70', 'E70', 'F70', 'G70', 'H70', 'I70', 'J70', 'K70', 'L70', 'M70', 'N70', 'O70', 'P70', 'Q70', 'R70', 'S70', 'T70', 'B71', 'E71', 'F71', 'G71', 'H71', 'I71', 'J71', 'K71', 'L71', 'M71', 'N71', 'O71', 'P71', 'Q71', 'R71', 'S71', 'T71', 'B72', 'E72', 'F72', 'G72', 'H72', 'I72', 'J72', 'K72', 'L72', 'M72', 'N72', 'O72', 'P72', 'Q72', 'R72', 'S72', 'T72', 'B73', 'E73', 'F73', 'G73', 'H73', 'I73', 'J73', 'K73', 'L73', 'M73', 'N73', 'O73', 'P73', 'Q73', 'R73', 'S73', 'T73', 'B74', 'E74', 'F74', 'G74', 'H74', 'I74', 'J74', 'K74', 'L74', 'M74', 'N74', 'O74', 'P74', 'Q74', 'R74', 'S74', 'T74', 'B75', 'E75', 'F75', 'G75', 'H75', 'I75', 'J75', 'K75', 'L75', 'M75', 'N75', 'O75', 'P75', 'Q75', 'R75', 'S75', 'T75', 'B76', 'E76', 'F76', 'G76', 'H76', 'I76', 'J76', 'K76', 'L76', 'M76', 'N76', 'O76', 'P76', 'Q76', 'R76', 'S76', 'T76', 'B77', 'E77', 'F77', 'G77', 'H77', 'I77', 'J77', 'K77', 'L77', 'M77', 'N77', 'O77', 'P77', 'Q77', 'R77', 'S77', 'T77', 'B78', 'E78', 'F78', 'G78', 'H78', 'I78', 'J78', 'K78', 'L78', 'M78', 'N78', 'O78', 'P78', 'Q78', 'R78', 'S78', 'T78', 'B79', 'E79', 'F79', 'G79', 'H79', 'I79', 'J79', 'K79', 'L79', 'M79', 'N79', 'O79', 'P79', 'Q79', 'R79', 'S79', 'T79', 'B80', 'E80', 'F80', 'G80', 'H80', 'I80', 'J80', 'K80', 'L80', 'M80', 'N80', 'O80', 'P80', 'Q80', 'R80', 'S80', 'T80', 'B81', 'E81', 'F81', 'G81', 'H81', 'I81', 'J81', 'K81', 'L81', 'M81', 'N81', 'O81', 'P81', 'Q81', 'R81', 'S81', 'T81', 'B82', 'E82', 'F82', 'G82', 'H82', 'I82', 'J82', 'K82', 'L82', 'M82', 'N82', 'O82', 'P82', 'Q82', 'R82', 'S82', 'T82']

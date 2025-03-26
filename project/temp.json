@@ -1,0 +1,72 @@
+{'holdings': [
+        {'tradingsymbol': 'YESBANK-EQ', 'exchange': 'NSE', 'isin': 'INE528G01035', 't1quantity': 0, 'realisedquantity': 0, 'quantity': 0, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 0.0, 'ltp': 16.98, 'symboltoken': '11915', 'close': 16.92, 'profitandloss': 0.0, 'pnlpercentage': 0.0
+        },
+        {'tradingsymbol': 'JPPOWER-EQ', 'exchange': 'NSE', 'isin': 'INE351F01018', 't1quantity': 0, 'realisedquantity': 28, 'quantity': 28, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 18.97, 'ltp': 13.62, 'symboltoken': '11763', 'close': 13.52, 'profitandloss': -150.0, 'pnlpercentage': -28.2
+        },
+        {'tradingsymbol': 'RPOWER-EQ', 'exchange': 'NSE', 'isin': 'INE614G01033', 't1quantity': 0, 'realisedquantity': 12, 'quantity': 12, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 26.33, 'ltp': 35.19, 'symboltoken': '15259', 'close': 34.66, 'profitandloss': 106.0, 'pnlpercentage': 33.66
+        },
+        {'tradingsymbol': 'TATASTEEL-EQ', 'exchange': 'NSE', 'isin': 'INE081A01020', 't1quantity': 0, 'realisedquantity': 7, 'quantity': 7, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 136.74, 'ltp': 149.74, 'symboltoken': '3499', 'close': 146.1, 'profitandloss': 91.0, 'pnlpercentage': 9.51
+        },
+        {'tradingsymbol': 'CAPINVIT-IV', 'exchange': 'NSE', 'isin': 'INE0Z8Z23013', 't1quantity': 0, 'realisedquantity': 150, 'quantity': 150, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 99.0, 'ltp': 91.34, 'symboltoken': '29157', 'close': 90.69, 'profitandloss': -1149.0, 'pnlpercentage': -7.74
+        },
+        {'tradingsymbol': 'PHARMABEES-EQ', 'exchange': 'NSE', 'isin': 'INF204KC1089', 't1quantity': 0, 'realisedquantity': 13, 'quantity': 13, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 20.89, 'ltp': 20.81, 'symboltoken': '4973', 'close': 20.54, 'profitandloss': -1.0, 'pnlpercentage': -0.4
+        },
+        {'tradingsymbol': 'CPSEETF-EQ', 'exchange': 'NSE', 'isin': 'INF457M01133', 't1quantity': 0, 'realisedquantity': 248, 'quantity': 248, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 99.66, 'ltp': 81.3, 'symboltoken': '2328', 'close': 80.11, 'profitandloss': -4553.0, 'pnlpercentage': -18.42
+        },
+        {'tradingsymbol': 'NTPC-EQ', 'exchange': 'NSE', 'isin': 'INE733E01010', 't1quantity': 0, 'realisedquantity': 1, 'quantity': 1, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 401.42, 'ltp': 336.1, 'symboltoken': '11630', 'close': 326.2, 'profitandloss': -65.0, 'pnlpercentage': -16.27
+        },
+        {'tradingsymbol': 'IFCI-EQ', 'exchange': 'NSE', 'isin': 'INE039A01010', 't1quantity': 0, 'realisedquantity': 1, 'quantity': 1, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 56.01, 'ltp': 43.5, 'symboltoken': '1491', 'close': 43.07, 'profitandloss': -13.0, 'pnlpercentage': -22.33
+        },
+        {'tradingsymbol': 'VEDL-EQ', 'exchange': 'NSE', 'isin': 'INE205A01025', 't1quantity': 0, 'realisedquantity': 2, 'quantity': 2, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 375.3, 'ltp': 441.85, 'symboltoken': '3063', 'close': 428.95, 'profitandloss': 133.0, 'pnlpercentage': 17.73
+        }
+    ], 'totalholding': {'totalholdingvalue': 37249, 'totalinvvalue': 42849, 'totalprofitandloss': -5600.52, 'totalpnlpercentage': -13.07
+    }
+}
+}
+INFO:app:Fetched Holdings for shivam@nuviontech.com: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': {'holdings': [
+        {'tradingsymbol': 'YESBANK-EQ', 'exchange': 'NSE', 'isin': 'INE528G01035', 't1quantity': 0, 'realisedquantity': 0, 'quantity': 0, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 0.0, 'ltp': 16.98, 'symboltoken': '11915', 'close': 16.92, 'profitandloss': 0.0, 'pnlpercentage': 0.0
+        },
+        {'tradingsymbol': 'JPPOWER-EQ', 'exchange': 'NSE', 'isin': 'INE351F01018', 't1quantity': 0, 'realisedquantity': 28, 'quantity': 28, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 18.97, 'ltp': 13.62, 'symboltoken': '11763', 'close': 13.52, 'profitandloss': -150.0, 'pnlpercentage': -28.2
+        },
+        {'tradingsymbol': 'RPOWER-EQ', 'exchange': 'NSE', 'isin': 'INE614G01033', 't1quantity': 0, 'realisedquantity': 12, 'quantity': 12, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 26.33, 'ltp': 35.19, 'symboltoken': '15259', 'close': 34.66, 'profitandloss': 106.0, 'pnlpercentage': 33.66
+        },
+        {'tradingsymbol': 'TATASTEEL-EQ', 'exchange': 'NSE', 'isin': 'INE081A01020', 't1quantity': 0, 'realisedquantity': 7, 'quantity': 7, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 136.74, 'ltp': 149.74, 'symboltoken': '3499', 'close': 146.1, 'profitandloss': 91.0, 'pnlpercentage': 9.51
+        },
+        {'tradingsymbol': 'CAPINVIT-IV', 'exchange': 'NSE', 'isin': 'INE0Z8Z23013', 't1quantity': 0, 'realisedquantity': 150, 'quantity': 150, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 99.0, 'ltp': 91.34, 'symboltoken': '29157', 'close': 90.69, 'profitandloss': -1149.0, 'pnlpercentage': -7.74
+        },
+        {'tradingsymbol': 'PHARMABEES-EQ', 'exchange': 'NSE', 'isin': 'INF204KC1089', 't1quantity': 0, 'realisedquantity': 13, 'quantity': 13, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 20.89, 'ltp': 20.81, 'symboltoken': '4973', 'close': 20.54, 'profitandloss': -1.0, 'pnlpercentage': -0.4
+        },
+        {'tradingsymbol': 'CPSEETF-EQ', 'exchange': 'NSE', 'isin': 'INF457M01133', 't1quantity': 0, 'realisedquantity': 248, 'quantity': 248, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 99.66, 'ltp': 81.3, 'symboltoken': '2328', 'close': 80.11, 'profitandloss': -4553.0, 'pnlpercentage': -18.42
+        },
+        {'tradingsymbol': 'NTPC-EQ', 'exchange': 'NSE', 'isin': 'INE733E01010', 't1quantity': 0, 'realisedquantity': 1, 'quantity': 1, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 401.42, 'ltp': 336.1, 'symboltoken': '11630', 'close': 326.2, 'profitandloss': -65.0, 'pnlpercentage': -16.27
+        },
+        {'tradingsymbol': 'IFCI-EQ', 'exchange': 'NSE', 'isin': 'INE039A01010', 't1quantity': 0, 'realisedquantity': 1, 'quantity': 1, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 56.01, 'ltp': 43.5, 'symboltoken': '1491', 'close': 43.07, 'profitandloss': -13.0, 'pnlpercentage': -22.33
+        },
+        {'tradingsymbol': 'VEDL-EQ', 'exchange': 'NSE', 'isin': 'INE205A01025', 't1quantity': 0, 'realisedquantity': 2, 'quantity': 2, 'authorisedquantity': 0, 'product': 'DELIVERY', 'collateralquantity': None, 'collateraltype': None, 'haircut': 0.0, 'averageprice': 375.3, 'ltp': 441.85, 'symboltoken': '3063', 'close': 428.95, 'profitandloss': 133.0, 'pnlpercentage': 17.73
+        }
+    ], 'totalholding': {'totalholdingvalue': 37249, 'totalinvvalue': 42849, 'totalprofitandloss': -5600.52, 'totalpnlpercentage': -13.07
+    }
+}
+}
+INFO:app:Emitted updated holdings for shivam@nuviontech.com: {'holdings': [
+    {'tradingsymbol': 'YESBANK-EQ', 'ltp': 13.445608426042247, 'quantity': 0, 'averageprice': 0.0, 'close': 16.92
+    },
+    {'tradingsymbol': 'JPPOWER-EQ', 'ltp': 9.728019126885032, 'quantity': 28, 'averageprice': 18.97, 'close': 13.52
+    },
+    {'tradingsymbol': 'RPOWER-EQ', 'ltp': 39.68472805265773, 'quantity': 12, 'averageprice': 26.33, 'close': 34.66
+    },
+    {'tradingsymbol': 'TATASTEEL-EQ', 'ltp': 150.96698102170913, 'quantity': 7, 'averageprice': 136.74, 'close': 146.1
+    },
+    {'tradingsymbol': 'CAPINVIT-IV', 'ltp': 88.90199016703268, 'quantity': 150, 'averageprice': 99.0, 'close': 90.69
+    },
+    {'tradingsymbol': 'PHARMABEES-EQ', 'ltp': 23.49135600850216, 'quantity': 13, 'averageprice': 20.89, 'close': 20.54
+    },
+    {'tradingsymbol': 'CPSEETF-EQ', 'ltp': 79.62886649456934, 'quantity': 248, 'averageprice': 99.66, 'close': 80.11
+    },
+    {'tradingsymbol': 'NTPC-EQ', 'ltp': 333.3095554495313, 'quantity': 1, 'averageprice': 401.42, 'close': 326.2
+    },
+    {'tradingsymbol': 'IFCI-EQ', 'ltp': 41.44735524117155, 'quantity': 1, 'averageprice': 56.01, 'close': 43.07
+    },
+    {'tradingsymbol': 'VEDL-EQ', 'ltp': 442.7596625364175, 'quantity': 2, 'averageprice': 375.3, 'close': 428.95
+    }
+], 'today_profit_and_loss': -327.86

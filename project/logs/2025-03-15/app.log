@@ -1,0 +1,102 @@
+[I 250315 15:17:53 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:17:59 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:18:24 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:18:54 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:19:24 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:19:39 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:19:44 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:20:09 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:20:39 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:21:09 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:21:39 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:22:09 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:22:21 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:22:26 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:22:51 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:23:21 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:23:51 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:24:21 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:24:51 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:25:51 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:25:57 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:26:22 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:26:52 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:27:22 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:27:52 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:28:22 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:29:14 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:29:55 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:30:01 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:30:26 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:30:56 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:31:26 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:31:56 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:32:26 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:33:12 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:33:18 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:33:43 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 15:34:13 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[W 250315 15:35:34 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 15:38:58 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 15:39:19 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 15:39:19 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 15:39:19 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 15:39:19 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[I 250315 16:01:58 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:02:04 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:02:28 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:02:58 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:03:28 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:03:58 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:04:28 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:04:59 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:09:19 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:09:24 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:09:49 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:10:20 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:10:49 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:11:19 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:12:14 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:15:27 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:15:57 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:16:27 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:16:57 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:17:27 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:18:14 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[I 250315 16:19:14 smartConnect:387] OrderBook: {'status': True, 'message': 'SUCCESS', 'errorcode': '', 'data': None}
+[W 250315 16:19:24 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:23:21 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:31:35 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:31:51 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 16:31:54 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:32:06 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:06 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:06 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:06 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:10 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 16:32:25 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:25 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:25 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:32:25 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:35:45 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:36:01 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 16:36:16 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:36:16 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:36:16 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:36:16 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:38:21 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:38:36 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 16:38:52 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:38:52 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:38:52 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:50:19 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 16:50:34 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 16:50:50 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:50:50 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:50:50 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[W 250315 16:50:50 smartWebSocketV2:343] Connection closed due to max retry attempts reached.
+[E 250315 17:01:11 smartWebSocketV2:212] Error occurred during subscribe: Connection is already closed.
+[W 250315 17:01:11 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 17:19:30 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
+[W 250315 17:48:47 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 2)...
+[W 250315 17:48:49 smartWebSocketV2:319] Attempting to resubscribe/reconnect (Attempt 1)...
