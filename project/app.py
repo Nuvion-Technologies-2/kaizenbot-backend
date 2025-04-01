@@ -1216,7 +1216,7 @@ def check_angle_status():
         })}), 500
         
 
-from SmartApi.smartConnect import SmartConnect
+from SmartApi.smartConnect import SmartConnect 
 import pyotp
 from flask import request
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -1957,7 +1957,7 @@ import pytz
 import logging
 
 
-
+'''
 def send_insufficient_funds_notification(user_email, user_name, symbol, order_id, quantity, price, message_text):
     """Sends an email notification when an order is rejected due to insufficient funds."""
 
@@ -2866,6 +2866,8 @@ def process_strategy(user, symbol, ltp, smart_api):
             finally:
                 db.session.close()
 
+
+
 def start_websocket_stream(user):
     user_email = user.email
     try:
@@ -2944,6 +2946,7 @@ def start_websocket_stream(user):
                                     'week_low': message.get('52_week_low_price', 0) / 100
                                 }
                             logger.info(f"Updated live price for {user_email}, token {token}: {ltp}")
+                            log_to_file(f"Live price update for {stock.tradingsymbol}: {ltp}")
                             logger.debug(f"is market open: {is_market_open()}")
                             if is_market_open():
                                 logger.info(f"Trading Status for {user} and its {user.trading_active}")
@@ -2952,6 +2955,1127 @@ def start_websocket_stream(user):
                                         process_strategy(user, stock.tradingsymbol, ltp, smart_api)
                                     except Exception as e:
                                         logger.error(f"Error in process_strategy for {stock.tradingsymbol}: {str(e)}")
+                                        log_to_file(f"WebSocket data error for {user_email}: {str(e)}")
+                                else:
+                                    logger.info(f"Trading not active for {user_email}")
+                                    
+                            else:
+                                logger.info(f"Market closed, skipping strategy for {stock.tradingsymbol}")
+                except json.JSONDecodeError as e:
+                    logger.error(f"Failed to decode WebSocket message for {user_email}: {str(e)}")
+                except Exception as e:
+                    logger.error(f"Error in on_data callback for {user_email}: {str(e)}")
+
+            def on_open(wsapp):
+                logger.info(f"WebSocket opened for {user_email}")
+                try:
+                    sws.subscribe(correlation_id, mode, token_list)
+                except Exception as e:
+                    logger.error(f"Subscription failed for {user_email}: {str(e)}")
+
+            def on_error(wsapp, error):
+                logger.error(f"WebSocket error for {user_email}: {error}")
+                with app.app_context():
+                    if Stock.query.filter_by(user_id=user.id, live_price_status=True).count() > 0:
+                        logger.info(f"Restarting WebSocket for {user_email} due to error")
+                        restart_websocket(user)
+                    else:
+                        stop_websocket_stream(user)
+
+            def on_close(wsapp, code=None, reason=None):
+                logger.info(f"WebSocket closed for {user_email} with code={code}, reason={reason}")
+                with websocket_lock:
+                    if user_email in websocket_clients:
+                        del websocket_clients[user_email]
+                    if user_email in websocket_threads:
+                        del websocket_threads[user_email]
+                
+                with app.app_context():
+                    if Stock.query.filter_by(user_id=user.id, live_price_status=True).count() > 0:
+                        logger.info(f"Automatically restarting WebSocket for {user_email}")
+                        restart_websocket(user)
+
+            sws.on_open = on_open
+            sws.on_data = on_data
+            sws.on_error = on_error
+            sws.on_close = on_close
+
+            with websocket_lock:
+                if user_email in websocket_clients:
+                    try:
+                        websocket_clients[user_email].close_connection()
+                    except Exception as e:
+                        logger.warning(f"Failed to close existing WebSocket for {user_email}: {str(e)}")
+                        log_to_file(f"WebSocket setup error for {user_email}: {str(e)}")
+                websocket_clients[user_email] = sws
+
+            thread = eventlet.spawn(sws.connect)
+            with websocket_lock:
+                websocket_threads[user_email] = thread
+            logger.info(f"WebSocket thread started for {user_email}")
+
+    except Exception as e:
+        logger.error(f"WebSocket Setup Error for {user_email}: {str(e)}")
+        with websocket_lock:
+            if user_email in websocket_clients:
+                del websocket_clients[user_email]
+            if user_email in websocket_threads:
+                del websocket_threads[user_email]
+
+def restart_websocket(user):
+    """Helper function to restart WebSocket for a user."""
+    stop_websocket_stream(user)
+    time.sleep(2)  
+    start_websocket_stream(user)
+
+def stop_websocket_stream(user):
+    """Helper function to stop WebSocket for a user."""
+    user_email = user.email
+    with websocket_lock:
+        if user_email in websocket_clients:
+            try:
+                websocket_clients[user_email].close_connection()
+            except Exception as e:
+                logger.warning(f"Failed to close WebSocket for {user_email}: {str(e)}")
+            finally:
+                del websocket_clients[user_email]
+        if user_email in websocket_threads:
+            del websocket_threads[user_email]
+    logger.info(f"WebSocket stopped for {user_email}")
+'''
+
+import time
+from datetime import datetime, timedelta
+from threading import Lock, Thread
+import json
+import threading
+import eventlet
+from flask import current_app
+from flask_mail import Message
+
+# Global locks and caches
+strategy_locks = {}
+order_locks = {}
+websocket_lock = Lock()
+order_status_lock = Lock()
+live_prices_lock = Lock()
+websocket_clients = {}
+websocket_threads = {}
+order_status_dict = {}
+session_cache = {}
+live_prices = {}
+last_processed = {}  # For debouncing
+
+def log_to_file(message):
+    with open('log.txt', 'a') as f:
+        f.write(f"{datetime.now()} - Thread {threading.current_thread().name} - {message}\n")
+
+def send_insufficient_funds_notification(user_email, user_name, symbol, order_id, quantity, price, message_text):
+    """Sends an email notification when an order is rejected due to insufficient funds."""
+    app = current_app._get_current_object()  # Get the Flask app context
+
+    def send_email():
+        with app.app_context():  
+            try:
+                rejection_time = IST.localize(datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
+                subject = f"⚠️ Order Rejected Due to Insufficient Funds on {WEBSITE_NAME}"
+                body = f"""
+                Hello {user_name},  
+
+                Your recent order for {symbol} was rejected because your wallet balance is insufficient. Please add funds to continue trading.  
+
+                📋 Order Details:  
+                - Symbol: {symbol}  
+                - Order ID: {order_id}  
+                - Quantity: {quantity}  
+                - Price: {price}  
+                - Reason: {message_text}  
+                - Time: {rejection_time}  
+
+                💡 Action Required:  
+                - Add funds to your wallet via the {WEBSITE_NAME} dashboard.  
+                - Contact support at **support@{WEBSITE_NAME.lower()}.in** if you need assistance.  
+
+                Happy Trading,  
+                The {WEBSITE_NAME} Team  
+                """
+                msg = Message(subject, recipients=[user_email], body=body)
+                mail.send(msg)
+                logger.info(f"📧 Insufficient funds notification sent to {user_email} for order {order_id}")
+                log_entry = Log(user_email=user_email, action="Insufficient Funds Notification Sent", details=f"Order {order_id} rejected due to insufficient funds")
+                db.session.add(log_entry)
+                db.session.commit()
+            except Exception as e:
+                logger.error(f"❌ Failed to send insufficient funds email: {str(e)}")
+
+    Thread(target=send_email).start()
+
+def handle_order_update(message, order_id_to_track, numeric_order_id_to_track=None):
+    with app.app_context():
+        try:
+            if isinstance(message, bytes):
+                message = message.decode('utf-8')
+            order_data = json.loads(message)
+            order_id = order_data.get('orderData', {}).get('orderid', 'N/A')
+            unique_order_id = order_data.get('uniqueorderid', order_data.get('orderData', {}).get('uniqueorderid', 'N/A'))
+            order_status = str(order_data.get('orderData', {}).get('orderstatus') or 
+                              order_data.get('order-status', 'UNKNOWN')).lower()
+            symbol = order_data.get('orderData', {}).get('tradingsymbol', 'N/A')
+            filled_shares_str = order_data.get('orderData', {}).get('filledshares', '0')
+            filled_shares = int(filled_shares_str or 0)
+            avg_price = float(order_data.get('orderData', {}).get('averageprice', 0) or 0)
+            transaction_type = order_data.get('orderData', {}).get('transactiontype', 'BUY')
+            message_text = order_data.get('orderData', {}).get('text', order_data.get('error-message', ''))
+
+            logger.info(f"Order Update - ID: {order_id}, Unique ID: {unique_order_id}, Symbol: {symbol}, Status: {order_status}, Filled: {filled_shares}")
+
+            # Check for insufficient funds and send email notification
+            if message_text.startswith("Your order has been rejected due to Insufficient Funds"):
+                order_entry = (OrderStatus.query.filter_by(order_id=order_id).first() or 
+                              OrderStatus.query.filter_by(unique_order_id=unique_order_id).first())
+                if order_entry:
+                    user = User.query.filter_by(email=order_entry.user_email).first()
+                    if user:
+                        send_insufficient_funds_notification(
+                            user_email=user.email,
+                            user_name=user.name if hasattr(user, 'name') else "User",  # Adjust based on your User model
+                            symbol=symbol,
+                            order_id=order_id,
+                            quantity=order_entry.quantity,
+                            price=order_entry.price,
+                            message_text=message_text
+                        )
+
+            tracked_id = None
+            if order_id == numeric_order_id_to_track or unique_order_id == order_id_to_track:
+                tracked_id = order_id_to_track if unique_order_id == order_id_to_track else numeric_order_id_to_track
+
+            if tracked_id:
+                with order_status_lock:
+                    order_status_dict[tracked_id] = {
+                        'status': order_status,
+                        'symbol': symbol,
+                        'message': message_text,
+                        'filled_shares': filled_shares,
+                        'avg_price': avg_price
+                    }
+                logger.info(f"Tracked order {tracked_id} updated to status: {order_status}")
+
+                order_entry = (OrderStatus.query.filter_by(order_id=order_id).first() or 
+                              OrderStatus.query.filter_by(unique_order_id=unique_order_id).first())
+                if order_entry:
+                    order_entry.status = order_status
+                    order_entry.message = order_status_dict[tracked_id]['message']
+                    if filled_shares > 0:
+                        order_entry.quantity = filled_shares
+                    if avg_price > 0:
+                        order_entry.price = avg_price
+                    order_entry.updated_at = IST.localize(datetime.now())
+                    db.session.commit()
+                    logger.info(f"Updated OrderStatus for {order_entry.order_id} to {order_status}")
+
+                    if order_status == 'complete' and transaction_type == 'BUY' and filled_shares > 0:
+                        trade = Trade.query.filter_by(order_id=order_id, user_email=order_entry.user_email).first()
+                        if not trade:
+                            new_trade = Trade(
+                                stock_symbol=symbol,
+                                sr_no=1,
+                                entry_price=avg_price if avg_price > 0 else order_entry.price,
+                                quantity=filled_shares,
+                                user_email=order_entry.user_email,
+                                base_price=avg_price if avg_price > 0 else order_entry.price,
+                                total_quantity=filled_shares,
+                                total_sold_quantity=0,
+                                status='OPEN',
+                                last_updated=IST.localize(datetime.now()),
+                                description='Initial Buy from WebSocket',
+                                order_id=order_id
+                            )
+                            db.session.add(new_trade)
+                            db.session.commit()
+                            logger.info(f"Created Trade for {symbol} from order {order_id}: Qty {filled_shares}, Price {avg_price}")
+                        else:
+                            logger.info(f"Trade already exists for order {order_id}, skipping creation")
+                else:
+                    logger.warning(f"No OrderStatus entry found for order_id: {order_id} or unique_order_id: {unique_order_id}")
+        except json.JSONDecodeError:
+            logger.warning(f"Non-JSON message received: {message}")
+        except ValueError as e:
+            logger.error(f"ValueError processing order update: {e}, Message: {message}")
+        except Exception as e:
+            logger.error(f"Error processing order update: {e}", exc_info=True)
+            db.session.rollback()
+
+def custom_on_message(wsapp, message, order_id_to_track, numeric_order_id_to_track):
+    logger.info(f"Raw message received: {message}")
+    try:
+        handle_order_update(message, order_id_to_track, numeric_order_id_to_track)
+    except Exception as e:
+        logger.error(f"Error in custom_on_message: {e}", exc_info=True)
+
+def place_order(smart_api, symbol, qty, price, buy_sell='BUY', user_email=None):
+    with app.app_context():
+        if app.config.get('DRY_RUN', False):
+            executed_qty = qty
+            logger.info(f"[DRY RUN] Simulated {buy_sell} order: {executed_qty}/{qty} of {symbol} at {price}")
+            return executed_qty, "dry-run-order-id", "completed"
+
+        if not user_email:
+            logger.error(f"User email is None for {symbol} order")
+            api_log = ApiLog(user_email or "unknown", symbol, None, "Place Order", "error", "User email not provided")
+            db.session.add(api_log)
+            db.session.commit()
+            return 0, None, "error"
+
+        lock_key = f"{user_email}_{symbol}"
+        with order_locks.setdefault(lock_key, Lock()):
+            # Check for recent or pending orders
+            recent_orders = OrderStatus.query.filter_by(
+                user_email=user_email,
+                symbol=symbol,
+                buy_sell=buy_sell
+            ).filter(
+                OrderStatus.created_at > IST.localize(datetime.now()) - timedelta(seconds=10)
+            ).all()
+            if recent_orders:
+                logger.info(f"Skipping {buy_sell} order for {symbol}: Recent orders exist: {[o.order_id for o in recent_orders]}")
+                return 0, None, "recent_order_exists"
+
+            pending_orders = OrderStatus.query.filter_by(
+                user_email=user_email,
+                symbol=symbol,
+                buy_sell=buy_sell
+            ).filter(
+                OrderStatus.status.in_(['pending', 'UNKNOWN', 'timeout'])
+            ).filter(
+                OrderStatus.created_at > IST.localize(datetime.now()) - timedelta(minutes=5)
+            ).all()
+            if pending_orders:
+                logger.info(f"Skipping {buy_sell} order for {symbol}: Pending orders: {[o.order_id for o in pending_orders]}")
+                return 0, None, "pending_exists"
+
+            logger.info(f"Placing {buy_sell} order for {qty} of {symbol} at {price}")
+            stock = Stock.query.filter_by(tradingsymbol=symbol).first()
+            if not stock:
+                logger.error(f"Stock {symbol} not found")
+                api_log = ApiLog(user_email, symbol, None, "Place Order", "error", "Stock not found")
+                db.session.add(api_log)
+                db.session.commit()
+                return 0, None, "error"
+
+            order_params = {
+                "variety": "NORMAL",
+                "tradingsymbol": symbol,
+                "symboltoken": stock.symboltoken,
+                "transactiontype": buy_sell,
+                "exchange": stock.exchange,
+                "ordertype": "MARKET",
+                "producttype": "DELIVERY",
+                "duration": "DAY",
+                "quantity": str(qty)
+            }
+
+            try:
+                response = smart_api.placeOrderFullResponse(order_params)
+                logger.info(f"Order {buy_sell} {qty} of {symbol} at {price}: {response}")
+
+                order_id = response.get('data', {}).get('uniqueorderid')
+                numeric_order_id = response.get('data', {}).get('orderid')
+                if not order_id or not numeric_order_id:
+                    logger.error(f"Failed to get order IDs for {symbol}: uniqueorderid={order_id}, orderid={numeric_order_id}")
+                    api_log = ApiLog(user_email, symbol, None, "Place Order", "error", "Missing order IDs in response")
+                    db.session.add(api_log)
+                    db.session.commit()
+                    return 0, None, "error"
+
+                order_entry = OrderStatus(
+                    user_email=user_email,
+                    order_id=numeric_order_id,
+                    unique_order_id=order_id,
+                    symbol=symbol,
+                    status="pending",
+                    message="Order placed, awaiting confirmation",
+                    quantity=float(qty),
+                    price=price,
+                    buy_sell=buy_sell,
+                    created_at=IST.localize(datetime.now()),
+                    updated_at=IST.localize(datetime.now())
+                )
+                db.session.add(order_entry)
+                db.session.commit()
+                logger.info(f"Saved initial OrderStatus for {numeric_order_id}")
+
+                if user_email not in session_cache:
+                    logger.error(f"No session data found for {user_email} in cache")
+                    user = User.query.filter_by(email=user_email).first()
+                    if user:
+                        smart_api = get_angel_session(user)  # Assume this function exists
+                        session_cache[user_email] = {
+                            'auth_token': smart_api._access_token,
+                            'feed_token': smart_api.feedToken
+                        }
+                    else:
+                        api_log = ApiLog(user_email, symbol, order_id, "Place Order", "error", "User not found or session data missing")
+                        db.session.add(api_log)
+                        db.session.commit()
+                        return 0, order_id, "error"
+
+                session_data = session_cache[user_email]
+                auth_token = session_data.get('auth_token')
+                api_key = smart_api.api_key
+                client_code = getattr(smart_api, 'client_code', user_email)
+                feed_token = session_data.get('feed_token')
+
+                if not all([auth_token, api_key, client_code, feed_token]):
+                    logger.error(f"Missing WebSocket credentials for {user_email}")
+                    api_log = ApiLog(user_email, symbol, order_id, "Place Order", "error", "Missing WebSocket credentials")
+                    db.session.add(api_log)
+                    db.session.commit()
+                    return 0, order_id, "error"
+
+                client = SmartWebSocketOrderUpdate(auth_token, api_key, client_code, feed_token)
+                client.on_message = lambda wsapp, message: custom_on_message(wsapp, message, order_id, numeric_order_id)
+
+                ws_thread = Thread(target=client.connect)
+                ws_thread.daemon = True
+                ws_thread.start()
+
+                max_attempts = 15
+                attempt = 0
+                status = None
+                while attempt < max_attempts:
+                    with order_status_lock:
+                        tracked_id = order_id if order_id in order_status_dict else (numeric_order_id if numeric_order_id in order_status_dict else None)
+                        if tracked_id and tracked_id in order_status_dict:
+                            status = order_status_dict[tracked_id]['status']
+                            if status in ['complete', 'executed']:
+                                executed_qty = order_status_dict[tracked_id]['filled_shares'] or qty
+                                logger.info(f"Order {tracked_id} for {symbol} completed with {executed_qty} shares via WebSocket")
+                                client.close_connection()
+                                order_entry.status = "complete"
+                                order_entry.message = "Order completed via WebSocket"
+                                order_entry.updated_at = IST.localize(datetime.now())
+                                db.session.commit()
+                                return executed_qty, order_id, "completed"
+                            elif status in ['rejected', 'cancelled']:
+                                logger.warning(f"Order {tracked_id} for {symbol} failed with status: {status}")
+                                api_log = ApiLog(user_email, symbol, order_id, "Place Order", status, order_status_dict[tracked_id]['message'])
+                                db.session.add(api_log)
+                                db.session.commit()
+                                client.close_connection()
+                                order_entry.status = status
+                                order_entry.message = order_status_dict[tracked_id]['message']
+                                order_entry.updated_at = IST.localize(datetime.now())
+                                db.session.commit()
+                                return 0, order_id, status
+                            else:
+                                logger.info(f"Order {tracked_id} for {symbol} still pending: {status}")
+
+                    try:
+                        unique_order_id = OrderStatus.query.filter_by(order_id=numeric_order_id).first().unique_order_id
+                        order_details = smart_api.individual_order_details(unique_order_id)
+                        logger.debug(f"API response for order {unique_order_id}: {order_details}")
+                        if isinstance(order_details, dict):
+                            status = str(order_details.get('status', 'UNKNOWN')).lower()
+                            executed_qty = int(order_details.get('filledshares', qty) or qty)
+                            if status in ['complete', 'executed']:
+                                logger.info(f"API confirmed order {numeric_order_id} completed with {executed_qty} shares")
+                                with order_status_lock:
+                                    order_status_dict[numeric_order_id] = {
+                                        'status': status,
+                                        'symbol': symbol,
+                                        'message': order_details.get('text', ''),
+                                        'filled_shares': executed_qty,
+                                        'avg_price': float(order_details.get('averageprice', price) or price)
+                                    }
+                                client.close_connection()
+                                order_entry.status = "complete"
+                                order_entry.message = "Order completed via API"
+                                order_entry.updated_at = IST.localize(datetime.now())
+                                db.session.commit()
+                                return executed_qty, order_id, "completed"
+                            elif status in ['rejected', 'cancelled']:
+                                logger.warning(f"API confirmed order {numeric_order_id} failed: {status}")
+                                client.close_connection()
+                                order_entry.status = status
+                                order_entry.message = order_details.get('text', '')
+                                order_entry.updated_at = IST.localize(datetime.now())
+                                db.session.commit()
+                                return 0, order_id, status
+                        elif isinstance(order_details, bool):
+                            logger.warning(f"API returned boolean {order_details} for order {numeric_order_id}, falling back to OrderBook")
+                            order_book = smart_api.orderBook()
+                            if order_book.get('status') == True and 'data' in order_book:
+                                for order in order_book['data']:
+                                    if order['orderid'] == numeric_order_id:
+                                        status = str(order['status']).lower()
+                                        executed_qty = int(order['filledshares'] or qty)
+                                        if status in ['complete', 'executed']:
+                                            logger.info(f"OrderBook confirmed order {numeric_order_id} completed with {executed_qty} shares")
+                                            with order_status_lock:
+                                                order_status_dict[numeric_order_id] = {
+                                                    'status': status,
+                                                    'symbol': symbol,
+                                                    'message': order.get('text', ''),
+                                                    'filled_shares': executed_qty,
+                                                    'avg_price': float(order.get('averageprice', price) or price)
+                                                }
+                                            client.close_connection()
+                                            order_entry.status = "complete"
+                                            order_entry.message = "Order completed via OrderBook"
+                                            order_entry.updated_at = IST.localize(datetime.now())
+                                            db.session.commit()
+                                            return executed_qty, order_id, "completed"
+                                        elif status in ['rejected', 'cancelled']:
+                                            logger.warning(f"OrderBook confirmed order {numeric_order_id} failed: {status}")
+                                            client.close_connection()
+                                            order_entry.status = status
+                                            order_entry.message = order.get('text', '')
+                                            order_entry.updated_at = IST.localize(datetime.now())
+                                            db.session.commit()
+                                            return 0, order_id, status
+                            logger.warning(f"No matching order found in OrderBook for {numeric_order_id}, continuing wait")
+                            status = 'UNKNOWN'
+                        else:
+                            logger.error(f"Unexpected API response type for order {numeric_order_id}: {type(order_details)}")
+                            status = 'UNKNOWN'
+                    except Exception as e:
+                        logger.error(f"API check failed for {numeric_order_id}: {str(e)}", exc_info=True)
+                    time.sleep(1)
+                    attempt += 1
+
+                logger.error(f"Order {order_id} for {symbol} did not complete after {max_attempts} attempts")
+                api_log = ApiLog(user_email, symbol, order_id, "Place Order", "timeout", "Order status not updated in time")
+                db.session.add(api_log)
+                db.session.commit()
+
+                order_entry = OrderStatus.query.filter_by(order_id=numeric_order_id).first()
+                if order_entry:
+                    try:
+                        # Forcefully check OrderBook first on timeout
+                        order_book = smart_api.orderBook()
+                        logger.debug(f"OrderBook response on timeout for order {numeric_order_id}: {order_book}")
+                        order_found = False
+                        if order_book.get('status') == True and 'data' in order_book:
+                            for order in order_book['data']:
+                                if order['orderid'] == numeric_order_id:
+                                    final_status = str(order['status']).lower()
+                                    executed_qty = int(order['filledshares'] or qty)
+                                    if final_status in ['complete', 'executed']:
+                                        logger.info(f"OrderBook confirmed order {numeric_order_id} completed with {executed_qty} shares on timeout")
+                                        order_entry.status = "complete"
+                                        order_entry.message = "Order completed via OrderBook (timeout check)"
+                                        order_entry.updated_at = IST.localize(datetime.now())
+                                        db.session.commit()
+                                        client.close_connection()
+                                        return executed_qty, order_id, "completed"
+                                    elif final_status in ['rejected', 'cancelled']:
+                                        logger.warning(f"OrderBook confirmed order {numeric_order_id} failed: {final_status} on timeout")
+                                        order_entry.status = final_status
+                                        order_entry.message = order.get('text', 'Order status resolved via OrderBook')
+                                        order_entry.updated_at = IST.localize(datetime.now())
+                                        db.session.commit()
+                                        client.close_connection()
+                                        return 0, order_id, final_status
+                                    order_found = True
+                                    break
+
+                        # If not found in OrderBook, fall back to individual_order_details
+                        if not order_found:
+                            order_details = smart_api.individual_order_details(order_id)  # Using unique_order_id
+                            logger.debug(f"Final API response for order {order_id}: {order_details}")
+                            if isinstance(order_details, dict):
+                                final_status = str(order_details.get('status', 'UNKNOWN')).lower()
+                                executed_qty = int(order_details.get('filledshares', qty) or qty)
+                                if final_status in ['complete', 'executed']:
+                                    logger.info(f"Order {numeric_order_id} executed despite timeout, qty: {executed_qty}")
+                                    order_entry.status = final_status
+                                    order_entry.message = "Order completed (final API check)"
+                                    order_entry.updated_at = IST.localize(datetime.now())
+                                    db.session.commit()
+                                    client.close_connection()
+                                    return executed_qty, order_id, "completed"
+                                else:
+                                    order_entry.status = final_status if final_status in ['rejected', 'cancelled'] else "timeout"
+                                    order_entry.message = order_details.get('text', 'Order status not updated in time')
+                                    order_entry.updated_at = IST.localize(datetime.now())
+                                    db.session.commit()
+                                    logger.info(f"Updated OrderStatus for {numeric_order_id} to {order_entry.status}")
+                            elif isinstance(order_details, bool):
+                                logger.warning(f"Final API returned boolean {order_details} for order {order_id}, marking as timeout")
+                                order_entry.status = "timeout"
+                                order_entry.message = "Order status not updated in time (API returned boolean)"
+                                order_entry.updated_at = IST.localize(datetime.now())
+                                db.session.commit()
+                            else:
+                                logger.error(f"Unexpected final API response type for order {order_id}: {type(order_details)}")
+                                order_entry.status = "timeout"
+                                order_entry.message = "Order status not updated in time (unexpected API response)"
+                                order_entry.updated_at = IST.localize(datetime.now())
+                                db.session.commit()
+                    except Exception as e:
+                        logger.error(f"Final check failed for {numeric_order_id}: {str(e)}", exc_info=True)
+                        order_entry.status = "timeout"
+                        order_entry.message = "Order status not updated in time"
+                        order_entry.updated_at = IST.localize(datetime.now())
+                        db.session.commit()
+
+                client.close_connection()
+                return 0, order_id, "timeout"
+
+            except Exception as e:
+                logger.error(f"Error placing order for {symbol}: {str(e)}", exc_info=True)
+                api_log = ApiLog(user_email, symbol, order_id if 'order_id' in locals() else None, "Place Order", "error", str(e))
+                db.session.add(api_log)
+                db.session.commit()
+                db.session.rollback()
+                return 0, None, "error"
+
+def process_strategy(user, symbol, ltp, smart_api):
+    log_to_file(f"Process strategy for {symbol} at {ltp}")
+    
+    with app.app_context():
+        lock_key = f"{user.email}_{symbol}"
+        with strategy_locks.setdefault(lock_key, Lock()):
+            try:
+                trades = Trade.query.filter_by(stock_symbol=symbol, user_email=user.email).order_by(Trade.sr_no).all()
+                stock = Stock.query.filter_by(user_id=user.id, tradingsymbol=symbol).first()
+                if not stock or not stock.trading_status:
+                    log_to_file(f"Trading not enabled for {symbol}")
+                    return
+                
+                wallet_value = stock.allotment_captial if stock else 0
+                log_to_file(f"Wallet value for {symbol}: {wallet_value}")
+                log_to_file(f"Trades for {symbol}: {len(trades)}, Trades: {[t.__dict__ for t in trades]}")
+
+                # Check for recent or pending orders
+                recent_orders = OrderStatus.query.filter_by(
+                    user_email=user.email,
+                    symbol=symbol,
+                    buy_sell='BUY'
+                ).filter(
+                    OrderStatus.created_at > IST.localize(datetime.now()) - timedelta(seconds=10)
+                ).all()
+                if recent_orders:
+                    log_to_file(f"Skipping {symbol}: Recent orders exist: {[o.order_id for o in recent_orders]}")
+                    return
+
+                pending_orders = OrderStatus.query.filter_by(
+                    user_email=user.email,
+                    symbol=symbol,
+                    buy_sell='BUY'
+                ).filter(
+                    OrderStatus.status.in_(['pending', 'UNKNOWN', 'timeout'])
+                ).filter(
+                    OrderStatus.created_at > IST.localize(datetime.now()) - timedelta(minutes=5)
+                ).all()
+                if pending_orders:
+                    log_to_file(f"Skipping {symbol}: {len(pending_orders)} recent pending/timeout orders exist: {[o.order_id for o in pending_orders]}")
+                    return
+
+                current_cycle = TradeCycle.query.filter_by(
+                    stock_symbol=symbol,
+                    user_email=user.email,
+                    status='ACTIVE'
+                ).order_by(TradeCycle.cycle_start.desc()).first()
+
+                if not current_cycle and not trades:
+                    new_cycle = TradeCycle(
+                        stock_symbol=symbol,
+                        user_email=user.email,
+                        cycle_start=IST.localize(datetime.now()),
+                        status='ACTIVE'
+                    )
+                    db.session.add(new_cycle)
+                    db.session.commit()
+                    log_to_file(f"Started new TradeCycle for {symbol}")
+                    current_cycle = new_cycle
+                elif not current_cycle and all(t.status in ['CLOSED', 'OLD_BUY'] for t in trades):
+                    log_to_file(f"No active cycle for {symbol}, but trades exist. Cycle should have reset earlier.")
+
+                latest_open_trade = next((t for t in trades[::-1] if t.status == 'OPEN'), None)
+                base_price = latest_open_trade.base_price if latest_open_trade else (trades[-1].base_price if trades else ltp)
+                log_to_file(f"Base price for {symbol}: {base_price}")
+                log_to_file(f"Latest open trade for {symbol}: {latest_open_trade}")
+
+                strategy_data = get_strategy_data(user.email, symbol, base_price, wallet_value)  # Assume this function exists
+                log_to_file(f"base_price: {base_price}, wallet_value: {wallet_value}, strategy_data: {strategy_data}")
+                log_to_file(f"Strategy data for {symbol}: {strategy_data}")
+
+                def get_order_status(unique_order_id):
+                    order = OrderStatus.query.filter_by(unique_order_id=unique_order_id, user_email=user.email).first()
+                    if order and order.status not in ['pending', 'UNKNOWN', 'timeout']:
+                        log_to_file(f"Order status from table for unique_order_id {unique_order_id} (order_id: {order.order_id}): {order.status}")
+                        return order.status
+
+                    try:
+                        status = smart_api.individual_order_details(unique_order_id)
+                        log_to_file(f"Order status from API for unique_order_id {unique_order_id}: {status}")
+
+                        if isinstance(status, dict) and 'data' in status:
+                            final_status = str(status['data'].get('orderstatus', status['data'].get('status', 'UNKNOWN'))).lower()
+                            executed_qty = float(status['data'].get('filledshares', order.quantity if order else 0))
+                            order_id = status['data'].get('orderid', order.order_id if order else None)
+
+                            new_status = OrderStatus(
+                                user_email=user.email,
+                                order_id=order_id,
+                                unique_order_id=unique_order_id,
+                                symbol=symbol,
+                                status=final_status,
+                                message=status['data'].get('text', ''),
+                                quantity=executed_qty,
+                                price=float(status['data'].get('averageprice', order.price if order else 0)),
+                                buy_sell=status['data'].get('transactiontype', order.buy_sell if order else 'BUY'),
+                                created_at=order.created_at if order else IST.localize(datetime.now()),
+                                updated_at=IST.localize(datetime.now())
+                            )
+                            db.session.merge(new_status)
+                            db.session.commit()
+                            log_to_file(f"Updated order status for unique_order_id {unique_order_id} (order_id: {order_id}): {final_status}")
+                            return final_status
+
+                        elif isinstance(status, dict) and 'status' in status and not status['status']:
+                            log_to_file(f"API error for unique_order_id {unique_order_id}: {status.get('message', 'Unknown error')}")
+                            return 'UNKNOWN'
+
+                        elif isinstance(status, bool):
+                            log_to_file(f"API returned boolean {status} for unique_order_id {unique_order_id}, falling back to OrderBook")
+                            order_book = smart_api.orderBook()
+                            log_to_file(f"OrderBook response: {order_book}")
+                            if order_book.get('status') == True and 'data' in order_book:
+                                for order_data in order_book['data']:
+                                    if order_data.get('uniqueorderid') == unique_order_id:
+                                        final_status = str(order_data.get('orderstatus', order_data.get('status', 'UNKNOWN'))).lower()
+                                        executed_qty = float(order_data.get('filledshares', order.quantity if order else 0))
+                                        order_id = order_data.get('orderid', order.order_id if order else None)
+                                        new_status = OrderStatus(
+                                            user_email=user.email,
+                                            order_id=order_id,
+                                            unique_order_id=unique_order_id,
+                                            symbol=symbol,
+                                            status=final_status,
+                                            message=order_data.get('text', ''),
+                                            quantity=executed_qty,
+                                            price=float(order_data.get('averageprice', order.price if order else 0)),
+                                            buy_sell=order_data.get('transactiontype', order.buy_sell if order else 'BUY'),
+                                            created_at=order.created_at if order else IST.localize(datetime.now()),
+                                            updated_at=IST.localize(datetime.now())
+                                        )
+                                        db.session.merge(new_status)
+                                        db.session.commit()
+                                        log_to_file(f"Updated order status from OrderBook for unique_order_id {unique_order_id} (order_id: {order_id}): {final_status}")
+                                        return final_status
+                            return 'UNKNOWN'
+
+                        else:
+                            log_to_file(f"API returned unexpected response for unique_order_id {unique_order_id}: {type(status)} - {status}")
+                            return 'UNKNOWN'
+
+                    except Exception as e:
+                        log_to_file(f"Failed to fetch order status for unique_order_id {unique_order_id}: {str(e)}")
+                        return 'UNKNOWN'
+
+                open_trades = [t for t in trades if t.status == 'OPEN']
+                if not open_trades and (not trades or (current_cycle and current_cycle.status == 'COMPLETED') or all(t.status in ['CLOSED', 'OLD_BUY'] for t in trades)):
+                    qty = int(strategy_data.loc[0, 'Qnty'])
+                    executed_qty, order_id, order_status = place_order(smart_api, symbol, qty, ltp, user_email=user.email)
+                    log_to_file(f"place_order result for initial buy: {executed_qty}, {order_id}, {order_status}")
+
+                    if order_id and order_status not in ['completed', 'complete', 'executed']:
+                        for _ in range(5):
+                            order_status = get_order_status(order_id)
+                            if order_status not in ['pending', 'UNKNOWN', 'timeout']:
+                                break
+                            log_to_file(f"Waiting for initial buy order {order_id} to resolve, current status: {order_status}")
+                            time.sleep(2)
+
+                        if order_status in ['timeout', 'UNKNOWN', 'pending']:
+                            try:
+                                unique_order_id = OrderStatus.query.filter_by(order_id=order_id, user_email=user.email).first().unique_order_id
+                                order_details = smart_api.individual_order_details(unique_order_id)
+                                log_to_file(f"individual Order details for {order_id}: {order_details}")
+                                if isinstance(order_details, dict):
+                                    final_status = str(order_details.get('status', 'UNKNOWN')).lower()
+                                    executed_qty = int(order_details.get('filledshares', qty) or 0)
+                                    log_to_file(f"Final API check for {order_id}: status={final_status}, executed_qty={executed_qty}")
+                                    order_entry = OrderStatus.query.filter_by(order_id=order_id).first()
+                                    if order_entry:
+                                        order_entry.status = final_status
+                                        order_entry.quantity = executed_qty
+                                        order_entry.updated_at = IST.localize(datetime.now())
+                                        db.session.commit()
+                                    order_status = final_status
+                            except Exception as e:
+                                log_to_file(f"Final API check failed for {order_id}: {e}")
+
+                    log_to_file(f"Initial buy for {symbol} at {ltp}, Qty: {qty}, Executed Qty: {executed_qty}, Status: {order_status}")
+
+                    if executed_qty > 0 and order_status in ['complete', 'executed']:
+                        new_trade = Trade(
+                            stock_symbol=symbol,
+                            sr_no=1,
+                            entry_price=ltp,
+                            quantity=int(executed_qty),
+                            user_email=user.email,
+                            base_price=ltp,
+                            total_quantity=int(executed_qty),
+                            total_sold_quantity=0,
+                            status='OPEN',
+                            last_updated=IST.localize(datetime.now()),
+                            description='Initial Buy',
+                            order_id=order_id
+                        )
+                        db.session.add(new_trade)
+                        db.session.commit()
+                        log_to_file(f"Initial Buy {symbol} at {ltp}, Qty: {executed_qty}, Sr.No: 1, Total_Qty: {new_trade.total_quantity}")
+                    else:
+                        log_to_file(f"Initial buy failed for {symbol} at {ltp}, Qty: {qty}, Status: {order_status}")
+                    return
+
+                current_open_qty = sum(t.total_quantity - t.total_sold_quantity for t in trades if t.status == 'OPEN')
+                latest_open_trade = next((t for t in trades[::-1] if t.status == 'OPEN'), None)
+                current_sr_no = latest_open_trade.sr_no if latest_open_trade else 1
+                log_to_file(f"Current Sr No for {symbol}: {current_sr_no}, Open Qty: {current_open_qty}")
+
+                phase_config = PhaseConfig.query.filter_by(
+                    user_email=user.email,
+                    stock_symbol=symbol
+                ).filter(
+                    PhaseConfig.start_sr_no <= current_sr_no,
+                    PhaseConfig.end_sr_no >= current_sr_no
+                ).first()
+                down_increment = 0.0025 if not phase_config else phase_config.down_increment / 100
+                log_to_file(f"Phase: {phase_config.phase if phase_config else 'Unknown'}, Down Increment: {down_increment*100}%")
+
+                drop_percent = (ltp - base_price) / base_price
+                log_to_file(f"Drop percent for {symbol} from {base_price}: {drop_percent}")
+                target_idx = (strategy_data['DOWN'] - drop_percent).abs().idxmin()
+                target_row = strategy_data.loc[target_idx]
+                target_sr_no = int(target_row['Sr.No'])
+                total_qty = int(target_row['Total_Qty'])
+                qty_to_buy = total_qty - current_open_qty
+                log_to_file(f"Target Sr.No: {target_sr_no}, Total Qty: {total_qty}, Qty to Buy: {qty_to_buy}")
+
+                if drop_percent <= -down_increment and open_trades:
+                    if qty_to_buy <= 0:
+                        log_to_file(f"No buy for {symbol} Sr.No {target_sr_no}: Qty to buy {qty_to_buy} <= 0")
+                        return
+
+                    existing_open_trade = next((t for t in trades if t.status == 'OPEN' and t.sr_no == target_sr_no), None)
+                    if existing_open_trade:
+                        log_to_file(f"Skipping buy for {symbol}: OPEN trade already exists for Sr.No {target_sr_no}")
+                        return
+
+                    if target_sr_no <= current_sr_no:
+                        log_to_file(f"Skipping buy for {symbol}: Target Sr.No {target_sr_no} <= Current Sr.No {current_sr_no}")
+                        return
+
+                    executed_qty, order_id, order_status = place_order(smart_api, symbol, qty_to_buy, ltp, user_email=user.email)
+                    log_to_file(f"place_order result for additional buy: {executed_qty}, {order_id}, {order_status}")
+
+                    if order_id and order_status not in ['completed', 'complete', 'executed']:
+                        for _ in range(5):
+                            order_status = get_order_status(order_id)
+                            if order_status not in ['pending', 'UNKNOWN', 'timeout']:
+                                break
+                            log_to_file(f"Waiting for additional buy order {order_id} to resolve, current status: {order_status}")
+                            time.sleep(2)
+
+                        if order_status in ['timeout', 'UNKNOWN']:
+                            try:
+                                order_details = smart_api.individual_order_details(order_id)
+                                if isinstance(order_details, dict):
+                                    final_status = str(order_details.get('status', 'UNKNOWN')).lower()
+                                    executed_qty = int(order_details.get('filledshares', qty_to_buy) or 0)
+                                    log_to_file(f"Final API check for {order_id}: status={final_status}, executed_qty={executed_qty}")
+                                    order_entry = OrderStatus.query.filter_by(order_id=order_id).first()
+                                    if order_entry:
+                                        order_entry.status = final_status
+                                        order_entry.quantity = executed_qty
+                                        order_entry.updated_at = IST.localize(datetime.now())
+                                        db.session.commit()
+                                    order_status = final_status
+                            except Exception as e:
+                                log_to_file(f"Final API check failed for {order_id}: {e}")
+
+                    log_to_file(f"Additional buy for {symbol} at {ltp}, Qty: {qty_to_buy}, Executed Qty: {executed_qty}, Status: {order_status}")
+
+                    if executed_qty > 0 and order_status in ['complete', 'executed']:
+                        for trade in trades:
+                            if trade.status == 'OPEN':
+                                trade.status = 'OLD_BUY'
+                                trade.last_updated = IST.localize(datetime.now())
+                                trade.description = f"Updated to OLD_BUY before new buy at Sr.No {target_sr_no}"
+                                log_to_file(f"Updated trade Sr.No {trade.sr_no} to OLD_BUY, Total_Qty: {trade.total_quantity}")
+                        
+                        new_trade = Trade(
+                            stock_symbol=symbol,
+                            sr_no=target_sr_no,
+                            entry_price=ltp,
+                            quantity=int(executed_qty),
+                            user_email=user.email,
+                            base_price=base_price,
+                            total_quantity=total_qty,
+                            total_sold_quantity=0,
+                            status='OPEN',
+                            last_updated=IST.localize(datetime.now()),
+                            description='Additional Buy',
+                            order_id=order_id
+                        )
+                        db.session.add(new_trade)
+                        db.session.commit()
+                        log_to_file(f"Buy {symbol} at {ltp}, Qty: {executed_qty}, Sr.No: {target_sr_no}, Total_Qty: {new_trade.total_quantity}")
+                    else:
+                        log_to_file(f"Buy failed for {symbol} at {ltp}, Qty: {qty_to_buy}, Status: {order_status}")
+                    return
+
+                all_closed = True
+                for trade in trades:
+                    if trade.status != 'OPEN':
+                        continue
+                    all_closed = False
+                    
+                    base_price = trade.base_price
+                    strategy_data = get_strategy_data(user.email, symbol, base_price, wallet_value)
+                    sr_no = trade.sr_no
+                    entry_price = trade.entry_price
+                    current_qty = trade.total_quantity - trade.total_sold_quantity
+                    row = strategy_data.loc[sr_no-1]
+
+                    final_tgt = row['FINAL_TGT']
+                    first_tgt = row['First_TGT']
+                    second_tgt = row['Second_TGT']
+                    half_qty = row['EXIT_1st_HALF'] if row['EXIT_1st_HALF'] is not None else 0
+                    second_half_qty = row['EXIT_2nd_HALF'] if row['EXIT_2nd_HALF'] is not None else 0
+
+                    log_to_file(f"Targets for {symbol} Sr.No {sr_no}: First_TGT={first_tgt}, Second_TGT={second_tgt}, FINAL_TGT={final_tgt}, Half_Qty={half_qty}, Second_Half_Qty={second_half_qty}")
+
+                    if sr_no <= 8:
+                        if ltp >= final_tgt and current_qty > 0:
+                            log_to_file(f"Exit condition met for {symbol} Sr.No {sr_no}: LTP {ltp} >= FINAL_TGT {final_tgt}")
+                            executed_qty, order_id, order_status = place_order(smart_api, symbol, current_qty, ltp, 'SELL', user_email=user.email)
+                            if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                trade.total_sold_quantity += executed_qty
+                                trade.description = 'Final TGT'
+                                if trade.total_sold_quantity >= trade.total_quantity:
+                                    trade.status = 'CLOSED'
+                                    trade.cycle_count += 1
+                                    log_to_file(f"Cycle count incremented to {trade.cycle_count} for Sr.No {sr_no}")
+                                trade.last_updated = IST.localize(datetime.now())
+                                db.session.commit()
+                                log_to_file(f"Sold {executed_qty}/{current_qty} for {symbol} Sr.No {sr_no} at {ltp}, Status: {trade.status}")
+                            else:
+                                log_to_file(f"Sell failed for {symbol} Sr.No {sr_no} at {ltp}, Qty: {current_qty}, Status: {order_status}")
+                            if trade.total_sold_quantity < current_qty and ltp < entry_price:
+                                re_entry_qty = current_qty - trade.total_sold_quantity
+                                executed_qty, order_id, order_status = place_order(smart_api, symbol, re_entry_qty, ltp, 'BUY', user_email=user.email)
+                                if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                    trade.total_quantity += executed_qty
+                                    trade.description = f"Re-entry after partial sell at {entry_price}"
+                                    trade.last_updated = IST.localize(datetime.now())
+                                    db.session.commit()
+                                    log_to_file(f"Re-entered {executed_qty} for {symbol} Sr.No {sr_no} at {ltp}")
+                    elif sr_no <= 21:
+                        if first_tgt and ltp >= first_tgt and trade.total_sold_quantity == 0 and current_qty > 0:
+                            executed_qty, order_id, order_status = place_order(smart_api, symbol, half_qty, ltp, 'SELL', user_email=user.email)
+                            if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                trade.total_sold_quantity += executed_qty
+                                trade.description = 'First TGT'
+                                trade.last_updated = IST.localize(datetime.now())
+                                db.session.commit()
+                                log_to_file(f"Exit 1st Half {symbol} at {ltp}, Sold: {executed_qty}/{half_qty}, Sr.No {sr_no}")
+                            if trade.total_sold_quantity < half_qty and ltp < entry_price:
+                                re_entry_qty = half_qty - trade.total_sold_quantity
+                                executed_qty, order_id, order_status = place_order(smart_api, symbol, re_entry_qty, ltp, 'BUY', user_email=user.email)
+                                if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                    trade.total_quantity += executed_qty
+                                    trade.description = f"Re-entry after partial sell at {entry_price}"
+                                    trade.last_updated = IST.localize(datetime.now())
+                                    db.session.commit()
+                                    log_to_file(f"Re-entered {executed_qty} for {symbol} Sr.No {sr_no} at {ltp}")
+                        elif ltp >= final_tgt and current_qty > 0:
+                            executed_qty, order_id, order_status = place_order(smart_api, symbol, current_qty, ltp, 'SELL', user_email=user.email)
+                            if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                trade.total_sold_quantity += executed_qty
+                                trade.description = 'Final TGT'
+                                if trade.total_sold_quantity >= trade.total_quantity:
+                                    trade.status = 'CLOSED'
+                                    trade.cycle_count += 1
+                                    log_to_file(f"Cycle count incremented to {trade.cycle_count} for Sr.No {sr_no}")
+                                trade.last_updated = IST.localize(datetime.now())
+                                db.session.commit()
+                                log_to_file(f"Sold {executed_qty}/{current_qty} for {symbol} Sr.No {sr_no} at {ltp}, Status: {trade.status}")
+                    else:
+                        if first_tgt and ltp >= first_tgt and trade.total_sold_quantity == 0 and current_qty > 0:
+                            executed_qty, order_id, order_status = place_order(smart_api, symbol, half_qty, ltp, 'SELL', user_email=user.email)
+                            if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                trade.total_sold_quantity += executed_qty
+                                trade.description = 'First TGT'
+                                trade.last_updated = IST.localize(datetime.now())
+                                db.session.commit()
+                                log_to_file(f"Exit 1st Half {symbol} at {ltp}, Sold: {executed_qty}/{half_qty}, Sr.No {sr_no}")
+                            if trade.total_sold_quantity < half_qty and ltp < entry_price:
+                                re_entry_qty = half_qty - trade.total_sold_quantity
+                                executed_qty, order_id, order_status = place_order(smart_api, symbol, re_entry_qty, ltp, 'BUY', user_email=user.email)
+                                if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                    trade.total_quantity += executed_qty
+                                    trade.description = f"Re-entry after partial sell at {entry_price}"
+                                    trade.last_updated = IST.localize(datetime.now())
+                                    db.session.commit()
+                                    log_to_file(f"Re-entered {executed_qty} for {symbol} Sr.No {sr_no} at {ltp}")
+                        elif second_tgt and ltp >= second_tgt and trade.total_sold_quantity == half_qty and current_qty > 0:
+                            executed_qty, order_id, order_status = place_order(smart_api, symbol, second_half_qty, ltp, 'SELL', user_email=user.email)
+                            if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                trade.total_sold_quantity += executed_qty
+                                trade.description = 'Second TGT'
+                                trade.last_updated = IST.localize(datetime.now())
+                                db.session.commit()
+                                log_to_file(f"Exit 2nd Half {symbol} at {ltp}, Sold: {executed_qty}/{second_half_qty}, Sr.No {sr_no}")
+                            if trade.total_sold_quantity < half_qty + second_half_qty and ltp < entry_price:
+                                re_entry_qty = (half_qty + second_half_qty) - trade.total_sold_quantity
+                                executed_qty, order_id, order_status = place_order(smart_api, symbol, re_entry_qty, ltp, 'BUY', user_email=user.email)
+                                if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                    trade.total_quantity += executed_qty
+                                    trade.description = f"Re-entry after partial sell at {entry_price}"
+                                    trade.last_updated = IST.localize(datetime.now())
+                                    db.session.commit()
+                                    log_to_file(f"Re-entered {executed_qty} for {symbol} Sr.No {sr_no} at {ltp}")
+                        elif ltp >= final_tgt and current_qty > 0:
+                            executed_qty, order_id, order_status = place_order(smart_api, symbol, current_qty, ltp, 'SELL', user_email=user.email)
+                            if executed_qty > 0 and order_status in ['complete', 'executed']:
+                                trade.total_sold_quantity += executed_qty
+                                trade.description = 'Final TGT'
+                                if trade.total_sold_quantity >= trade.total_quantity:
+                                    trade.status = 'CLOSED'
+                                    trade.cycle_count += 1
+                                    log_to_file(f"Cycle count incremented to {trade.cycle_count} for Sr.No {sr_no}")
+                                trade.last_updated = IST.localize(datetime.now())
+                                db.session.commit()
+                                log_to_file(f"Sold {executed_qty}/{current_qty} for {symbol} Sr.No {sr_no} at {ltp}, Status: {trade.status}")
+
+                if all_closed and trades:
+                    log_to_file(f"All trades for {symbol} are CLOSED, resetting cycle")
+                    if current_cycle and current_cycle.status == 'ACTIVE':
+                        current_cycle.cycle_end = IST.localize(datetime.now())
+                        current_cycle.total_sold = sum(t.total_sold_quantity for t in trades)
+                        current_cycle.total_bought = sum(t.total_quantity for t in trades)
+                        current_cycle.profit = sum((ltp - t.entry_price) * t.total_sold_quantity for t in trades if t.status == 'CLOSED')
+                        current_cycle.status = 'COMPLETED'
+                        log_to_file(f"Completed TradeCycle for {symbol}: Total Bought {current_cycle.total_bought}, Total Sold {current_cycle.total_sold}, Profit {current_cycle.profit}")
+                        db.session.commit()
+                    
+                    time.sleep(7)
+                    new_cycle = TradeCycle(
+                        stock_symbol=symbol,
+                        user_email=user.email,
+                        cycle_start=IST.localize(datetime.now()),
+                        status='ACTIVE'
+                    )
+                    db.session.add(new_cycle)
+                    db.session.commit()
+                    log_to_file(f"Started new TradeCycle for {symbol}")
+
+            except Exception as e:
+                log_to_file(f"Error in process_strategy for {symbol}: {str(e)}")
+                db.session.rollback()
+            finally:
+                db.session.close()
+
+def start_websocket_stream(user):
+    user_email = user.email
+    try:
+        with app.app_context():
+            stocks = Stock.query.filter_by(user_id=user.id).all()
+            if not any(stock.live_price_status for stock in stocks):
+                logger.info(f"No stocks with live_price_status=True for {user_email}, skipping WebSocket")
+                return
+
+            with websocket_lock:
+                if user_email in websocket_clients and websocket_clients[user_email].connected:
+                    logger.info(f"WebSocket already running for {user_email}")
+                    return
+
+            smart_api = get_angel_session(user)  # Assume this function exists
+            auth_token = session_cache[user_email]['auth_token']
+            feed_token = session_cache[user_email]['feed_token']
+            api_key = user.smartapi_key
+            client_code = user.smartapi_username
+
+            token_map = {1: [], 3: []}
+            for stock in stocks:
+                if stock.live_price_status:
+                    exchange_type = 1 if stock.exchange == "NSE" else 3
+                    token_map[exchange_type].append(stock.symboltoken)
+
+            token_list = [{"exchangeType": et, "tokens": tokens} for et, tokens in token_map.items() if tokens]
+            if not token_list:
+                logger.info(f"No active stocks to subscribe for {user_email}")
+                return
+
+            correlation_id = f"stream_{user_email}"
+            mode = 3
+
+            sws = SmartWebSocketV2(
+                auth_token, api_key, client_code, feed_token,
+                max_retry_attempt=5,
+                retry_strategy=0, retry_delay=10, retry_duration=15
+            )
+
+            def on_data(wsapp, message):
+                try:
+                    if isinstance(message, bytes):
+                        logger.warning(f"Non-JSON message received for {user_email}: {message}")
+                        return
+                    if not isinstance(message, dict):
+                        message = json.loads(message)
+
+                    logger.debug(f"Raw message received for {user_email}: {message}")
+                    token = message.get('token')
+                    if not token:
+                        logger.warning(f"Message missing token for {user_email}: {message}")
+                        return
+
+                    ltp = message.get('last_traded_price', 0) / 100 if message.get('last_traded_price') else 0
+                    with app.app_context():
+                        stock = Stock.query.filter_by(user_id=user.id, symboltoken=token).first()
+                        if not stock:
+                            logger.debug(f"Ignoring data for removed token {token} for {user_email}")
+                            return
+                        if stock:
+                            lock_key = f"{user_email}_{stock.tradingsymbol}"
+                            current_time = time.time()
+                            if lock_key in last_processed and (current_time - last_processed[lock_key]) < 5:
+                                logger.info(f"Debouncing {stock.tradingsymbol} for {user_email}")
+                                return
+
+                            with live_prices_lock:
+                                if user_email not in live_prices:
+                                    live_prices[user_email] = {}
+                                live_prices[user_email][token] = {
+                                    'price': ltp,
+                                    'name': stock.tradingsymbol,
+                                    'total_sell_quantity': message.get('total_sell_quantity', 0),
+                                    'total_buy_quantity': message.get('total_buy_quantity', 0),
+                                    'high_price_of_the_day': message.get('high_price_of_the_day', 0) / 100,
+                                    'low_price_of_the_day': message.get('low_price_of_the_day', 0) / 100,
+                                    'volume_trade_for_the_day': message.get('volume_trade_for_the_day', 0),
+                                    'open_price': message.get('open_price_of_the_day', 0) / 100,
+                                    'week_high': message.get('52_week_high_price', 0) / 100,
+                                    'week_low': message.get('52_week_low_price', 0) / 100
+                                }
+                            logger.info(f"Updated live price for {user_email}, token {token}: {ltp}")
+                            log_to_file(f"Live price update for {stock.tradingsymbol}: {ltp}")
+                            logger.debug(f"is market open: {is_market_open()}")  # Assume this function exists
+                            if is_market_open():
+                                logger.info(f"Trading Status for {user} and its {user.trading_active}")
+                                if user.trading_active and stock.trading_status:
+                                    try:
+                                        process_strategy(user, stock.tradingsymbol, ltp, smart_api)
+                                        last_processed[lock_key] = current_time
+                                    except Exception as e:
+                                        logger.error(f"Error in process_strategy for {stock.tradingsymbol}: {str(e)}")
+                                        log_to_file(f"WebSocket data error for {user_email}: {str(e)}")
                                 else:
                                     logger.info(f"Trading not active for {user_email}")
                             else:
@@ -3001,6 +4125,7 @@ def start_websocket_stream(user):
                         websocket_clients[user_email].close_connection()
                     except Exception as e:
                         logger.warning(f"Failed to close existing WebSocket for {user_email}: {str(e)}")
+                        log_to_file(f"WebSocket setup error for {user_email}: {str(e)}")
                 websocket_clients[user_email] = sws
 
             thread = eventlet.spawn(sws.connect)
@@ -3019,7 +4144,7 @@ def start_websocket_stream(user):
 def restart_websocket(user):
     """Helper function to restart WebSocket for a user."""
     stop_websocket_stream(user)
-    time.sleep(2)  
+    time.sleep(2)
     start_websocket_stream(user)
 
 def stop_websocket_stream(user):
@@ -3045,7 +4170,6 @@ def log_request_data():
         logging.info(f"📝 Request Method: {request.method}")
         logging.info(f"📩 Request Headers: {dict(request.headers)}")
         logging.info(f"🔒 Raw Request Body: {request.data.decode('utf-8')}")
-
 
 
 @app.route('/api/toggle-trading-status', methods=['POST'])
